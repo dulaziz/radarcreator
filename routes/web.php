@@ -19,14 +19,14 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "about"
+Route::get('/upload', function () {
+    return view('page.upload.index', [
+        "title" => "upload"
     ]);
 });
 
-Route::get('/admin', function () {
-    return view('admin', [
-        "title" => "admin"
+Route::get('/myvideo', function () {
+    return view('page.myvideo.index', [
+        "title" => "my video"
     ]);
 });

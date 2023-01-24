@@ -1,7 +1,14 @@
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-      
-    <script src="/js/dashboard.js"></script>
-  </body>
-</html>
+<!-- Footer Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary rounded-top p-4">
+        <div class="row">
+            <div class="col-12 col-sm-6 text-center text-sm-start">
+                &copy; <a href="#">Radar Creator</a>, All Right Reserved. 
+            </div>
+            <div class="col-12 col-sm-6 text-center text-sm-end">
+                Created By <span>Radar Bogor</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

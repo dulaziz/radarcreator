@@ -1,5 +1,10 @@
 @extends('dashboard.layouts.main')
 
 @section('content')
-    <h1>Dashboard</h1>
+
+    @include('dashboard.components.revenue')
+    @include('dashboard.components.table')
+    @include('dashboard.components.chart')
+    {{-- @include('dashboard.components.calender') --}}
+
 @endsection

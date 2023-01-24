@@ -1,75 +1,33 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-3 sidebar-sticky">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
-            <span data-feather="home" class="align-text-bottom"></span>
-            Dashboard
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="file" class="align-text-bottom"></span>
-            Orders
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="shopping-cart" class="align-text-bottom"></span>
-            Products
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="users" class="align-text-bottom"></span>
-            Customers
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-            Reports
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="layers" class="align-text-bottom"></span>
-            Integrations
-          </a>
-        </li>
-      </ul>
-
-      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-        <span>Saved reports</span>
-        <a class="link-secondary" href="#" aria-label="Add a new report">
-          <span data-feather="plus-circle" class="align-text-bottom"></span>
+<!-- Sidebar Start -->
+<div class="sidebar pe-4 pb-3">
+    <nav class="navbar bg-secondary navbar-dark">
+        <a href="index.html" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary"><i class="fas fa-film me-2"></i>Radar Creator</h3>
         </a>
-      </h6>
-      <ul class="nav flex-column mb-2">
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="file-text" class="align-text-bottom"></span>
-            Current month
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="file-text" class="align-text-bottom"></span>
-            Last quarter
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="file-text" class="align-text-bottom"></span>
-            Social engagement
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="file-text" class="align-text-bottom"></span>
-            Year-end sale
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+        <div class="d-flex align-items-center ms-4 mb-4">
+            <div class="position-relative">
+                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+            </div>
+            <div class="ms-3">
+                <h6 class="mb-0">Jhon Doe</h6>
+                <span>Admin</span>
+            </div>
+        </div>
+        <div class="navbar-nav w-100">
+            <a href="/" class="nav-item nav-link {{ ($title === "dashboard") ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="/upload" class="nav-item nav-link {{ ($title === "upload") ? 'active' : '' }}"><i class="fas fa-upload me-2"></i>Upload</a>
+            <a href="/myvideo" class="nav-item nav-link {{ ($title === "my video") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>My Vide</a>
+            {{-- <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="signin.html" class="dropdown-item">Sign In</a>
+                    <a href="signup.html" class="dropdown-item">Sign Up</a>
+                    <a href="404.html" class="dropdown-item">404 Error</a>
+                    <a href="blank.html" class="dropdown-item">Blank Page</a>
+                </div>
+            </div> --}}
+        </div>
+    </nav>
+</div>
+<!-- Sidebar End -->
