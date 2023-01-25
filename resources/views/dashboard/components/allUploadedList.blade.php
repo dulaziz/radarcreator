@@ -2,7 +2,7 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-2">
-            <h6 class="mb-0">Recent All Upload</h6>
+            <h6 class="mb-0">Recent All Uploaded</h6>
             <a href="/">Back</a>
         </div>
         <hr>

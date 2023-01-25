@@ -2,8 +2,8 @@
     <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Recent Upload</h6>
-                <a href="/allUploadList">Show All</a>
+                <h6 class="mb-0">Recent Uploaded</h6>
+                <a href="/allUploadedList">Show All</a>
             </div>
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -33,9 +33,11 @@
                                 <span class="text-success">Tayang</span>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                <div class="d-flex gap-1">
+                                    <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                    <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -50,9 +52,11 @@
                                 <span>Pending</span>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                <div class="d-flex gap-1">
+                                    <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                    <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -67,9 +71,11 @@
                                 <span class="text-danger">TD</span>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                <div class="d-flex gap-1">
+                                    <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                    <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -84,9 +90,11 @@
                                 <span class="text-success">Tayang</span>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                <div class="d-flex gap-1">
+                                    <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                    <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -102,9 +110,11 @@
                                 <span class="text-success">Tayang</span>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                <div class="d-flex gap-1">
+                                    <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                    <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

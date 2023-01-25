@@ -25,14 +25,14 @@ Route::get('/upload', function () {
     ]);
 });
 
-Route::get('/myUploadList', function () {
-    return view('page.myUploadList.index', [
-        "title" => "my upload list"
+Route::get('/uploaded', function () {
+    return view('page.uploaded.index', [
+        "title" => "uploaded"
     ]);
 });
 
-Route::get('/allUploadList', function () {
-    return view('page.allUploadList.index', [
-        "title" => "all upload List"
+Route::get('/allUploadedList', function () {
+    return view('page.allUploadedList.index', [
+        "title" => "all uploaded"
     ]);
 });

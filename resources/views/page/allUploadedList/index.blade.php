@@ -2,6 +2,6 @@
 
 @section('content')
 
-    @include('dashboard.components.allUploadList')
+    @include('dashboard.components.allUploadedList')
 
 @endsection
