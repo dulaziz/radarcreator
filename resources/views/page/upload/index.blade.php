@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('dashboard.components.table')
+@include('dashboard.components.formUpload')
 
 @endsection

@@ -25,8 +25,14 @@ Route::get('/upload', function () {
     ]);
 });
 
-Route::get('/myvideo', function () {
-    return view('page.myvideo.index', [
-        "title" => "my video"
+Route::get('/myUploadList', function () {
+    return view('page.myUploadList.index', [
+        "title" => "my upload list"
+    ]);
+});
+
+Route::get('/allUploadList', function () {
+    return view('page.allUploadList.index', [
+        "title" => "all upload List"
     ]);
 });

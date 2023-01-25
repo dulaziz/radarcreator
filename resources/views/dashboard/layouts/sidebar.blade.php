@@ -11,13 +11,13 @@
             </div>
             <div class="ms-3">
                 <h6 class="mb-0">Jhon Doe</h6>
-                <span>Admin</span>
+                <span>Radar Depok</span>
             </div>
         </div>
         <div class="navbar-nav w-100">
             <a href="/" class="nav-item nav-link {{ ($title === "dashboard") ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <a href="/upload" class="nav-item nav-link {{ ($title === "upload") ? 'active' : '' }}"><i class="fas fa-upload me-2"></i>Upload</a>
-            <a href="/myvideo" class="nav-item nav-link {{ ($title === "my video") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>My Vide</a>
+            <a href="/myUploadList" class="nav-item nav-link {{ ($title === "my upload list") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>My Upload List</a>
             {{-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                 <div class="dropdown-menu bg-transparent border-0">
