@@ -122,4 +122,3 @@
     </div>
 </div>
 
-@include('dashboard.components.uploadList')

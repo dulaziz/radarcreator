@@ -36,3 +36,16 @@ Route::get('/allUploadList', function () {
         "title" => "all upload List"
     ]);
 });
+
+// Auth
+Route::get('/signIn', function () {
+    return view('auth.signIn', [
+        "title" => "Sign In"
+    ]);
+});
+
+Route::get('/signUp', function () {
+    return view('auth.signUp', [
+        "title" => "Sign Up"
+    ]);
+});

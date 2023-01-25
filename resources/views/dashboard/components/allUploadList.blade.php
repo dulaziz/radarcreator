@@ -7,9 +7,40 @@
         </div>
         <hr>
 
-        <div class="d-flex align-items-center justify-content-between mb-2">
-            <span>Filter</span>
-            <input class="form-control" style="width: 18rem;" type="text" placeholder="Search" aria-label="default input example">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div class="row">
+                <div class="col-1 align-self-center">
+                    <a href="/allUploadList">Show</a>
+                </div>
+                <div class="col-3">
+                    <select class="form-select ms-4" aria-label=".form-select-sm example">
+                        <option selected>5</option>
+                        <option value="1">5</option>
+                        <option value="2">10</option>
+                        <option value="3">50</option>
+                        <option value="3">100</option>
+                    </select>
+                </div>
+               
+                <div class="col-7">
+                    <select class="form-select text-center ms-4" aria-label=".form-select-sm example">
+                        <option selected>Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="3">April</option>
+                        <option value="3">May</option>
+                        <option value="3">June</option>
+                        <option value="3">July</option>
+                        <option value="3">August</option>
+                        <option value="3">September</option>
+                        <option value="3">October</option>
+                        <option value="3">November</option>
+                        <option value="3">Desember</option>
+                    </select>
+                </div>
+            </div>
+            <input class="form-control" style="width: 20rem;" type="text" placeholder="Search" aria-label="default input example">
         </div>
 
         <div class="table-responsive">
