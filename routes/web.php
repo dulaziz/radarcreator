@@ -31,12 +31,6 @@ Route::get('/uploaded', function () {
     ]);
 });
 
-Route::get('/allUploadedList', function () {
-    return view('page.allUploadedList.index', [
-        "title" => "all uploaded"
-    ]);
-});
-
 // Auth
 Route::get('/signIn', function () {
     return view('auth.signIn', [
