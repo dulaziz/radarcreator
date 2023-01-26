@@ -5,8 +5,8 @@
         <hr>
 
         <div class="row mb-4">
-            <div class="col-md-8 d-flex ">
-                <div class="d-flex align-items-center mb-2 mb-md-0"> 
+            <div class="col-md-8 d-md-flex mb-2 mb-md-0">
+                <div class="d-flex align-items-center mb-2 mb-md-0">
                     <span>Show</span>
                     <select class="form-select ms-4" aria-label=".form-select-sm example">
                         <option selected>5</option>
@@ -15,7 +15,9 @@
                         <option value="3">50</option>
                         <option value="3">100</option>
                     </select>
-                    <select class="form-select text-center ms-4" aria-label=".form-select-sm example">
+                </div>
+                <div>
+                    <select class="form-select text-center ms-md-4" aria-label=".form-select-sm example">
                         <option selected>Month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
@@ -32,7 +34,6 @@
                     </select>
                 </div>
             </div>
-            
             <div class="col-md-4">
                 <input class="form-control" type="text" placeholder="Search" aria-label="default input example">
             </div>
@@ -66,9 +67,11 @@
                             <span class="text-success">Tayang</span>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                            <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -83,9 +86,11 @@
                             <span>Pending</span>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                            <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -100,9 +105,11 @@
                             <span class="text-danger">TD</span>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                            <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -117,9 +124,11 @@
                             <span class="text-success">Tayang</span>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                            <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -135,9 +144,11 @@
                             <span class="text-success">Tayang</span>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
-                            <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
