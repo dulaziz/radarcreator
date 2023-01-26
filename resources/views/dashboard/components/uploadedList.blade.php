@@ -153,21 +153,18 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <div class="mt-3 d-flex justify-content-end">
-            <nav aria-label="..." class="bg-secondary">
-                <ul class="pagination mb-0">
+            <nav aria-label="..." class="float-end mt-3">
+                <ul class="pagination">
                   <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
+                    <a class="page-link" href="#" tabindex="-1">&laquo;</a>
                   </li>
                   <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2</a>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="page-item"><a class="page-link" href="#">3</a></li>
                   <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a class="page-link" href="#">&raquo;</a>
                   </li>
                 </ul>
               </nav>
