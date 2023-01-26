@@ -31,6 +31,37 @@ Route::get('/uploaded', function () {
     ]);
 });
 
+// Admin
+Route::get('/dashboard', function () {
+    return view('admin.index', [
+        "title" => "dashboard"
+    ]);
+});
+
+Route::get('/formEdit', function () {
+    return view('admin.page.formEdit.index', [
+        "title" => "edit"
+    ]);
+});
+
+Route::get('/dataVideo', function () {
+    return view('admin.page.uploaded.index', [
+        "title" => "data video"
+    ]);
+});
+
+Route::get('/formEditDataVideo', function () {
+    return view('admin.page.formAfterEdit.index', [
+        "title" => "edit data video"
+    ]);
+});
+
+Route::get('/editUser', function () {
+    return view('admin.page.editUser.index', [
+        "title" => "edit user"
+    ]);
+});
+
 // Auth
 Route::get('/signIn', function () {
     return view('auth.signIn', [

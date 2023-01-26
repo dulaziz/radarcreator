@@ -18,8 +18,8 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-3 text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="produser">
+                            <label class="form-check-label" for="produser">
                             Produser
                             </label>
                         </div>
@@ -37,8 +37,8 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-3 text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="writer">
+                            <label class="form-check-label" for="writer">
                             Writer
                             </label>
                         </div>
@@ -56,8 +56,8 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-3 text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="talent">
+                            <label class="form-check-label" for="talent">
                             Talent/Host
                             </label>
                         </div>
@@ -75,8 +75,8 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-3 text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="camera">
+                            <label class="form-check-label" for="camera">
                             Camera Person
                             </label>
                         </div>
@@ -94,8 +94,8 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-3 text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="voice">
+                            <label class="form-check-label" for="voice">
                             Voice Over
                             </label>
                         </div>
@@ -113,8 +113,8 @@
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-3 text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="video">
+                            <label class="form-check-label" for="video">
                             Video Editor
                             </label>
                         </div>
@@ -128,6 +128,14 @@
                         </select>
                     </div>
                 </div>
+                <div class="row mb-3 ">
+                    <div class="col text-start">
+                        <button type="button" class="btn btn-outline-primary px-5" >
+                            <i class="fas fa-plus"></i> Add
+                          </button>
+                        
+                    </div>
+                  </div>
             </div>
         </div>
 
@@ -136,32 +144,32 @@
             <div class="col-sm-10 d-flex align-items-center"> 
                 <div class="d-flex gap-4 align-items-center flex-wrap">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="" id="facebook">
+                        <label class="form-check-label" for="facebook">
                         Facebook
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="" id="instagram">
+                        <label class="form-check-label" for="instagram">
                         Instagram
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="" id="tiktok">
+                        <label class="form-check-label" for="tiktok">
                         Tiktok
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="" id="youtube">
+                        <label class="form-check-label" for="youtube">
                         Youtube
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="" id="twitter">
+                        <label class="form-check-label" for="twitter">
                         Twitter
                         </label>
                     </div>

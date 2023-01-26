@@ -17,7 +17,9 @@
                     </select>
                 </div>
                 <div>
-                    <select class="form-select text-center ms-md-4" aria-label=".form-select-sm example">
+                    <div class="input-group">
+                        <label class="input-group-text  ms-md-4 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
+                        <select class="form-select text-center" aria-label=".form-select-sm example">
                         <option selected>Month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
@@ -32,6 +34,7 @@
                         <option value="11">November</option>
                         <option value="12">Desember</option>
                     </select>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -40,7 +43,7 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
+            <table class="table text-center align-middle table-bordered table-hover mb-0">
                 <thead>
                     <tr class="text-white">
                         <th scope="col">No</th>
@@ -67,7 +70,7 @@
                             <span class="text-success">Tayang</span>
                         </td>
                         <td>
-                            <div class="d-flex gap-1">
+                            <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
@@ -86,7 +89,7 @@
                             <span>Pending</span>
                         </td>
                         <td>
-                            <div class="d-flex gap-1">
+                            <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
@@ -105,7 +108,7 @@
                             <span class="text-danger">TD</span>
                         </td>
                         <td>
-                            <div class="d-flex gap-1">
+                            <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
@@ -124,7 +127,7 @@
                             <span class="text-success">Tayang</span>
                         </td>
                         <td>
-                            <div class="d-flex gap-1">
+                            <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
@@ -144,7 +147,7 @@
                             <span class="text-success">Tayang</span>
                         </td>
                         <td>
-                            <div class="d-flex gap-1">
+                            <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
