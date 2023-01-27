@@ -14,7 +14,7 @@
                 <span>Radar Depok</span>
             </div>
         </div>
-        <div class="navbar-nav w-100">
+        <div class="navbar-nav w-100 mb-4">
             <a href="/" class="nav-item nav-link {{ ($title === "dashboard") ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <a href="/upload" class="nav-item nav-link {{ ($title === "upload") ? 'active' : '' }}"><i class="fas fa-upload me-2"></i>Upload</a>
             <a href="/uploaded" class="nav-item nav-link {{ ($title === "uploaded") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Uploaded</a>
@@ -28,6 +28,22 @@
                 </div>
             </div> --}}
         </div>
+
+        <h6 class="nav-link fw-bold">Admin</h6>
+        <div class="navbar-nav w-100">
+            <a href="#" class="nav-item nav-link {{ ($title === "user") ? 'active' : '' }}"><i class="fa fa-users me-2"></i>User</a>
+            <a href="#" class="nav-item nav-link {{ ($title === "") ? 'active' : '' }}"><i class="fas fa-cog me-2"></i>Setting</a>
+            {{-- <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="signin.html" class="dropdown-item">Sign In</a>
+                    <a href="signup.html" class="dropdown-item">Sign Up</a>
+                    <a href="404.html" class="dropdown-item">404 Error</a>
+                    <a href="blank.html" class="dropdown-item">Blank Page</a>
+                </div>
+            </div> --}}
+        </div>
+
     </nav>
 </div>
 <!-- Sidebar End -->

@@ -1,5 +1,21 @@
 <div class="container-fluid pt-4 px-4">
-    <div class="bg-secondary text-center rounded p-4">
+    <div class="bg-secondary rounded p-4">
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label text-start">Group</label>
+            <div class="col-sm-5">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">Radar Bogor</option>
+                    <option value="2">Radar Depok</option>
+                    <option value="3">Radar Cianjur</option>
+                    <option value="3">Radar Sukabumi</option>
+                    <option value="3">Radar Bandung</option>
+                </select>
+            </div>
+            <div class="col-sm-5">
+                <input type="date" class="form-control" name="judul" id="judul">
+            </div>
+        </div>
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Judul Video</label>
             <div class="col-sm-10">
@@ -10,6 +26,9 @@
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Upload Video</label>
             <div class="col-sm-10">
                 <input type="file" class="form-control bg-dark" name="judul" id="judul">
+                <div class="mt-3">
+                    <video controls src="/img/video.mp4" class="object-fit-contain w-50"></video>
+                </div>
             </div>
         </div>
         <div class="mb-3 row">

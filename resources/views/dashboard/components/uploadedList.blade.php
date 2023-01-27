@@ -50,10 +50,11 @@
                         <th scope="col">Group</th>
                         <th scope="col">Tgl Upload</th>
                         <th scope="col">Judul</th>
-                        <th scope="col">Video</th>
                         <th scope="col">Tim</th>
                         <th scope="col">Tgl Tayang</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Views</th>
+                        <th scope="col">Revenue</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -64,14 +65,15 @@
                         <td>01 Jan 2045</td>
                         <td>Judul Video</td>
                         <td>Jhon Doe</td>
-                        <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success">Tayang</span>
+                            <span class="text-success">Present</span>
                         </td>
+                        <td>100k</td>
+                        <td>$2100</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
@@ -83,14 +85,15 @@
                         <td>01 Jan 2045</td>
                         <td>Judul Video</td>
                         <td>Jhon Doe</td>
-                        <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
                             <span>Pending</span>
                         </td>
+                        <td>0k</td>
+                        <td>$0</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
@@ -102,14 +105,15 @@
                         <td>01 Jan 2045</td>
                         <td>Judul Video</td>
                         <td>Jhon Doe</td>
-                        <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
                             <span class="text-danger">TD</span>
                         </td>
+                        <td>100k</td>
+                        <td>$2100</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
@@ -121,14 +125,15 @@
                         <td>01 Jan 2045</td>
                         <td>Judul Video</td>
                         <td>Jhon Doe</td>
-                        <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success">Tayang</span>
+                            <span class="text-success">Present</span>
                         </td>
+                        <td>100k</td>
+                        <td>$2100</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
@@ -141,14 +146,15 @@
                         <td>01 Jan 2045</td>
                         <td>Judul Video</td>
                         <td>Jhon Doe</td>
-                        <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success">Tayang</span>
+                            <span class="text-success">Present</span>
                         </td>
+                        <td>100k</td>
+                        <td>$2100</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>

@@ -62,6 +62,12 @@ Route::get('/editUser', function () {
     ]);
 });
 
+Route::get('/detail', function () {
+    return view('page.detail.index', [
+        "title" => "detail"
+    ]);
+});
+
 // Auth
 Route::get('/signIn', function () {
     return view('auth.signIn', [
