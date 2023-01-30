@@ -1,0 +1,14 @@
+.preview-vid{
+    display: flex;
+    align-items: center;
+    width: 400px;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+/* Mobile L */
+@media (max-width: 450px) {
+    .preview-vid{
+        width: 100%;
+    }
+}

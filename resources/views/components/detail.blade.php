@@ -10,8 +10,8 @@
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Upload Video</label>
             <div class="col-sm-10">
                 <input type="file" class="form-control bg-dark" name="judul" id="judul">
-                <div class="mt-3">
-                    <video controls src="/img/video.mp4" class="object-fit-contain w-50"></video>
+                <div class="mt-3 preview-vid">
+                    <video controls src="/img/video.mp4" class=" w-100"></video>
                 </div>
             </div>
         </div>
@@ -249,5 +249,5 @@
     </div>
 </div>
 
-@include('dashboard.components.chart')
+@include('components.chart')
 

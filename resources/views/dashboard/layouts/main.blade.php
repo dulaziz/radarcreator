@@ -29,6 +29,10 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <link href="css/cstyle.css" rel="stylesheet">
+
 </head>
 
 <body>

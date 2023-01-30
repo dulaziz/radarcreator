@@ -1,3 +1,5 @@
+{{-- chart in public/js/main.js --}}
+
 <!-- Sales Chart Start -->
     <div class="container-fluid pt-4 px-4">
 
