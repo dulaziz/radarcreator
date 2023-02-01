@@ -32,33 +32,39 @@ Route::get('/uploaded', function () {
 });
 
 // Admin
-Route::get('/dashboard', function () {
-    return view('admin.index', [
-        "title" => "dashboard"
+// Route::get('/dashboard', function () {
+//     return view('admin.index', [
+//         "title" => "dashboard"
+//     ]);
+// });
+
+// Route::get('/formEdit', function () {
+//     return view('admin.page.formEdit.index', [
+//         "title" => "edit"
+//     ]);
+// });
+
+// Route::get('/dataVideo', function () {
+//     return view('admin.page.uploaded.index', [
+//         "title" => "data video"
+//     ]);
+// });
+
+// Route::get('/formEditDataVideo', function () {
+//     return view('admin.page.formAfterEdit.index', [
+//         "title" => "edit data video"
+//     ]);
+// });
+
+Route::get('/user', function () {
+    return view('page.user.index', [
+        "title" => "user"
     ]);
 });
 
-Route::get('/formEdit', function () {
-    return view('admin.page.formEdit.index', [
-        "title" => "edit"
-    ]);
-});
-
-Route::get('/dataVideo', function () {
-    return view('admin.page.uploaded.index', [
-        "title" => "data video"
-    ]);
-});
-
-Route::get('/formEditDataVideo', function () {
-    return view('admin.page.formAfterEdit.index', [
-        "title" => "edit data video"
-    ]);
-});
-
-Route::get('/editUser', function () {
-    return view('admin.page.editUser.index', [
-        "title" => "edit user"
+Route::get('/userDetail', function () {
+    return view('page.user.userDetail', [
+        "title" => "userDetail"
     ]);
 });
 
@@ -74,6 +80,7 @@ Route::get('/edit', function () {
     ]);
 });
 
+
 // Auth
 Route::get('/signIn', function () {
     return view('auth.signIn', [
@@ -81,8 +88,8 @@ Route::get('/signIn', function () {
     ]);
 });
 
-Route::get('/signUp', function () {
-    return view('auth.signUp', [
-        "title" => "Sign Up"
-    ]);
-});
+// Route::get('/signUp', function () {
+//     return view('auth.signUp', [
+//         "title" => "Sign Up"
+//     ]);
+// });
