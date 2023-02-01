@@ -45,16 +45,16 @@
         </div>
         <!-- Spinner End -->
 
-        @include('dashboard.layouts.sidebar')
+        @include('layouts.sidebar')
 
         <!-- Content Start -->
         <div class="content">
             
-            @include('dashboard.layouts.navbar')
+            @include('layouts.navbar')
             
             @yield('content')
 
-            @include('dashboard.layouts.footer')
+            @include('layouts.footer')
         </div>
         <!-- Content End -->
 
