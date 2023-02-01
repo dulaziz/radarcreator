@@ -74,7 +74,7 @@
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -94,7 +94,7 @@
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -114,7 +114,7 @@
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -134,7 +134,7 @@
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -155,7 +155,7 @@
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href=""><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
