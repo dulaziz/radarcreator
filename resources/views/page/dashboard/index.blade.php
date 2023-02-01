@@ -2,8 +2,8 @@
 
 @section('content')
 
-    @include('components.uploadedList')
     @include('components.total')
+    @include('components.uploadedList')
     @include('components.chart')
     {{-- @include('dashboard.components.calender') --}}
 
