@@ -5,7 +5,9 @@
                 <div class="mb-3 detail-vid">
                     <video controls src="/img/video.mp4" class=" w-100"></video>
                 </div>
-                <h1 class="fs-5 fw-light">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
+                <a href="">
+                    <p class="fs-5 fw-bold text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </a>
             </div>
             <div class="col-md-6">
                 
