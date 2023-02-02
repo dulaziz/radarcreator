@@ -53,7 +53,6 @@
                         <th scope="col">Tim</th>
                         <th scope="col">Tgl Tayang</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Views</th>
                         <th scope="col">Revenue</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -69,7 +68,6 @@
                         <td>
                             <span class="text-success">Present</span>
                         </td>
-                        <td>100k</td>
                         <td>$2100</td>
                         <td>
                             <div class="d-flex gap-1">
@@ -89,7 +87,6 @@
                         <td>
                             <span>Pending</span>
                         </td>
-                        <td>0k</td>
                         <td>$0</td>
                         <td>
                             <div class="d-flex gap-1">
@@ -109,7 +106,6 @@
                         <td>
                             <span class="text-danger">TD</span>
                         </td>
-                        <td>100k</td>
                         <td>$2100</td>
                         <td>
                             <div class="d-flex gap-1">
@@ -129,7 +125,6 @@
                         <td>
                             <span class="text-success">Present</span>
                         </td>
-                        <td>100k</td>
                         <td>$2100</td>
                         <td>
                             <div class="d-flex gap-1">
@@ -150,7 +145,6 @@
                         <td>
                             <span class="text-success">Present</span>
                         </td>
-                        <td>100k</td>
                         <td>$2100</td>
                         <td>
                             <div class="d-flex gap-1">

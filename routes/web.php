@@ -74,6 +74,12 @@ Route::get('/edit', function () {
     ]);
 });
 
+Route::get('/revenue', function () {
+    return view('page.revenue.index', [
+        "title" => "revenue"
+    ]);
+});
+
 // Auth
 Route::get('/signIn', function () {
     return view('auth.signIn', [
