@@ -71,7 +71,7 @@
         data: {
             labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
             datasets: [{
-                    label: "VIEWS",
+                    label: "Video",
                     data: [15, 30, 55, 65, 60, 80, 95],
                     backgroundColor: "rgba(50, 130, 184, .7)"
                 },
