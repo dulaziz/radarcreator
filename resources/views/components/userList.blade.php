@@ -31,12 +31,16 @@
                         <th scope="col">Email</th>
                         <th scope="col">Username</th>
                         <th scope="col">Group</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Jabatan</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>01</td>
+                        <td>...</td>
+                        <td>...</td>
                         <td>...</td>
                         <td>...</td>
                         <td>...</td>
@@ -55,6 +59,8 @@
                         <td>...</td>
                         <td>...</td>
                         <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
                         <td>
                             <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
@@ -65,6 +71,8 @@
                     </tr>
                     <tr>
                         <td>03</td>
+                        <td>...</td>
+                        <td>...</td>
                         <td>...</td>
                         <td>...</td>
                         <td>...</td>
@@ -83,6 +91,8 @@
                         <td>...</td>
                         <td>...</td>
                         <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
                         <td>
                             <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
@@ -93,6 +103,8 @@
                     </tr>
                     <tr>
                         <td>05</td>
+                        <td>...</td>
+                        <td>...</td>
                         <td>...</td>
                         <td>...</td>
                         <td>...</td>
