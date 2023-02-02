@@ -53,7 +53,6 @@
                         <th scope="col">Tim</th>
                         <th scope="col">Tgl Tayang</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Revenue</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -68,7 +67,6 @@
                         <td>
                             <span class="text-success">Present</span>
                         </td>
-                        <td>$2100</td>
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
@@ -87,7 +85,6 @@
                         <td>
                             <span>Pending</span>
                         </td>
-                        <td>$0</td>
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
@@ -106,7 +103,6 @@
                         <td>
                             <span class="text-danger">TD</span>
                         </td>
-                        <td>$2100</td>
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
@@ -125,7 +121,6 @@
                         <td>
                             <span class="text-success">Present</span>
                         </td>
-                        <td>$2100</td>
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
@@ -145,7 +140,6 @@
                         <td>
                             <span class="text-success">Present</span>
                         </td>
-                        <td>$2100</td>
                         <td>
                             <div class="d-flex gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>

@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <h6 class="">Status & Revenue</h6>
+                    <h6 class="">Status</h6>
                     <div class="row mb-1">
                         <div class="col-md-4">
                             <p class="mb-0">Status</p>
@@ -64,14 +64,6 @@
                         </div>
                         <div class="col-md-8">
                             <p class="mb-0">: 01 Jan 2045</p>
-                        </div>
-                    </div>
-                    <div class="row mb-1">
-                        <div class="col-md-4">
-                            <p class="mb-0">Revenue</p>
-                        </div>
-                        <div class="col-md-8">
-                            <p class="mb-0">: <span class="text-white fw-semibold">$12322</span></p>
                         </div>
                     </div>
                 </div>

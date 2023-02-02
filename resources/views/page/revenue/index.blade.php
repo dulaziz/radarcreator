@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('components.revenue')
+@include('page.revenue.components.revenueList')
 
 @endsection

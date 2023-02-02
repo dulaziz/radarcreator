@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('page.upload.components.formUpload')
+@include('page.uploaded.components.formDetail')
 
 @endsection

@@ -1,22 +1,6 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
         <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label text-start">Group</label>
-            <div class="col-sm-5">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">Radar Bogor</option>
-                    <option value="2">Radar Depok</option>
-                    <option value="3">Radar Cianjur</option>
-                    <option value="3">Radar Sukabumi</option>
-                    <option value="3">Radar Bandung</option>
-                </select>
-            </div>
-            <div class="col-sm-5">
-                <input type="date" class="form-control" name="judul" id="judul">
-            </div>
-        </div>
-        <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Judul Video</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="judul" id="judul">
@@ -27,7 +11,7 @@
             <div class="col-sm-10">
                 <input type="file" class="form-control bg-dark" name="judul" id="judul">
                 <div class="mt-3 preview-vid">
-                    <video controls src="/img/video.mp4" class="w-100"></video>
+                    <video controls src="/img/video.mp4" class=" w-100"></video>
                 </div>
             </div>
         </div>
@@ -195,7 +179,6 @@
                 </div>
             </div>
         </div>
-
         <div class="d-grid justify-content-md-end">
             <button type="submit" class="btn btn-primary px-5"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Submit</button>
         </div>
@@ -203,4 +186,3 @@
     </div>
 </div>
 
-@include('components.uploadedList')

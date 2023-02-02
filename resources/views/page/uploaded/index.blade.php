@@ -3,6 +3,6 @@
 @section('content')
 
     @include('components.total')
-    @include('components.uploadedList')
+    @include('page.uploaded.components.uploadedList')
 
 @endsection

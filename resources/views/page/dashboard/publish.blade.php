@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('page.user.components.formUserDetail')
+    @include('page.dashboard.components.formPublish')
 
 @endsection
