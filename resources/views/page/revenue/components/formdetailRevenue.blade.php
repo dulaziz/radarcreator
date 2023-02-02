@@ -1,5 +1,10 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="mb-0 text-start">Detail</h6>
+            <a href="/revenue">Back</a>
+        </div>
+        <hr>
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3 detail-vid">
@@ -83,4 +88,6 @@
 
     </div>
 </div>
+
+@include('page.revenue.components.formAddRevenue')
 

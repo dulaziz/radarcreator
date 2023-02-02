@@ -62,18 +62,16 @@
                         <td>01</td>
                         <td>Radar Bogor</td>
                         <td>01 Jan 2045</td>
-                        <td>Judul Video</td>
-                        <td>Jhon Doe</td>
+                        <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
+                        <td>Jhon Doe, John Martins, Johncena</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success fw-bold">Present</span>
+                            <span class="text-success fw-bold">Published</span>
                         </td>
                         <td class="text-warning fw-bold">$2100</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-success" href="/addRevenue"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -89,10 +87,8 @@
                         </td>
                         <td class="text-warning fw-bold">$0</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-success" href="/addRevenue"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -108,10 +104,8 @@
                         </td>
                         <td class="text-warning fw-bold">$2100</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-success" href="/addRevenue"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -123,14 +117,12 @@
                         <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success fw-bold">Present</span>
+                            <span class="text-success fw-bold">Published</span>
                         </td>
                         <td class="text-warning fw-bold">$2100</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-success" href="/addRevenue"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -143,14 +135,12 @@
                         <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success fw-bold">Present</span>
+                            <span class="text-success fw-bold">Published</span>
                         </td>
                         <td class="text-warning fw-bold">$2100</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-success" href="/addRevenue"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>

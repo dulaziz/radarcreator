@@ -51,14 +51,13 @@
             </div>
             <div class="">
                 <h5 class="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-                <div class="d-flex align-items-center gap-2 mb-2 mb-md-4">
+                <div class="d-flex align-items-center gap-2 mb-2 mb-md-3">
                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 30px; height: 30px;">
                     <p class="mb-0">Radar Depok</p>
                 </div>
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="mb-0 me-4"><i class="fas fa-hourglass-half me-2"></i>Pending</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
-                    <a href="/detail" class="me-4"><i class="fas fa-eye me-2"></i>Detail</a>
                     <a href="/publish" class="me-4"><i class="bi bi-share-fill me-2"></i>Publish</a>
                 </div>
             </div>
@@ -78,7 +77,6 @@
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
-                    <a href="/detail" class="me-4"><i class="fas fa-eye me-2"></i>Detail</a>
                     <a href="/publish" class="me-4"><i class="bi bi-share-fill me-2"></i>Publish</a>
                 </div>
             </div>
@@ -98,7 +96,6 @@
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i>Take Down</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
-                    <a href="/detail" class="me-4"><i class="fas fa-eye me-2"></i>Detail</a>
                     <a href="/publish" class="me-4"><i class="bi bi-share-fill me-2"></i>Publish</a>
                 </div>
             </div>

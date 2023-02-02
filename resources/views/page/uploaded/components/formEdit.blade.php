@@ -1,5 +1,10 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="mb-0 text-start">Edit</h6>
+            <a href="/uploaded">Back</a>
+        </div>
+        <hr>
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Judul Video</label>
             <div class="col-sm-10">
@@ -179,6 +184,8 @@
                 </div>
             </div>
         </div>
+        <hr>
+        
         <div class="d-grid justify-content-md-end">
             <button type="submit" class="btn btn-primary px-5"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Submit</button>
         </div>

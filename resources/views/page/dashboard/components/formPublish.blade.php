@@ -1,7 +1,10 @@
 {{-- Admin Only --}}
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-        <h6 class="">Publish</h6>
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="mb-0 text-start">Publish</h6>
+            <a href="/">Back</a>
+        </div>
         <hr>
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Status</label>
@@ -70,7 +73,7 @@
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Published Date</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control bg-dark text-light" name="dateShow" id="dateShow">
+                <input type="date" class="form-control bg-dark" name="dateShow" id="dateShow">
             </div>
         </div>
 

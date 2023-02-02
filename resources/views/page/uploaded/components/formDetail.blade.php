@@ -1,6 +1,11 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-        <div class="row">
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="mb-0 text-start">Video Detail</h6>
+            <a href="/">Back</a>
+        </div>
+        <hr>
+        <div class="row mt-4">
             <div class="col-md-6">
                 <div class="mb-3 detail-vid">
                     <video controls src="/img/video.mp4" class=" w-100"></video>
