@@ -60,15 +60,23 @@
                             <p class="mb-0">Status</p>
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-0">: <span class="text-success fw-bold">Present</span></p>
+                            <p class="mb-0">: <span class="text-success fw-bold">Published</span></p>
                         </div>
                     </div>
                     <div class="row mb-1">
                         <div class="col-md-4">
-                            <p class="mb-0">Present Date</p>
+                            <p class="mb-0">Published Date</p>
                         </div>
                         <div class="col-md-8">
                             <p class="mb-0">: 01 Jan 2045</p>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <p class="mb-0">Platform</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="mb-0">: Facebook</p>
                         </div>
                     </div>
                 </div>
