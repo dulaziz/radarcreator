@@ -1,7 +1,7 @@
 <!-- Recent Sales Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
-        <h6 class="mb-0 text-start">Recent Uploaded</h6>
+        <h6 class="mb-0 text-start">Video & Revenue</h6>
         <hr>
 
         <div class="row mb-4">
@@ -53,7 +53,6 @@
                         <th scope="col">Tim</th>
                         <th scope="col">Tgl Tayang</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Views</th>
                         <th scope="col">Revenue</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -63,19 +62,16 @@
                         <td>01</td>
                         <td>Radar Bogor</td>
                         <td>01 Jan 2045</td>
-                        <td>Judul Video</td>
-                        <td>Jhon Doe</td>
+                        <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
+                        <td>Jhon Doe, John Martins, Johncena</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success">Present</span>
+                            <span class="text-success fw-bold">Published</span>
                         </td>
-                        <td>100k</td>
-                        <td>$2100</td>
+                        <td class="text-warning fw-bold">$2100</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -87,15 +83,12 @@
                         <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span>Pending</span>
+                            <span class="fw-bold">Pending</span>
                         </td>
-                        <td>0k</td>
-                        <td>$0</td>
+                        <td class="text-warning fw-bold">$0</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -107,15 +100,12 @@
                         <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-danger">TD</span>
+                            <span class="text-danger fw-bold">TD</span>
                         </td>
-                        <td>100k</td>
-                        <td>$2100</td>
+                        <td class="text-warning fw-bold">$2100</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -127,15 +117,12 @@
                         <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success">Present</span>
+                            <span class="text-success fw-bold">Published</span>
                         </td>
-                        <td>100k</td>
-                        <td>$2100</td>
+                        <td class="text-warning fw-bold">$2100</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -148,35 +135,38 @@
                         <td>Jhon Doe</td>
                         <td>01 Jan 2045</td>
                         <td>
-                            <span class="text-success">Present</span>
+                            <span class="text-success fw-bold">Published</span>
                         </td>
-                        <td>100k</td>
-                        <td>$2100</td>
+                        <td class="text-warning fw-bold">$2100</td>
                         <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-sm btn-primary" href="/detail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="text-white">
+                        <th colspan="7">Total Revenue</th>
+                        <th colspan="2">$12345</th>
+                    </tr>
+                </tfoot>
             </table>
             <nav aria-label="..." class="float-end mt-3">
                 <ul class="pagination">
-                  <li class="page-item disabled">
+                <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active">
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active">
                     <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
                     <a class="page-link" href="#">&raquo;</a>
-                  </li>
+                </li>
                 </ul>
-              </nav>
+            </nav>
         </div>
 
     </div>

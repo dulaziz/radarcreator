@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('components.formAddUser')
-@include('components.userList')
+@include('page.user.components.formAddUser')
+@include('page.user.components.userList')
 
 @endsection

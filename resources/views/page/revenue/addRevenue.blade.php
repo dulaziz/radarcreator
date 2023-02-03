@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('components.formEdit')
+@include('page.revenue.components.formAddRevenue')
 
 @endsection

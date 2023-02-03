@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('page.upload.components.formUpload')
+@include('page.revenue.components.revenueList')
 
 @endsection

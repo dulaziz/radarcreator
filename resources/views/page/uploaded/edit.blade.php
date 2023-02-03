@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('components.detail')
+@include('page.uploaded.components.formEdit')
 
 @endsection

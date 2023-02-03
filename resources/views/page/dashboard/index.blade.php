@@ -3,8 +3,7 @@
 @section('content')
 
     @include('components.total')
-    @include('components.uploadedList')
-    @include('components.chart')
+    @include('page.dashboard.components.videoList')
     {{-- @include('dashboard.components.calender') --}}
 
 @endsection
