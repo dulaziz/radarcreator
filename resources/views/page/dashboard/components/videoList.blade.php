@@ -19,24 +19,32 @@
                         <option value="3">100</option>
                     </select>
                 </div>
+                <div class="ms-md-4 mb-2 mb-md-0">
+                    <select class="form-select text-center" aria-label=".form-select-sm example">
+                        <option selected>Filter Status</option>
+                        <option value="1">Pending</option>
+                        <option value="2">Published</option>
+                        <option value="3">Take Down</option>
+                    </select>
+                </div>
                 <div>
                     <div class="input-group">
-                        <label class="input-group-text  ms-md-4 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
+                        <label class="input-group-text ms-md-4 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
                         <select class="form-select text-center" aria-label=".form-select-sm example">
-                        <option selected>Month</option>
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">Desember</option>
-                    </select>
+                            <option selected>Month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
                     </div>
                 </div>
             </div>
