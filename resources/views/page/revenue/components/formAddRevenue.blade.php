@@ -4,15 +4,22 @@
         <h6 class="">Add Revenue</h6>
         <hr>
 
-        {{-- <div class="mb-3 row d-flex align-items-center">
-            <label for="inputPassword" class="col-sm-2 col-form-label text-start">Video Title</label>
+        <div class="mb-3 row">
+            <label for="viewer" class="col-sm-2 col-form-label text-start">Viewer</label>
             <div class="col-sm-10">
-                <a href="">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>
+                <input type="text" class="form-control bg-dark" name="viewer" id="viewer">
             </div>
-        </div> --}}
+        </div>
 
         <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label text-start">Revenue</label>
+            <label for="revenue" class="col-sm-2 col-form-label text-start">Revenue</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control bg-dark" name="revenue" id="revenue">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="revenue" class="col-sm-2 col-form-label text-start">Revenue</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control bg-dark" name="revenue" id="revenue">
             </div>

@@ -1,7 +1,6 @@
-<!-- Recent Sales Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
-        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Radar Depok</h6>
+        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>John Doe</h6>
         <hr>
 
         <div class="row mb-4">
@@ -49,13 +48,9 @@
                         <th scope="col">No</th>
                         <th scope="col">Video Title</th>
                         <th scope="col">Production Team</th>
-                        <th scope="col">Published</th>
-                        <th scope="col">Platform</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Viewer</th>
                         <th scope="col">impression</th>
                         <th scope="col">Revenue</th>
-                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-start">
@@ -63,99 +58,49 @@
                         <td>01</td>
                         <td><a href="/detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
                         <td>Jhon Doe, John Martins, Johncena</td>
-                        <td>01 Jan 2045</td>
-                        <td>Facebook</td>
-                        <td>
-                            <span class="text-success fw-bold">Published</span>
-                        </td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
-                            </div>
-                        </td>
                     </tr>
                     <tr>
                         <td>02</td>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Jhon Doe, John Martins, Johncena</td>
-                        <td>01 Jan 2045</td>
-                        <td>Youtube</td>
-                        <td>
-                            <span class="text-success fw-bold">Published</span>
-                        </td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
-                            </div>
-                        </td>
                     </tr>
                     <tr>
                         <td>03</td>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Jhon Doe, John Martins, Johncena</td>
-                        <td>01 Jan 2045</td>
-                        <td>Tiktok</td>
-                        <td>
-                            <span class="text-success fw-bold">Published</span>
-                        </td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
-                            </div>
-                        </td>
                     </tr>
                     <tr>
                         <td>04</td>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Jhon Doe, John Martins, Johncena</td>
-                        <td>01 Jan 2045</td>
-                        <td>Facebook</td>
-                        <td>
-                            <span class="text-success fw-bold">Published</span>
-                        </td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
-                            </div>
-                        </td>
                     </tr>
                     <tr>
                         <td>05</td>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Jhon Doe, John Martins, Johncena</td>
-                        <td>01 Jan 2045</td>
-                        <td>Facebook</td>
-                        <td>
-                            <span class="text-success fw-bold">Published</span>
-                        </td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
-                            </div>
-                        </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr class="text-white">
-                        <th colspan="6">
-                            <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> Radar Depok</h6>
+                        <th colspan="3">
+                           <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> John Doe</h6>
                         </th>
-                        <th colspan="4" class="text-warning">$12345</th>
+                        <th colspan="3" class="text-warning">$12345</th>
                     </tr>
                 </tfoot>
             </table>
@@ -176,36 +121,5 @@
             </nav>
         </div>
 
-    </div>
-</div>
-<!-- Recent Sales End -->
-
-<div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Video & Revenue</h6>
-                <canvas id="worldwide-sales"></canvas>
-            </div>
-        </div>
-        <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Note</h6>
-                <ul class="list-unstyled mb-0">
-                    <li>This is a list.</li>
-                    <li>It appears completely unstyled.</li>
-                    <li>Structurally, it's still a list.</li>
-                    <li>However, this style only applies to immediate child elements.</li>
-                    <li>Nested lists:
-                        <ul>
-                            <li>are unaffected by this style</li>
-                            <li>will still show a bullet</li>
-                            <li>and have appropriate left margin</li>
-                        </ul>
-                    </li>
-                    <li>This may still come in handy in some situations.</li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>
