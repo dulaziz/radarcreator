@@ -48,7 +48,6 @@
                         <td>
                             <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href="/userDetail"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -64,7 +63,6 @@
                         <td>
                             <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -80,7 +78,6 @@
                         <td>
                             <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -96,7 +93,6 @@
                         <td>
                             <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -112,7 +108,6 @@
                         <td>
                             <div class="gap-1">
                                 <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-warning text-white" href="/edit"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>

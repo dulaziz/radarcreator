@@ -1,11 +1,14 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
-            <h6 class="mb-0 text-start">Add User</h6> 
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="mb-0 text-start">User Edit</h6>
+            <a href="/userDetail">Back</a> 
+        </div>
         <hr>
         <div class="d-flex align-items-start align-items-sm-center gap-4">
             <div class="card-body pb-0">
                 <img
-                src="img/avatar.jpeg"
+                src="img/profile.png"
                 alt="user-avatar"
                 class="rounded-circle"
                 {{-- height="100" --}}
@@ -14,7 +17,7 @@
                 />
                 <div class="button-wrapper">
                     <label for="upload" class="btn btn-primary me-2 my-3" tabindex="0">
-                      <span class="d-none d-sm-block">Upload  photo</span>
+                      <span class="d-none d-sm-block">Upload new photo</span>
                       <i class="bx bx-upload d-block d-sm-none"></i>
                       <input
                         type="file"
@@ -28,7 +31,7 @@
                 </div>
           </div>
         </div>
-        <hr>
+          <hr>
           <div class="row">
             <div class="mb-3 col-md-6">
                 <div class="row">
@@ -98,7 +101,7 @@
             </div>
           </div>
         <div class="d-grid justify-content-md-end">
-            <button type="submit" class="btn btn-primary px-5"><i class="fas fa-plus me-2"></i>Add</button>
+            <button type="submit" class="btn btn-primary px-5"><i class="fas fa-save me-2"></i>Save</button>
         </div>
     </div>
 </div>

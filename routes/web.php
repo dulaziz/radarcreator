@@ -27,9 +27,15 @@ Route::get('/user', function () {
 });
 Route::get('/userDetail', function () {
     return view('page.user.userDetail', [
-        "title" => "userDetail"
+        "title" => "user"
     ]);
 });
+Route::get('/userEdit', function () {
+    return view('page.user.userEdit', [
+        "title" => "user"
+    ]);
+});
+
 
 // Publish
 Route::get('/publish', function () {

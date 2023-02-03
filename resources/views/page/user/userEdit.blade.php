@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('page.user.components.userDetail')
+@include('page.user.components.formUserEdit')
 
 @endsection
