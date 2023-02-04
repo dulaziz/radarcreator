@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('page.user.components.userList')
+@include('page.user.components.formAddUser')
 
 @endsection

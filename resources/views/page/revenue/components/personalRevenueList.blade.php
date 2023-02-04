@@ -46,6 +46,7 @@
                 <thead class="text-center">
                     <tr class="text-white">
                         <th scope="col">No</th>
+                        <th scope="col">Published</th>
                         <th scope="col">Video Title</th>
                         <th scope="col">Production Team</th>
                         <th scope="col">Viewer</th>
@@ -56,6 +57,7 @@
                 <tbody class="text-start">
                     <tr>
                         <td>01</td>
+                        <td class="text-center">01 Jan 2024</td>
                         <td><a href="/detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td class="text-white text-center fw-bold">2100</td>
@@ -64,6 +66,7 @@
                     </tr>
                     <tr>
                         <td>02</td>
+                        <td class="text-center">01 Jan 2024</td>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td class="text-white text-center fw-bold">2100</td>
@@ -72,6 +75,7 @@
                     </tr>
                     <tr>
                         <td>03</td>
+                        <td class="text-center">01 Jan 2024</td>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td class="text-white text-center fw-bold">2100</td>
@@ -80,6 +84,7 @@
                     </tr>
                     <tr>
                         <td>04</td>
+                        <td class="text-center">01 Jan 2024</td>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td class="text-white text-center fw-bold">2100</td>
@@ -88,6 +93,7 @@
                     </tr>
                     <tr>
                         <td>05</td>
+                        <td class="text-center">01 Jan 2024</td>
                         <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td class="text-white text-center fw-bold">2100</td>
@@ -97,7 +103,7 @@
                 </tbody>
                 <tfoot>
                     <tr class="text-white">
-                        <th colspan="3">
+                        <th colspan="4">
                            <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> John Doe</h6>
                         </th>
                         <th colspan="3" class="text-warning">$12345</th>

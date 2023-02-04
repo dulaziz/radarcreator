@@ -1,6 +1,9 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-            <h6 class="mb-0 text-start">Add User</h6> 
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="mb-0 text-start">Add User</h6>
+            <a href="/user">Back</a>
+        </div>
         <hr>
         <div class="d-flex align-items-center text-center gap-4">
             <div class="card-body pb-0">
@@ -12,25 +15,16 @@
                 width="150"
                 id="uploadedAvatar"
                 />
-                <div class="button-wrapper">
-                    <label for="upload" class="btn btn-primary me-2 my-3" tabindex="0">
-                      <span class="d-none d-sm-block">Upload  photo</span>
-                      <i class="bx bx-upload d-block d-sm-none"></i>
-                      <input
-                        type="file"
-                        id="upload"
-                        class="account-file-input"
-                        hidden
-                        accept="image/png, image/jpeg"
-                      />
+                <div>
+                    <label for="upload" class="btn btn-primary my-3" tabindex="0">
+                      <span>Upload  photo</span>
+                      <input type="file" id="upload" hidden accept="image/png, image/jpeg"/>
                     </label>
                     <p class="fw-light mb-0">Allowed JPG, GIF or PNG. Max size of 5MB</p>
                 </div>
           </div>
         </div>
         <hr>
-
-        
 
         <form action="">
             <div class="row">
@@ -81,29 +75,29 @@
                 <div class="d-md-flex align-items-center mb-3 mb-md-0">
                     <label for="role" class="form-label me-3 mb-1">Role:</label>
                     <div class="form-check me-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          User
+                        <input class="form-check-input" type="checkbox" value="" id="user">
+                        <label class="form-check-label" for="user">
+                        User
                         </label>
-                      </div>
-                      <div class="form-check me-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                          Admin
+                        </div>
+                        <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="admin">
+                        <label class="form-check-label" for="admin">
+                        Admin
                         </label>
-                      </div>
-                      <div class="form-check me-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                          Admin Sosmed
+                        </div>
+                        <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="adminSosmed">
+                        <label class="form-check-label" for="adminSosmed">
+                        Admin Sosmed
                         </label>
-                      </div>
-                      <div class="form-check me-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                          Super Admin
+                        </div>
+                        <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="superAdmin">
+                        <label class="form-check-label" for="superAdmin">
+                        Super Admin
                         </label>
-                      </div>
+                        </div>
                 </div>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary px-5"><i class="fas fa-plus me-2"></i>Add</button>

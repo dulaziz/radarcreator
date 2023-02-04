@@ -61,16 +61,16 @@
                 <tbody class="text-start">
                     <tr>
                         <td>01</td>
-                        <td><a href="/detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
+                        <td><a href="#">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td>01 Jan 2045</td>
                         <td>Facebook</td>
                         <td>
                             <span class="text-success fw-bold">Published</span>
                         </td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">00</td>
+                        <td class="text-white text-center fw-bold">00</td>
+                        <td class="text-center fw-bold">$0000</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
@@ -79,7 +79,7 @@
                     </tr>
                     <tr>
                         <td>02</td>
-                        <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
+                        <td><a href="">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td>01 Jan 2045</td>
                         <td>Youtube</td>
@@ -97,7 +97,7 @@
                     </tr>
                     <tr>
                         <td>03</td>
-                        <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
+                        <td><a href="">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td>01 Jan 2045</td>
                         <td>Tiktok</td>
@@ -115,7 +115,7 @@
                     </tr>
                     <tr>
                         <td>04</td>
-                        <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
+                        <td><a href="">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td>01 Jan 2045</td>
                         <td>Facebook</td>
@@ -133,7 +133,7 @@
                     </tr>
                     <tr>
                         <td>05</td>
-                        <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</td>
+                        <td><a href="">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
                         <td>Jhon Doe, John Martins, Johncena</td>
                         <td>01 Jan 2045</td>
                         <td>Facebook</td>

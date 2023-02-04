@@ -25,6 +25,11 @@ Route::get('/user', function () {
         "title" => "user"
     ]);
 });
+Route::get('/userAdd', function () {
+    return view('page.user.userAdd', [
+        "title" => "user"
+    ]);
+});
 Route::get('/userDetail', function () {
     return view('page.user.userDetail', [
         "title" => "user"
