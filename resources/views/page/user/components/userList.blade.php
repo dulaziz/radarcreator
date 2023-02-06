@@ -1,7 +1,10 @@
 <!-- Recent Sales Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
-        <h6 class="mb-0 text-start">User List</h6>
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="mb-0 text-start">User List</h6>
+            <a href="/userAdd">Add User</a>
+        </div>
         <hr>
 
         <div class="row mb-4">
@@ -46,7 +49,7 @@
                         <td>...</td>
                         <td>...</td>
                         <td>
-                            <div class="gap-1">
+                            <div class="d-flex justify-content-center gap-1">
                                 <a class="btn btn-sm btn-primary" href="/userDetail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
@@ -61,8 +64,8 @@
                         <td>...</td>
                         <td>...</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex justify-content-center gap-1">
+                                <a class="btn btn-sm btn-primary" href="/userDetail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -76,8 +79,8 @@
                         <td>...</td>
                         <td>...</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex justify-content-center gap-1">
+                                <a class="btn btn-sm btn-primary" href="/userDetail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -91,8 +94,8 @@
                         <td>...</td>
                         <td>...</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex justify-content-center gap-1">
+                                <a class="btn btn-sm btn-primary" href="/userDetail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
@@ -106,8 +109,8 @@
                         <td>...</td>
                         <td>...</td>
                         <td>
-                            <div class="gap-1">
-                                <a class="btn btn-sm btn-primary" href=""><i class="fas fa-eye"></i></a>
+                            <div class="d-flex justify-content-center gap-1">
+                                <a class="btn btn-sm btn-primary" href="/userDetail"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
