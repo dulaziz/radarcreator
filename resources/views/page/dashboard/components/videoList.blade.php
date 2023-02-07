@@ -19,15 +19,9 @@
                         <option value="3">100</option>
                     </select>
                 </div>
-                <div class="ms-md-2 mb-2 mb-md-0">
-                    <select class="form-select" aria-label=".form-select-sm example">
-                        <option selected>Filter Status</option>
-                        <option value="1">Proces</option>
-                        <option value="2">Published</option>
-                        <option value="3">Take Down</option>
-                    </select>
-                </div>
-                <div class="ms-md-2 mb-2 mb-md-0">
+                <div>
+                <div class="input-group">
+                    <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
                     <select class="form-select" aria-label=".form-select-sm example">
                         <option selected>Filter Group</option>
                         <option value="1">Radar Bogor</option>
@@ -37,6 +31,7 @@
                         <option value="5">Radar Cianjur</option>
                     </select>
                 </div>
+            </div>
                 <div>
                     <div class="input-group">
                         <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
@@ -80,7 +75,15 @@
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="mb-0 me-4"><i class="fas fa-hourglass-half me-2"></i>Pending</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
-                    <a href="/publish" class="me-4"><i class="bi bi-share-fill me-2"></i>Publish</a>
+                    <div class="dropdown me-4">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-2"></i>Action
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a href="/publish" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,7 +102,15 @@
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
-                    <a href="/publish" class="me-4"><i class="bi bi-share-fill me-2"></i>Publish</a>
+                    <div class="dropdown me-4">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-2"></i>Action
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a href="/publish" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,7 +129,15 @@
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i>Take Down</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
-                    <a href="/publish" class="me-4"><i class="bi bi-share-fill me-2"></i>Publish</a>
+                    <div class="dropdown me-4">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-2"></i>Action
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a href="/publish" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

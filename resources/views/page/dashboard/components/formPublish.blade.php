@@ -3,7 +3,7 @@
     <div class="bg-secondary rounded p-4">
         <div class="d-flex align-items-center justify-content-between">
             <h6 class="mb-0">Publish</h6>
-            <a href="/">Back</a>
+            {{-- <a href="/">Back</a> --}}
         </div>
         <hr>
 

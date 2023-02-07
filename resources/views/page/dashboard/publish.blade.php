@@ -2,6 +2,7 @@
 
 @section('content')
 
-    @include('page.dashboard.components.formPublish')
+@include('page.uploaded.components.formDetail')
+@include('page.dashboard.components.formPublish')
 
 @endsection

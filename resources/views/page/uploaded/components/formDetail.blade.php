@@ -2,7 +2,7 @@
     <div class="bg-secondary rounded p-4">
         <div class="d-flex align-items-center justify-content-between">
             <h6 class="mb-0 text-start">Video Detail</h6>
-            <a href="/">Back</a>
+            <a href="/uploaded">Back</a>
         </div>
         <hr>
         <div class="row mt-4">

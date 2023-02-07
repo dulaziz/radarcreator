@@ -10,9 +10,6 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="judul" id="judul">
             </div>
-            <div class="col-sm-5">
-                <input type="date" class="form-control" name="uploadDate" id="uploadDate" >
-            </div>
         </div>
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Upload Video</label>

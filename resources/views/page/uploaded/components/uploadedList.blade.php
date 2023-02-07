@@ -19,14 +19,6 @@
                         <option value="3">100</option>
                     </select>
                 </div>
-                <div class="ms-md-2 mb-2 mb-md-0">
-                    <select class="form-select" aria-label=".form-select-sm example">
-                        <option selected>Filter Status</option>
-                        <option value="1">Pending</option>
-                        <option value="2">Published</option>
-                        <option value="3">Take Down</option>
-                    </select>
-                </div>
                 <div>
                     <div class="input-group">
                         <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
