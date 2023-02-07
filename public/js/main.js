@@ -79,12 +79,12 @@
                     label: "REVENUE",
                     data: [8, 35, 40, 60, 70, 55, 75],
                     backgroundColor: "rgba(255, 194, 13, .5)"
+                },
+                {
+                    label: "Impression",
+                    data: [12, 25, 45, 55, 65, 70, 60],
+                    backgroundColor: "rgba(50, 130, 184, .3)"
                 }
-                // {
-                //     label: "ANGEGMENT",
-                //     data: [12, 25, 45, 55, 65, 70, 60],
-                //     backgroundColor: "rgba(50, 130, 184, .3)"
-                // }
             ]
             },
         options: {

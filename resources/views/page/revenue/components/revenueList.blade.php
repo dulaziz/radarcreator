@@ -17,7 +17,9 @@
                     </select>
                 </div>
                 {{-- Admin Sosmed Only --}}
-                <div class="ms-md-2 mb-2 mb-md-0">
+                <div>
+                <div class="input-group">
+                    <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
                     <select class="form-select" aria-label=".form-select-sm example">
                         <option selected>Filter Group</option>
                         <option value="1">Radar Bogor</option>
@@ -26,6 +28,7 @@
                         <option value="4">Radar Sukabumi</option>
                         <option value="5">Radar Cianjur</option>
                     </select>
+                </div>
                 </div>
                 {{-- End Admin Sosmed Only --}}
                 <div>
