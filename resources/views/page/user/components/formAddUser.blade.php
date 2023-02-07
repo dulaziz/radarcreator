@@ -81,6 +81,12 @@
                         </label>
                         </div>
                         <div class="form-check me-3">
+                            <input class="form-check-input" type="checkbox" value="" id="prodeser">
+                            <label class="form-check-label" for="prodeser">
+                            Produser
+                            </label>
+                            </div>
+                        <div class="form-check me-3">
                         <input class="form-check-input" type="checkbox" value="" id="admin">
                         <label class="form-check-label" for="admin">
                         Admin
