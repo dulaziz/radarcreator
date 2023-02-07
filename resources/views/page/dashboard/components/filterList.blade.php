@@ -2,8 +2,8 @@
     <div class="bg-secondary rounded p-4">
 
         <div class="d-flex align-items-center justify-content-between">
-            <h6 class="mb-0">Recent Uploaded</h6>
-            <a href="/upload">Add Video</a>
+            <h6 class="mb-0 text-start">All Video</h6>
+            <a href="/">Back</a>
         </div>
         <hr>
 
@@ -11,7 +11,7 @@
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
                 <div class="d-flex align-items-center mb-2 mb-md-0">
                     <span>Show</span>
-                    <select class="form-select ms-2" aria-label=".form-select-sm example">
+                    <select class="form-select ms-4" aria-label=".form-select-sm example">
                         <option selected>5</option>
                         <option value="1">5</option>
                         <option value="2">10</option>
@@ -19,28 +19,10 @@
                         <option value="3">100</option>
                     </select>
                 </div>
-                <div class="ms-md-2 mb-2 mb-md-0">
-                    <select class="form-select" aria-label=".form-select-sm example">
-                        <option selected>Filter Status</option>
-                        <option value="1">Proces</option>
-                        <option value="2">Published</option>
-                        <option value="3">Take Down</option>
-                    </select>
-                </div>
-                <div class="ms-md-2 mb-2 mb-md-0">
-                    <select class="form-select" aria-label=".form-select-sm example">
-                        <option selected>Filter Group</option>
-                        <option value="1">Radar Bogor</option>
-                        <option value="2">Radar Depok</option>
-                        <option value="3">Radar Bandung</option>
-                        <option value="4">Radar Sukabumi</option>
-                        <option value="5">Radar Cianjur</option>
-                    </select>
-                </div>
                 <div>
                     <div class="input-group">
-                        <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
-                        <select class="form-select" aria-label=".form-select-sm example">
+                        <label class="input-group-text ms-md-4 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
+                        <select class="form-select text-center" aria-label=".form-select-sm example">
                             <option selected>Month</option>
                             <option value="1">January</option>
                             <option value="2">February</option>

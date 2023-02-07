@@ -19,6 +19,12 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/filter', function () {
+    return view('page.dashboard.filter', [
+        "title" => "dashboard"
+    ]);
+});
+
 // User
 Route::get('/user', function () {
     return view('page.user.index', [

@@ -1,3 +1,10 @@
+.c-hover{
+    transition: all 0.3s;
+}
+.c-hover:hover{
+    transform: scale(1.1);
+}
+
 .dropdown-toggle::after{
     display: none;
 }

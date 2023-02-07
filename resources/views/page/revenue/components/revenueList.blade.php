@@ -1,6 +1,6 @@
 <!-- Recent Sales Start -->
 <div class="container-fluid pt-4 px-4">
-    <div class="bg-secondary text-center rounded p-4">
+    <div class="bg-secondary rounded p-4">
         <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Radar Depok</h6>
         <hr>
 
@@ -8,7 +8,7 @@
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
                 <div class="d-flex align-items-center mb-2 mb-md-0">
                     <span>Show</span>
-                    <select class="form-select ms-4" aria-label=".form-select-sm example">
+                    <select class="form-select ms-2" aria-label=".form-select-sm example">
                         <option selected>5</option>
                         <option value="1">5</option>
                         <option value="2">10</option>
@@ -16,10 +16,22 @@
                         <option value="3">100</option>
                     </select>
                 </div>
+                {{-- Admin Sosmed Only --}}
+                <div class="ms-md-2 mb-2 mb-md-0">
+                    <select class="form-select" aria-label=".form-select-sm example">
+                        <option selected>Filter Group</option>
+                        <option value="1">Radar Bogor</option>
+                        <option value="2">Radar Depok</option>
+                        <option value="3">Radar Bandung</option>
+                        <option value="4">Radar Sukabumi</option>
+                        <option value="5">Radar Cianjur</option>
+                    </select>
+                </div>
+                {{-- End Admin Sosmed Only --}}
                 <div>
                     <div class="input-group">
-                        <label class="input-group-text  ms-md-4 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
-                        <select class="form-select text-center" aria-label=".form-select-sm example">
+                        <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
+                        <select class="form-select" aria-label=".form-select-sm example">
                         <option selected>Month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
@@ -55,7 +67,9 @@
                         <th scope="col">Viewer</th>
                         <th scope="col">impression</th>
                         <th scope="col">Revenue</th>
+                        {{-- Admin Sosmed Only --}}
                         <th scope="col">Action</th>
+                        {{-- End Admin Sosmed Only --}}
                     </tr>
                 </thead>
                 <tbody class="text-start">
@@ -71,11 +85,13 @@
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-center fw-bold">$0000</td>
+                        {{-- Admin Sosmed Only --}}
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
                             </div>
                         </td>
+                        {{--End Admin Sosmed Only --}}
                     </tr>
                     <tr>
                         <td>02</td>
@@ -192,18 +208,17 @@
             <div class="bg-secondary rounded h-100 p-4">
                 <h6 class="mb-4">Note</h6>
                 <ul class="list-unstyled mb-0">
-                    <li>This is a list.</li>
-                    <li>It appears completely unstyled.</li>
-                    <li>Structurally, it's still a list.</li>
-                    <li>However, this style only applies to immediate child elements.</li>
-                    <li>Nested lists:
+                    <li>Pendapatan Anda adalah:</li>
+                    <li>Total revenue dari satu video, di bagi jumlah production team dalam pembuatan video tersebut.</li>
+                    <br>
+                    <li>Revenue Sharing:
                         <ul>
-                            <li>are unaffected by this style</li>
-                            <li>will still show a bullet</li>
-                            <li>and have appropriate left margin</li>
+                            <li>60 : 40</li>
+                            <li>40 : Production Team</li>
                         </ul>
                     </li>
-                    <li>This may still come in handy in some situations.</li>
+                    <br>
+                    <li>Finance Radar Bogor Group.</li>
                 </ul>
             </div>
         </div>
