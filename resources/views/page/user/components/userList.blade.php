@@ -21,7 +21,10 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <input class="form-control" type="text" placeholder="Search" aria-label="default input example">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-dark" type="button" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
+                </div>
             </div>
         </div>
 
