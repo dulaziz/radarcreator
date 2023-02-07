@@ -18,6 +18,7 @@
             <a href="/" class="nav-item nav-link {{ ($title === "dashboard") ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <a href="/upload" class="nav-item nav-link {{ ($title === "upload") ? 'active' : '' }}"><i class="fas fa-upload me-2"></i>Upload</a>
             <a href="/uploaded" class="nav-item nav-link {{ ($title === "uploaded") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Uploaded</a>
+            <a href="/videoUpdated" class="nav-item nav-link {{ ($title === "video updated") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Video Updated</a>
             <a href="/revenue" class="nav-item nav-link {{ ($title === "revenue") ? 'active' : '' }}"><i class="fas fa-dollar-sign me-2"></i>Revenue</a>
             {{-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Revenue</a>

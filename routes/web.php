@@ -62,6 +62,13 @@ Route::get('/upload', function () {
     ]);
 });
 
+// Video Updated
+Route::get('/videoUpdated', function () {
+    return view('page.dashboard.videoUpdated', [
+        "title" => "video updated"
+    ]);
+});
+
 // Uploaded
 Route::get('/uploaded', function () {
     return view('page.uploaded.index', [
