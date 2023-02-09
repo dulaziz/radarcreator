@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -104,9 +105,9 @@ Route::get('/detailRevenue', function () {
 });
 
 // Auth
-Route::get('/signIn', function () {
-    return view('page.auth.signIn', [
-        "title" => "Sign In"
-    ]);
-});
+Route::get('/signIn', [SessionController::class, 'index']);
+Route::post('/signIn/login', [SessionController::class, 'login']);
+Route::get('logout', [SessionController::class, 'logout'])->name('logout');
+
+
 
