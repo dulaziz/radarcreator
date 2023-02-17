@@ -32,11 +32,6 @@ Route::get('/user', function () {
         "title" => "user"
     ]);
 });
-Route::get('/userAdd', function () {
-    return view('page.user.userAdd', [
-        "title" => "user"
-    ]);
-});
 Route::get('/userDetail', function () {
     return view('page.user.userDetail', [
         "title" => "user"
@@ -107,7 +102,7 @@ Route::get('/detailRevenue', function () {
 // Auth
 Route::get('/signIn', [SessionController::class, 'index']);
 Route::post('/signIn/login', [SessionController::class, 'login']);
+Route::get('/userAdd', [SessionController::class, 'register']);
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');
-
 
 

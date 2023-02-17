@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
+use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
 {
@@ -13,6 +16,13 @@ class SessionController extends Controller
     ]);
 
  }
+ function register(){
+    return view('page/user/userAdd', [
+        "title" => "user"
+    ]);
+
+ }
+
  function login(Request $request){
     $request->validate([
      'name'=>'required',
@@ -33,10 +43,32 @@ return back()->withFail('Nama dan Password salah !');
 
  }
 
- function logout(Request $request){
+ public function logout(Request $request){
    Auth::logout();
-   $request->session()->invalidate();
-   $request->session()->regenerateToken();
+   Session::flush();
+
    return redirect('/signIn');
  }
+
+ public function register_action(Request $request)
+ {
+     $request->validate([
+         'name' => 'required',
+         'username' => 'required|unique:tb_user',
+         'password' => 'required',
+         'password_confirm' => 'required|same:password',
+     ]);
+
+     $user = new Request([
+         'name' => $request->name,
+         'username' => $request->username,
+         'password' => Hash::make($request->password),
+     ]);
+     $user->save();
+
+     return redirect()->route('login')->with('success', 'Registration success. Please login!');
+ }
+
+
+
 }
