@@ -99,10 +99,16 @@ Route::get('/detailRevenue', function () {
     ]);
 });
 
+// Position
+Route::get('/position', function () {
+    return view('page.position.index', [
+        "title" => "position"
+    ]);
+});
+
+
 // Auth
 Route::get('/signIn', [SessionController::class, 'index']);
 Route::post('/signIn/login', [SessionController::class, 'login']);
 Route::get('/userAdd', [SessionController::class, 'register']);
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');
-
-

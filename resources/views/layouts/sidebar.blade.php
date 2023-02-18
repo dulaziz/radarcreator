@@ -10,6 +10,7 @@
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
+                {{-- <h6 class="mb-0">NAMA</h6> --}}
                 <h6 class="mb-0">{{Auth::user()->name}}</h6>
                 <span>Radar Depok</span>
             </div>
@@ -31,7 +32,7 @@
 
         <h6 class="nav-link fw-bold">Admin</h6>
         <div class="navbar-nav w-100">
-            <a href="/user" class="nav-item nav-link {{ ($title === "user") ? 'active' : '' }}"><i class="fa fa-users me-2"></i>User</a>    
+            <a href="/user" class="nav-item nav-link {{ ($title === "user") ? 'active' : '' }}"><i class="fas fa-users me-2"></i></i>User</a>    
             {{-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                 <div class="dropdown-menu bg-transparent border-0">
@@ -41,6 +42,7 @@
                     <a href="blank.html" class="dropdown-item">Blank Page</a>
                 </div>
             </div> --}}
+            <a href="/position" class="nav-item nav-link {{ ($title === "user") ? 'active' : '' }}"><i class="fas fa-users-class me-2"></i>Position</a>    
         </div>
 
     </nav>
