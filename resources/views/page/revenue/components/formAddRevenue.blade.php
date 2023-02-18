@@ -6,6 +6,12 @@
 
         <form action="">
             <div class="mb-3 row">
+                <label for="html5-month-input" class="col-md-2 col-form-label">Month</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="month" value="2023-01" id="html5-month-input" />
+                </div>
+            </div>
+            <div class="mb-3 row">
                 <label for="viewer" class="col-sm-2 col-form-label">Viewer</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="viewer" id="viewer">
@@ -25,7 +31,6 @@
                     <input type="text" class="form-control" name="revenue" id="revenue">
                 </div>
             </div>
-
             <hr>
             <div class="d-grid justify-content-md-end">
                 <button type="submit" class="btn btn-primary px-5"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Submit</button>
