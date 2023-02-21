@@ -287,3 +287,10 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(35%);
+    -webkit-appearance: none;
+}

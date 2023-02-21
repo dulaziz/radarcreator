@@ -171,10 +171,21 @@
                     <li>Total revenue dari satu video, di bagi jumlah production team dalam pembuatan video tersebut.</li>
                     <br>
                     <li>Revenue Sharing:
-                        <ul>
-                            <li>60 : 40</li>
-                            <li>40 : Production Team</li>
-                        </ul>
+                        <dt>1. 2000 > </dt>
+                            <ul> 
+                            <li>80 : 20</li></dd>
+                            <li>20 : Production Team</li></dd>
+                            </ul>
+                        <dt>2. 2001 - 4000 </dt>
+                            <ul>
+                            <li>70 : 30</li></dd>
+                            <li>30 : Production Team</li></dd>
+                            </ul>
+                        <dt>3. 4001 > </dt>
+                            <ul>
+                            <li>60 : 40</li></dd>
+                            <li>40 : Production Team</li></dd>
+                            </ul>
                     </li>
                     <br>
                     <li>Finance Radar Bogor Group.</li>

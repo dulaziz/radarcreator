@@ -16,11 +16,11 @@
             </div>
         </div>
         <div class="navbar-nav w-100 mb-4">
-            <a href="/" class="nav-item nav-link {{Request::is('/')? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="/upload" class="nav-item nav-link {{ Request::is('upload') ? 'active' : '' }}"><i class="fas fa-upload me-2"></i>Upload</a>
-            <a href="/uploaded" class="nav-item nav-link {{ Request::is('uploaded*') ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Uploaded</a>
-            <a href="/videoUpdated" class="nav-item nav-link {{ Request::is('updated*') ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Video Updated</a>
-            <a href="/revenue" class="nav-item nav-link {{ Request::is('revenue*') ? 'active' : '' }}"><i class="fas fa-dollar-sign me-2"></i>Revenue</a>
+            <a href="/" class="nav-item nav-link {{ ($title === "dashboard") ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="/upload" class="nav-item nav-link {{ ($title === "upload") ? 'active' : '' }}"><i class="fas fa-upload me-2"></i>Upload</a>
+            <a href="/uploaded" class="nav-item nav-link {{ ($title === "uploaded") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Uploaded</a>
+            <a href="/videoUpdated" class="nav-item nav-link {{ ($title === "video updated") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Video Updated</a>
+            <a href="/revenue" class="nav-item nav-link {{ ($title === "revenue") ? 'active' : '' }}"><i class="fas fa-dollar-sign me-2"></i>Revenue</a>
             {{-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Revenue</a>
                 <div class="dropdown-menu bg-transparent border-0">
@@ -32,7 +32,7 @@
 
         <h6 class="nav-link fw-bold">Admin</h6>
         <div class="navbar-nav w-100">
-            <a href="/user" class="nav-item nav-link {{ Request::is("user") ? 'active' : '' }}"><i class="fas fa-users me-2"></i></i>User</a>    
+            <a href="/user" class="nav-item nav-link {{ ($title === "user") ? 'active' : '' }}"><i class="fas fa-users me-2"></i></i>User</a>    
             {{-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                 <div class="dropdown-menu bg-transparent border-0">
@@ -42,7 +42,7 @@
                     <a href="blank.html" class="dropdown-item">Blank Page</a>
                 </div>
             </div> --}}
-            <a href="/position" class="nav-item nav-link {{  Request::is("user") ? 'active' : '' }}"><i class="fas fa-user-tie me-2"></i>Position</a>    
+            <a href="/position" class="nav-item nav-link {{ ($title === "position") ? 'active' : '' }}"><i class="fas fa-user-tie me-2"></i>Position</a>    
         </div>
 
     </nav>
