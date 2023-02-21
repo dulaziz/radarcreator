@@ -32,11 +32,6 @@ Route::get('/user', function () {
         "title" => "user"
     ]);
 });
-Route::get('/userDetail', function () {
-    return view('page.user.userDetail', [
-        "title" => "user"
-    ]);
-});
 Route::get('/userEdit', function () {
     return view('page.user.userEdit', [
         "title" => "user"

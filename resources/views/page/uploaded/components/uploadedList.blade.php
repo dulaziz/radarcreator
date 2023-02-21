@@ -62,7 +62,7 @@
                     <p class="mb-0 me-4"><i class="fas fa-hourglass-half me-2"></i>Pending</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
                     <div class="dropdown me-4">
-                        <span class="dropdown-toggle text-muted" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog me-2"></i>Action
                         </span>
                         <ul class="dropdown-menu dropdown-menu-dark">
@@ -90,7 +90,7 @@
                     <p class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
                     <div class="dropdown me-4">
-                        <span class="dropdown-toggle text-muted" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog me-2"></i>Action
                         </span>
                         <ul class="dropdown-menu dropdown-menu-dark">
@@ -118,7 +118,7 @@
                     <p class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i>Take Down</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
                     <div class="dropdown me-4">
-                        <span class="dropdown-toggle text-muted" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog me-2"></i>Action
                         </span>
                         <ul class="dropdown-menu dropdown-menu-dark">

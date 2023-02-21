@@ -2,7 +2,7 @@
     <div class="bg-secondary rounded p-4">
         <div class="d-flex align-items-center justify-content-between">
             <h6 class="mb-0 text-start">User Edit</h6>
-            <a href="/userDetail">Back</a> 
+            <a href="/user">Back</a> 
         </div>
         <hr>
         <div class="d-flex align-items-center gap-4 text-center">
