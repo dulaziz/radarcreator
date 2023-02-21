@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -53,21 +54,36 @@ return back()->withFail('Nama dan Password salah !');
  public function register_action(Request $request)
  {
      $request->validate([
-         'name' => 'required',
-         'username' => 'required|unique:tb_user',
-         'password' => 'required',
-         'password_confirm' => 'required|same:password',
-     ]);
+        'name' => 'required',
+        'username' => 'required',
+        'group' => 'required',
+        'email' => 'required',
+        'password' => 'required',
+        'jabatan' => 'required',
+        'role' => 'required',
+        'gambar' => 'image',
 
-     $user = new Request([
-         'name' => $request->name,
-         'username' => $request->username,
-         'password' => Hash::make($request->password),
-     ]);
+    ]);
+
+
+ $file_name = time() . '.' . request()->gambar->getClientOriginalExtension();
+
+        request()->gambar->move(public_path('images'), $file_name);
+
+     $user = new User();
+         $user -> name = $request->name;
+         $user -> username = $request->username;
+         $user -> group = $request->group;
+         $user -> email = $request->email;
+         $user -> password = Hash::make($request->password);
+         $user -> jabatan = $request->jabatan;
+         $user -> role = $request->role;
+         $user -> gambar = $file_name;
+
      $user->save();
 
-     return redirect()->route('login')->with('success', 'Registration success. Please login!');
- }
+     return redirect('/');
+    }
 
 
 
