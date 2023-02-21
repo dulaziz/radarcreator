@@ -110,5 +110,6 @@ Route::get('/position', function () {
 // Auth
 Route::get('/signIn', [SessionController::class, 'index']);
 Route::post('/signIn/login', [SessionController::class, 'login']);
+Route::post('/userAdd/register_action', [SessionController::class, 'register_action']);
 Route::get('/userAdd', [SessionController::class, 'register']);
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');
