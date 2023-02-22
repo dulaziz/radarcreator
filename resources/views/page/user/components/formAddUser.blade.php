@@ -47,12 +47,10 @@
                     <div class="mb-3">
                         <label for="group" class="form-label">Group</label>
                         <div>
-                            <select class="form-select" name="group" aria-label="Default select example">
-                                <option selected></option>
-                                <option value="Radar Bogor">Radar Bogor</option>
-                                <option value="Radar Sukabumi">Radar Sukabumi</option>
-                                <option value="Radar Depok">Radar Depok</option>
-                                <option value="Radar Bandung">Radar Bandung</option>
+                            <select class="form-select" name="id_group" aria-label="Default select example">
+                                    @foreach ($user as $data)
+                                <option value="{{ $data->id_group }}">{{ $data->group }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

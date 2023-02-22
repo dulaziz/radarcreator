@@ -13,12 +13,12 @@
                 class="rounded-circle"
                 {{-- height="100" --}}
                 width="150"
-                id="uploadedAvatar"
+                id="uploadPreview"
                 />
                 <div>
                     <label for="upload" class="btn btn-primary my-3" tabindex="0">
                       <span>Upload new photo</span>
-                      <input type="file" id="upload" hidden accept="image/png, image/jpeg"/>
+                      <input type="file" id="upload" name="gambar"  onchange="PreviewImage();"hidden accept="image/png, image/jpeg"/>
                     </label>
                     <p class="fw-light mb-0">Allowed JPG, GIF or PNG. Max size of 5MB</p>
                 </div>
@@ -31,15 +31,15 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" value="{{$user->username}}" name="email" id="email">
+                        <input type="email" class="form-control" value="{{$user->email}}" name="email" id="email">
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="name">
+                        <input type="text" value="{{$user->name}}" class="form-control" name="name" id="name">
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" name="username" id="username">
+                        <input type="text" value="{{$user->username}}" class="form-control" name="username" id="username">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -47,11 +47,9 @@
                         <label for="group" class="form-label">Group</label>
                         <div>
                             <select class="form-select" aria-label="Default select example">
-                                <option selected></option>
-                                <option value="1">Radar Bogor</option>
-                                <option value="2">Radar Sukabumi</option>
-                                <option value="3">Radar Depok</option>
-                                <option value="3">Radar Bandung</option>
+                            @foreach ($user as $data)
+                                <option value="{{ $user->group }}">{{ $user->group }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -107,3 +105,15 @@
 
     </div>
 </div>
+@include('sweetalert::alert')
+
+<script type="text/javascript">
+function PreviewImage() {
+var oFReader = new FileReader();
+oFReader.readAsDataURL(document.getElementById("upload").files[0]);
+oFReader.onload = function (oFREvent)
+ {
+    document.getElementById("uploadPreview").src = oFREvent.target.result;
+};
+};
+</script>

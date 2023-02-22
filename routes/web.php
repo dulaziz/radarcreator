@@ -101,5 +101,5 @@ Route::post('/userAdd/register_action', [SessionController::class, 'register_act
 Route::get('/userEdit', [SessionController::class, 'editt']);
 Route::get('/userAdd', [SessionController::class, 'register']);
 Route::get('/user', [SessionController::class, 'user']);
-Route::get('/userEdit/{id}', [SessionController::class, 'edit'])->name('edit');
+Route::get('/userEdit/{uuid}', [SessionController::class, 'edit'])->name('edit');
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');

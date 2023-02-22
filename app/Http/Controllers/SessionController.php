@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\groups;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
@@ -24,16 +26,23 @@ return view('page.user.userEdit', [
         "title" => "user"
     ]); }
 function user(){
+
+    $user = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->get();
+
     return view('page.user.index', [
         "title" => "user",
-        "user" => User::get(),
+        "user" => $user,
 
     ]);
 }
  
  function register(){
+    
     return view('page/user/userAdd', [
-        "title" => "user"
+        "title" => "user",
+        "user" => groups::get(),
     ]);
 
  }
@@ -58,6 +67,8 @@ return back()->withFail('Nama dan Password salah !');
 
  }
 
+
+
  public function logout(Request $request){
    Auth::logout();
    Session::flush();
@@ -70,7 +81,7 @@ return back()->withFail('Nama dan Password salah !');
      $request->validate([
         'name' => 'required',
         'username' => 'required',
-        'group' => 'required',
+        'id_group' => 'required',
         'email' => 'required',
         'password' => 'required',
         'jabatan' => 'required',
@@ -86,10 +97,10 @@ return back()->withFail('Nama dan Password salah !');
 
      $user = new User();
 
-        $user -> id = Str::uuid();
+        $user -> uuid = Str::uuid();
          $user -> name = $request->name;
          $user -> username = $request->username;
-         $user -> group = $request->group;
+         $user -> id_group = $request->id_group;
          $user -> email = $request->email;
          $user -> password = Hash::make($request->password);
          $user -> jabatan = $request->jabatan;
@@ -101,9 +112,9 @@ return back()->withFail('Nama dan Password salah !');
 return redirect('/userAdd')->with('success', 'Berhasil Ditambahkan!');    }
 
 
-public function edit($id)
+public function edit($uuid)
 {
-    $user = User::find($id);
+    $user = User::find($uuid);
     return view('page.user.userEdit', [
         "title" => "user",
         "id" => "user",
