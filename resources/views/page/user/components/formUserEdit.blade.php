@@ -8,7 +8,7 @@
         <div class="d-flex align-items-center gap-4 text-center">
             <div class="card-body pb-0">
                 <img
-                src="img/profile.png"
+                src="/images/{{ $user->gambar }}"
                 alt="user-avatar"
                 class="rounded-circle"
                 {{-- height="100" --}}
@@ -31,7 +31,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" name="email" id="email">
+                        <input type="email" class="form-control" value="{{$user->username}}" name="email" id="email">
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>

@@ -41,83 +41,31 @@
                         <th scope="col">Jabatan</th>
                         <th scope="col">Action</th>
                     </tr>
+                    @php $no = 1; @endphp
+                                    @foreach ($user as $data)
                 </thead>
                 <tbody>
+                
                     <tr>
-                        <td>01</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $data->name }}</td>
+                        <td>{{ $data->email }}</td>
+                        <td>{{ $data->username }}</td>
+                        <td>{{ $data->group }}</td>
+                        <td>{{ $data->role }}</td>
+                        <td>{{ $data->jabatan }}</td>
                         <td>
                             <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-sm btn-primary" href="/userEdit/{{$data->id}}"><i class="fas fa-eye"></i></a>
                                 <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>02</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>
-                            <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
-                            </div>
+                          
                         </td>
+                        
                     </tr>
-                    <tr>
-                        <td>03</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>
-                            <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>04</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>
-                            <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>05</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>
-                            <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
+@endforeach
                 </tbody>
             </table>
             <nav aria-label="..." class="float-end mt-3">

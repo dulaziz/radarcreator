@@ -15,12 +15,12 @@
                 class="rounded-circle"
                 {{-- height="100" --}}
                 width="150"
-                id="uploadedAvatar"
+                id="uploadPreview"
                 />
                 <div>
                     <label for="upload" class="btn btn-primary my-3" tabindex="0">
                       <span>Upload  photo</span>
-                      <input type="file" id="upload" name="gambar" hidden accept="image/png, image/jpeg"/>
+                      <input type="file" id="upload" name="gambar"  onchange="PreviewImage();" hidden accept="image/png, image/jpeg"/>
                     </label>
                     <p class="fw-light mb-0">Allowed JPG, GIF or PNG. Max size of 5MB</p>
                 </div>
@@ -113,3 +113,15 @@
         </form>
     </div>
 </div>
+@include('sweetalert::alert')
+
+<script type="text/javascript">
+function PreviewImage() {
+var oFReader = new FileReader();
+oFReader.readAsDataURL(document.getElementById("upload").files[0]);
+oFReader.onload = function (oFREvent)
+ {
+    document.getElementById("uploadPreview").src = oFREvent.target.result;
+};
+};
+</script>

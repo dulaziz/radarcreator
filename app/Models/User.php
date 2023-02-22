@@ -14,4 +14,13 @@ class user extends Authenticatable
         'remember_token',
     ];
     
+    public function getIncrementing()
+    {
+        return false;
+    }    
+
+    public function getKeyType()
+    {
+        return 'string';
+    }
 }
