@@ -1,42 +1,58 @@
 {{-- Admin Sosmed Only --}}
+
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-        <h6 class="">Add Revenue</h6>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h6 class="">Revenue / 1 Month</h6>
+                <hr>
+                <form action="">
+                    <div class="mb-3">
+                        <label for="html5-month-input" class="form-label">Month</label>
+                        <input class="form-control" type="month" value="2023-01" id="html5-month-input" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="viewer" class="form-label">Viewer</label>
+                        <input type="text" class="form-control" id="viewer" name="viewer">
+                    </div>
+                    <div class="mb-3">
+                        <label for="impression" class="form-label">Impression</label>
+                        <input type="text" class="form-control" id="impression" name="impression">
+                    </div>
+                    <div class="mb-3">
+                        <label for="revenue" class="form-label">Revenue</label>
+                        <input type="text" class="form-control" id="revenue" name="revenue">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h6 class="">Revenue / 14 Day</h6>
+                <hr>
+                <form action="">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Month</label>
+                        <input type="text" class="form-control" name="datefilter" value="" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="viewer" class="form-label">Viewer</label>
+                        <input type="text" class="form-control" id="viewer" name="viewer">
+                    </div>
+                    <div class="mb-3">
+                        <label for="impression" class="form-label">Impression</label>
+                        <input type="text" class="form-control" id="impression" name="impression">
+                    </div>
+                    <div class="mb-3">
+                        <label for="revenue" class="form-label">Revenue</label>
+                        <input type="text" class="form-control" id="revenue" name="revenue">
+                    </div>
+                </form>
+            </div>
+        </div>
         <hr>
-
-        <form action="">
-            <div class="mb-3 row">
-                <label for="html5-month-input" class="col-md-2 col-form-label">Month</label>
-                <div class="col-md-10">
-                    <input class="form-control" type="month" value="2023-01" id="html5-month-input" />
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="viewer" class="col-sm-2 col-form-label">Viewer</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="viewer" id="viewer">
-                </div>
-            </div>
-
-            <div class="mb-3 row">
-                <label for="revenue" class="col-sm-2 col-form-label text-start">Impression</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="revenue" id="revenue">
-                </div>
-            </div>
-
-            <div class="mb-3 row">
-                <label for="revenue" class="col-sm-2 col-form-label text-start">Revenue</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="revenue" id="revenue">
-                </div>
-            </div>
-            <hr>
-            <div class="d-grid justify-content-md-end">
-                <button type="submit" class="btn btn-primary px-5"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Submit</button>
-            </div>
-        </form>
-
+        <div class="d-grid justify-content-md-end">
+            <button type="submit" class="btn btn-primary px-5"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Submit</button>
+        </div>
 
     </div>
 </div>
