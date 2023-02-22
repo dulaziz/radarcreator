@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
@@ -17,6 +17,20 @@ class SessionController extends Controller
     ]);
 
  }
+ public function editt()
+ 
+ {
+return view('page.user.userEdit', [
+        "title" => "user"
+    ]); }
+function user(){
+    return view('page.user.index', [
+        "title" => "user",
+        "user" => User::get(),
+
+    ]);
+}
+ 
  function register(){
     return view('page/user/userAdd', [
         "title" => "user"
@@ -71,6 +85,8 @@ return back()->withFail('Nama dan Password salah !');
         request()->gambar->move(public_path('images'), $file_name);
 
      $user = new User();
+
+        $user -> id = Str::uuid();
          $user -> name = $request->name;
          $user -> username = $request->username;
          $user -> group = $request->group;
@@ -82,9 +98,19 @@ return back()->withFail('Nama dan Password salah !');
 
      $user->save();
 
-     return redirect('/');
-    }
+return redirect('/userAdd')->with('success', 'Berhasil Ditambahkan!');    }
 
+
+public function edit($id)
+{
+    $user = User::find($id);
+    return view('page.user.userEdit', [
+        "title" => "user",
+        "id" => "user",
+        'user' => $user,
+
+    ]);
+}
 
 
 }
