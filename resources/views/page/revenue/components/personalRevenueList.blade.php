@@ -138,7 +138,7 @@
                 </tbody>
                 <tfoot>
                     <tr class="text-white">
-                        <th colspan="4">
+                        <th colspan="5">
                            <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> John Doe</h6>
                         </th>
                         <th colspan="3" class="text-warning">$12345</th>

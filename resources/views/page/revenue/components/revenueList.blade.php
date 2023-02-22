@@ -1,4 +1,4 @@
-<!-- Recent Sales Start -->
+<!-- Revenue List Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
         <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Radar Depok</h6>
@@ -58,24 +58,30 @@
                     <button class="btn btn-dark" type="button" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
                 </div>
             </div>
-        </div>
+        </div>        
 
-        <div class="table-responsive">
-            <table class="table align-middle table-bordered table-hover mb-0">
+        <div style="overflow-x: scroll;">
+            <table class="table align-middle table-bordered table-hover mb-0" style="width: 1500px;">
                 <thead class="text-center">
+                    <tr class="text-white align-middle">
+                        <th rowspan="2" style="width: 3%;">No</th>
+                        <th rowspan="2" style="width: 25%;">Video Title</th>
+                        <th rowspan="2" style="width: 20%;">Production Team</th>
+                        <th rowspan="2" style="width: 10%;">Published</th>
+                        <th rowspan="2" style="width: 5%;">Platform</th>
+                        <th rowspan="2" style="width: 5%;">Status</th>
+                        <th colspan="3">Revenue/Bulan</th>
+                        <th colspan="3">Revenue/14 Hari</th>
+                        <th rowspan="2" style="width: 2%">Ation</th>
+                    </tr>
                     <tr class="text-white">
-                        <th scope="col">No</th>
-                        <th scope="col">Video Title</th>
-                        <th scope="col">Production Team</th>
-                        <th scope="col">Published</th>
-                        <th scope="col">Platform</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Viewer</th>
-                        <th scope="col">impression</th>
-                        <th scope="col">Revenue</th>
-                        {{-- Admin Sosmed Only --}}
-                        <th scope="col">Action</th>
-                        {{-- End Admin Sosmed Only --}}
+                        <th scope="col" style="width: 5%;">Viewer</th>
+                        <th scope="col" style="width: 5%;">impression</th>
+                        <th scope="col" style="width: 5%;">Revenue</th>
+                        <th scope="col" style="width: 5%;">Viewer</th>
+                        <th scope="col" style="width: 5%;">impression</th>
+                        <th scope="col" style="width: 5%;">Revenue</th>
+                        
                     </tr>
                 </thead>
                 <tbody class="text-start">
@@ -88,6 +94,9 @@
                         <td>
                             <span class="text-success fw-bold">Published</span>
                         </td>
+                        <td class="text-white text-center fw-bold">00</td>
+                        <td class="text-white text-center fw-bold">00</td>
+                        <td class="text-center fw-bold">$0000</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-center fw-bold">$0000</td>
@@ -111,6 +120,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
@@ -126,6 +138,9 @@
                         <td>
                             <span class="text-success fw-bold">Published</span>
                         </td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
@@ -147,6 +162,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
@@ -165,6 +183,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
@@ -172,16 +193,21 @@
                         </td>
                     </tr>
                 </tbody>
-                <tfoot>
+                <tfoot class="text-center">
                     <tr class="text-white">
                         <th colspan="6">
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> Radar Depok</h6>
                         </th>
-                        <th colspan="4" class="text-warning">$12345</th>
+                        <th colspan="3" class="text-warning">$12345</th>
+                        <th colspan="3" class="text-warning">$12345</th>
+                        <th colspan="1" class="text-warning"></th>
                     </tr>
                 </tfoot>
             </table>
-            <nav aria-label="..." class="float-end mt-3">
+        </div>
+
+        <div class="d-flex justify-content-end mt-3">
+            <nav aria-label="...">
                 <ul class="pagination">
                 <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1">&laquo;</a>
@@ -198,46 +224,5 @@
             </nav>
         </div>
 
-    </div>
-</div>
-<!-- Recent Sales End -->
-
-<div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Video & Revenue</h6>
-                <canvas id="worldwide-sales"></canvas>
-            </div>
-        </div>
-        <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Note</h6>
-                <ul class="list-unstyled mb-0">
-                    <li>Pendapatan Anda adalah:</li>
-                    <li>Total revenue dari satu video, di bagi jumlah production team dalam pembuatan video tersebut.</li>
-                    <br>
-                    <li>Revenue Sharing:
-                        <dt>1. 2000 > </dt>
-                            <ul> 
-                            <li>80 : 20</li></dd>
-                            <li>20 : Production Team</li></dd>
-                            </ul>
-                        <dt>2. 2001 - 4000 </dt>
-                            <ul>
-                            <li>70 : 30</li></dd>
-                            <li>30 : Production Team</li></dd>
-                            </ul>
-                        <dt>3. 4001 > </dt>
-                            <ul>
-                            <li>60 : 40</li></dd>
-                            <li>40 : Production Team</li></dd>
-                            </ul>
-                    </li>
-                    <br>
-                    <li>Finance Radar Bogor Group.</li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>

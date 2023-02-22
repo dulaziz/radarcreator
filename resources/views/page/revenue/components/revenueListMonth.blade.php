@@ -49,22 +49,30 @@
 
         <div class="table-responsive">
             <table class="table align-middle table-bordered table-hover mb-0">
-                <thead class="text-center">
+                <thead class="text-center align-middle">
                     <tr class="text-white">
-                        <th scope="col">No</th>
-                        <th scope="col">Month</th>
+                        <th rowspan="2">No</th>
+                        <th rowspan="2">Month</th>
+                        <th colspan="3">Revenue/Month</th>
+                        <th colspan="3">Revenue/14Day</th>
+                        <th rowspan="2">Action</th>
+                    </tr>
+                    <tr class="text-white">
                         <th scope="col">Viewer</th>
                         <th scope="col">impression</th>
                         <th scope="col">Revenue</th>
-                        <th scope="col">Action</th>
-                        {{-- Admin Sosmed Only --}}
-                        {{-- End Admin Sosmed Only --}}
+                        <th scope="col">Viewer</th>
+                        <th scope="col">impression</th>
+                        <th scope="col">Revenue</th>
                     </tr>
                 </thead>
                 <tbody class="text-start">
                     <tr>
                         <td class="text-center">01</td>
                         <td class="text-center">January 2023</td>
+                        <td class="text-white text-center fw-bold">00</td>
+                        <td class="text-white text-center fw-bold">00</td>
+                        <td class="text-center fw-bold">$0000</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-center fw-bold">$0000</td>
@@ -82,6 +90,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
@@ -91,6 +102,9 @@
                     <tr>
                         <td class="text-center">03</td>
                         <td class=" text-center">March 2023</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
@@ -106,6 +120,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
@@ -118,6 +135,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
@@ -127,10 +147,12 @@
                 </tbody>
                 <tfoot>
                     <tr class="text-white">
-                        <th colspan="5">
+                        <th colspan="2">
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> Video Title</h6>
                         </th>
-                        <th colspan="4" class="text-warning">$12345</th>
+                        <th colspan="3" class="text-warning text-center">$12345</th>
+                        <th colspan="3" class="text-warning text-center">$12345</th>
+                        <th ></th>
                     </tr>
                 </tfoot>
             </table>
