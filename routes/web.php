@@ -97,9 +97,12 @@ Route::get('/position', function () {
 Route::get('/signIn', [SessionController::class, 'index']);
 Route::post('/signIn/login', [SessionController::class, 'login']);
 Route::post('/userAdd/register_action', [SessionController::class, 'register_action']);
+Route::post('/userEdit/update', [SessionController::class, 'update'])->name('update');
+
 
 Route::get('/userEdit', [SessionController::class, 'editt']);
 Route::get('/userAdd', [SessionController::class, 'register']);
 Route::get('/user', [SessionController::class, 'user']);
-Route::get('/userEdit/{uuid}', [SessionController::class, 'edit'])->name('edit');
+Route::get('/userEdit/{id}', [SessionController::class, 'edit'])->name('edit');
+
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');

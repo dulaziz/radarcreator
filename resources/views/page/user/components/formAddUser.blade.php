@@ -48,7 +48,9 @@
                         <label for="group" class="form-label">Group</label>
                         <div>
                             <select class="form-select" name="id_group" aria-label="Default select example">
-                                    @foreach ($user as $data)
+                            <option selected></option>
+     
+                            @foreach ($user as $data)
                                 <option value="{{ $data->id_group }}">{{ $data->group }}</option>
                                 @endforeach
                             </select>
@@ -56,12 +58,14 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Jabatan</label>
-                            <select class="form-select" name="jabatan" aria-label="Default select example">
-                                <option selected></option>
-                                <option value="1">one</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                                <option value="3">Four</option>
+                            <select class="form-select" name="id_jabatan" aria-label="Default select example">
+                            <option selected></option>
+    
+                            @foreach ($datas as $data)
+                                    
+                                <option value="{{ $data->id_jabatan }}">{{ $data->jabatan }}</option>
+                                @endforeach
+                            </select>
                             </select>
                         </div>
                     <div class="mb-3">

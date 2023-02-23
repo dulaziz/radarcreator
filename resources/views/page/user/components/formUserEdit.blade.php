@@ -5,6 +5,8 @@
             <a href="/user">Back</a> 
         </div>
         <hr>
+        <form action="userEdit/update" method="post" enctype="multipart/form-data" >
+@csrf
         <div class="d-flex align-items-center gap-4 text-center">
             <div class="card-body pb-0">
                 <img
@@ -25,8 +27,6 @@
           </div>
         </div>
           <hr>
-
-          <form action="">
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -46,26 +46,34 @@
                     <div class="mb-3">
                         <label for="group" class="form-label">Group</label>
                         <div>
-                            <select class="form-select" aria-label="Default select example">
-                            @foreach ($user as $data)
-                                <option value="{{ $user->group }}">{{ $user->group }}</option>
+                            <select class="form-select" name="id_group" aria-label="Default select example">
+                            @foreach ($datas as $data)
+                            <option value="2" @selected($data->group == 'Radar Bogor')>Radar Bogor</option>            
+                                <option value="3" @selected($data->group == 'Radar Depok')>Radar Depok</option>            
+                                <option value="4" @selected($data->group == 'Radar Sukabumi')>Radar Sukabumi</option>            
+                                <option value="5" @selected($data->group == 'Radar Bandung')>Radar Bandung</option>            
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Jabatan</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected></option>
-                                <option value="1">one</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                                <option value="3">Four</option>
+                            <select class="form-select" name="id_jabatan" aria-label="Default select example">
+                            @foreach ($datas as $data)
+                            <option value="1" @selected($data->jabatan == 'Produser')>Produser</option>            
+                                <option value="2" @selected($data->jabatan == 'Writer')>Writer</option>            
+                                <option value="3" @selected($data->jabatan == 'Talent/Host')>Talent/Host</option>            
+                                <option value="4" @selected($data->jabatan == 'Camera Person')>Camera Person</option>            
+                                <option value="5" @selected($data->jabatan == 'Voice Over')>Voice Over</option>            
+                                <option value="6" @selected($data->jabatan == 'Video Editor')>Video Editor</option>            
+
+                                @endforeach
+
                             </select>
                         </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="text" class="form-control" name="password" id="password">
+                        <input type="password" class="form-control" name="password" value="{{$user->password}}"  id="password">
                     </div>
                 </div>
             </div>
@@ -73,25 +81,25 @@
                 <div class="d-md-flex align-items-center mb-3 mb-md-0">
                     <label for="role" class="form-label me-3 mb-1">Role:</label>
                     <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="user">
+                        <input class="form-check-input" name="role" type="checkbox" value="User" {{ in_array('User', $role) ? 'checked' : '' }} id="user">
                         <label class="form-check-label" for="user">
                         User
                         </label>
                       </div>
                       <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="admin">
+                        <input class="form-check-input" name="role"  type="checkbox" value="Admin" {{ in_array('Admin', $role) ? 'checked' : '' }} id="admin">
                         <label class="form-check-label" for="admin">
                         Admin
                         </label>
                       </div>
                       <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="adminSosmed">
+                        <input class="form-check-input" name="role"  type="checkbox" value="Admin Sosmed" {{ in_array('Admin Sosmed', $role) ? 'checked' : '' }} id="adminSosmed">
                         <label class="form-check-label" for="adminSosmed">
                         Admin Sosmed
                         </label>
                       </div>
                       <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" value="" id="superAdmin">
+                        <input class="form-check-input"  name="role"  type="checkbox" value="Super Admin" {{ in_array('Super Admin', $role) ? 'checked' : '' }} id="superAdmin">
                         <label class="form-check-label" for="superAdmin">
                         Super Admin
                         </label>
