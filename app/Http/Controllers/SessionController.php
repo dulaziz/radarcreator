@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\groups;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\jabatan;
@@ -20,12 +21,6 @@ class SessionController extends Controller
     ]);
 
  }
- public function editt()
- 
- {
-return view('page.user.userEdit', [
-        "title" => "user"
-    ]); }
 function user(){
 
     $user = DB::table('type_group')
@@ -135,8 +130,10 @@ public function edit($id)
         'datas' => $datas,
     ]);
 }
-public function update(Request $request)
+
+public function update(Request $request, User $user, $id)
 {
+    $user = User::findOrfail($id);
     $request->validate([
         'name' => 'required',
         'username' => 'required',
@@ -145,7 +142,6 @@ public function update(Request $request)
         'password' => 'required',
         'id_jabatan' => 'required',
         'role' => 'required',
-        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         
     ]);
 
@@ -160,9 +156,9 @@ public function update(Request $request)
         unset($input['gambar']);
     }
       
-    $request->update($input);
+    $user->update($input);
 
-    return redirect('/user')->with('success', 'Berhasil Ditambahkan!');  
+    return redirect('/user')->with('success', 'Berhasil Diubah!');  
 }
 
 

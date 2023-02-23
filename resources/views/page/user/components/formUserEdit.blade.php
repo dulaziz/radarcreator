@@ -5,8 +5,9 @@
             <a href="/user">Back</a> 
         </div>
         <hr>
-        <form action="userEdit/update" method="post" enctype="multipart/form-data" >
+        <form action="../userEdit/update/{{$user->id}}" method="POST" enctype="multipart/form-data" >
 @csrf
+@method('PUT')
         <div class="d-flex align-items-center gap-4 text-center">
             <div class="card-body pb-0">
                 <img
@@ -113,7 +114,6 @@
 
     </div>
 </div>
-@include('sweetalert::alert')
 
 <script type="text/javascript">
 function PreviewImage() {

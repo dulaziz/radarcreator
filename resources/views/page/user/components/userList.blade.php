@@ -1,39 +1,21 @@
 <!-- Recent Sales Start -->
+<link href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
 <div class="container-fluid pt-4 px-4">
-    <div class="bg-secondary text-center rounded p-4">
+    <div class="bg-secondary  rounded p-4">
         <div class="d-flex align-items-center justify-content-between">
             <h6 class="mb-0 text-start">User List</h6>
             <a href="/userAdd">Add User</a>
         </div>
         <hr>
 
-        <div class="row mb-4">
-            <div class="col-md-8 d-md-flex mb-2 mb-md-0">
-                <div class="d-flex align-items-center mb-2 mb-md-0">
-                    <span>Show</span>
-                    <select class="form-select ms-4" aria-label=".form-select-sm example">
-                        <option selected>5</option>
-                        <option value="1">5</option>
-                        <option value="2">10</option>
-                        <option value="3">50</option>
-                        <option value="3">100</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-dark" type="button" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
-                </div>
-            </div>
-        </div>
 
         <div class="table-responsive">
-            <table class="table text-center align-middle table-bordered table-hover mb-0">
+            <table style="width:100%" class="table table-striped table-bordered" id="example">
                 <thead>
                     <tr class="text-white">
-                        <th scope="col">No</th>
-                        <th scope="col">Nama</th>
+                        <th >No</th>
+                        <th scope="text-center">Nama</th>
                         <th scope="col">Email</th>
                         <th scope="col">Username</th>
                         <th scope="col">Group</th>
@@ -41,11 +23,11 @@
                         <th scope="col">Jabatan</th>
                         <th scope="col">Action</th>
                     </tr>
-                    @php $no = 1; @endphp
-                                    @foreach ($user as $data)
+                   
                 </thead>
                 <tbody>
-                
+                @php $no = 1; @endphp
+                                    @foreach ($user as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->name }}</td>
@@ -65,26 +47,13 @@
                         </td>
                         
                     </tr>
-@endforeach
+       @endforeach
                 </tbody>
             </table>
-            <nav aria-label="..." class="float-end mt-3">
-                <ul class="pagination">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">&raquo;</a>
-                  </li>
-                </ul>
-              </nav>
+           
         </div>
 
     </div>
 </div>
+
 <!-- Recent Sales End -->
