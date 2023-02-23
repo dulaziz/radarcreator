@@ -97,7 +97,7 @@ return back()->withFail('Nama dan Password salah !');
 
      $user = new User();
 
-        $user -> uuid = Str::uuid();
+        $user ->  id = Str::uuid();
          $user -> name = $request->name;
          $user -> username = $request->username;
          $user -> id_group = $request->id_group;
@@ -112,13 +112,21 @@ return back()->withFail('Nama dan Password salah !');
 return redirect('/userAdd')->with('success', 'Berhasil Ditambahkan!');    }
 
 
-public function edit($uuid)
+public function edit($id)
 {
-    $user = User::find($uuid);
+
+    $join = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.id_group')
+    ->where('users.id', '=', $id)
+    ->get();
+
+    $user = User::find($id);
     return view('page.user.userEdit', [
         "title" => "user",
-        "id" => "user",
         'user' => $user,
+        'join' => $join,
+
 
     ]);
 }
