@@ -18,7 +18,7 @@
                 </div>
                 {{-- Admin Sosmed Only --}}
                 <div>
-                <div class="input-group">
+                <div class="input-group mb-2 mb-md-0">
                     <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
                     <select class="form-select" aria-label=".form-select-sm example">
                         <option selected>Filter Group</option>
@@ -61,26 +61,28 @@
         </div>        
 
         <div style="overflow-x: scroll;">
-            <table class="table align-middle table-bordered table-hover mb-0" style="width: 1500px;">
+            <table class="table align-middle table-bordered table-hover mb-0" style="width: 1800px;">
                 <thead class="text-center">
                     <tr class="text-white align-middle">
-                        <th rowspan="2" style="width: 3%;">No</th>
-                        <th rowspan="2" style="width: 25%;">Video Title</th>
-                        <th rowspan="2" style="width: 20%;">Production Team</th>
-                        <th rowspan="2" style="width: 10%;">Published</th>
+                        <th rowspan="2" style="width: 2%;">No</th>
+                        <th rowspan="2" style="width: 20%;">Video Title</th>
+                        <th rowspan="2" style="width: 15%;">Production Team</th>
+                        <th rowspan="2" style="width: 7%;">Published</th>
                         <th rowspan="2" style="width: 5%;">Platform</th>
                         <th rowspan="2" style="width: 5%;">Status</th>
-                        <th colspan="3">Revenue/Bulan</th>
-                        <th colspan="3">Revenue/14 Hari</th>
-                        <th rowspan="2" style="width: 2%">Ation</th>
+                        <th colspan="4">Revenue/Bulan</th>
+                        <th colspan="4">Revenue/14 Hari</th>
+                        <th rowspan="2" style="width: 2%">Action</th>
                     </tr>
                     <tr class="text-white">
                         <th scope="col" style="width: 5%;">Viewer</th>
                         <th scope="col" style="width: 5%;">impression</th>
                         <th scope="col" style="width: 5%;">Revenue</th>
+                        <th scope="col" style="width: 7%;">Rv Date</th>
                         <th scope="col" style="width: 5%;">Viewer</th>
                         <th scope="col" style="width: 5%;">impression</th>
                         <th scope="col" style="width: 5%;">Revenue</th>
+                        <th scope="col" style="width: 7%;">Rv Date</th>
                         
                     </tr>
                 </thead>
@@ -89,7 +91,7 @@
                         <td>01</td>
                         <td><a href="#">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a></td>
                         <td>Jhon Doe, John Martins, Johncena</td>
-                        <td>01 Jan 2045</td>
+                        <td>01/01/2023</td>
                         <td>Facebook</td>
                         <td>
                             <span class="text-success fw-bold">Published</span>
@@ -97,9 +99,11 @@
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-center fw-bold">$0000</td>
+                        <td class="text-center fw-bold">--/--/----</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-center fw-bold">$0000</td>
+                        <td class="text-center fw-bold">--/--/----</td>
                         {{-- Admin Sosmed Only --}}
                         <td>
                             <div class="d-flex justify-content-center">
@@ -120,9 +124,11 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-center fw-bold">01/01/2023 - 01/31/2023</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-center fw-bold">01/01/2023 - 14/01/2023</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
@@ -141,9 +147,11 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-center fw-bold">01/01/2023 - 01/31/2023</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-center fw-bold">01/01/2023 - 14/01/2023</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
@@ -162,9 +170,11 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-center fw-bold">01/01/2023 - 01/31/2023</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-center fw-bold">01/01/2023 - 14/01/2023</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
@@ -183,9 +193,11 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-center fw-bold">01/01/2023 - 01/31/2023</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-center fw-bold">01/01/2023 - 14/01/2023</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="bi bi-cash"></i></a>
@@ -198,8 +210,8 @@
                         <th colspan="6">
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> Radar Depok</h6>
                         </th>
-                        <th colspan="3" class="text-warning">$12345</th>
-                        <th colspan="3" class="text-warning">$12345</th>
+                        <th colspan="4" class="text-warning">$12345</th>
+                        <th colspan="4" class="text-warning">$12345</th>
                         <th colspan="1" class="text-warning"></th>
                     </tr>
                 </tfoot>

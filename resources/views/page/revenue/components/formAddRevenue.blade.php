@@ -15,8 +15,8 @@
                         </fieldset>
                         <span class="d-none d-md-block pt-3">to:</span>
                         <div class="mb-3 w-100 w-md-50">
-                            <label for="revenueDate" class="form-label">Revenue Date</label>
-                            <input type="date" class="form-control" id="revenueDate" name="revenueDate">
+                            <label for="datefilter" class="form-label">Revenue Date</label>
+                            <input type="text" class="form-control" id="datefilter" name="datefilter" value="">
                         </div>
                     </div>
                     <div class="mb-3">
@@ -44,8 +44,8 @@
                         </fieldset>
                         <span class="d-none d-md-block pt-3">to:</span>
                         <div class="mb-3 w-100 w-md-50">
-                            <label for="revenueDate" class="form-label">Revenue Date</label>
-                            <input type="date" class="form-control" id="revenueDate" name="revenueDate">
+                            <label for="datefilter" class="form-label">Revenue Date</label>
+                            <input type="text" class="form-control" id="datefilter" name="datefilter" value="">
                         </div>
                     </div>
                     <div class="mb-3">

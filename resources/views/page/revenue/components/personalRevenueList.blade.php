@@ -16,7 +16,7 @@
                     </select>
                 </div>
                 <div>
-                <div class="input-group">
+                <div class="input-group mb-2 mb-md-0">
                     <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
                     <select class="form-select" aria-label=".form-select-sm example">
                         <option selected>Filter Group</option>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div>
-                <div class="input-group">
+                <div class="input-group mb-2 mb-md-0">
                     <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-user"></i></label>
                     <select class="form-select" aria-label=".form-select-sm example">
                         <option selected>Filter Name</option>
