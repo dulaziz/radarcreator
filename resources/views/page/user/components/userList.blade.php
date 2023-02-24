@@ -37,9 +37,17 @@
                         <td>{{ $data->role }}</td>
                         <td>{{ $data->jabatan }}</td>
                         <td>
+                            
+                        <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="user/delete/{{$data->id}}" method="post" enctype="multipart/form-data" >
+
                             <div class="d-flex justify-content-center gap-1">
                                 <a class="btn btn-sm btn-primary" href="/userEdit/{{$data->id}}"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                           
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-danger" ><i class="fas fa-trash"></i></button>
+                            
+                            </form>
                             </div>
                         </td>
                     </tr>

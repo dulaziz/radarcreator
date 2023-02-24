@@ -98,10 +98,12 @@ Route::get('/signIn', [SessionController::class, 'index']);
 Route::post('/signIn/login', [SessionController::class, 'login']);
 Route::post('/userAdd/register_action', [SessionController::class, 'register_action']);
 Route::put('/userEdit/update/{id}', [SessionController::class, 'update']);
+Route::delete('user/delete/{id}', [SessionController::class, 'delete']);
 
 
-Route::get('/userAdd', [SessionController::class, 'register']);
-Route::get('/user', [SessionController::class, 'user']);
+
+Route::get('/items', [SessionController::class, 'register']);
+Route::get('user', [SessionController::class, 'user']);
 Route::get('/userEdit/{id}', [SessionController::class, 'edit']);
 
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');

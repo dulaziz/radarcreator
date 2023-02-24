@@ -15,7 +15,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                 <a href="/userDetail" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
-                <a href="{{ route('logout') }}" class="dropdown-item"><i class="fas fa-power-off"></i> Log Out</a>
+                <a href="" class="dropdown-item"><i class="fas fa-power-off"></i> Log Out</a>
             </div>
         </div>
     </div>

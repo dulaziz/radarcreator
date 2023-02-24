@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\groups;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\jabatan;
@@ -28,7 +28,7 @@ function user(){
     ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
         ->get();
 
-    return view('page.user.index', [
+    return view('page/user/index', [
         "title" => "user",
         "user" => $user,
 
@@ -160,7 +160,16 @@ public function update(Request $request, User $user, $id)
 
     return redirect('/user')->with('success', 'Berhasil Diubah!');  
 }
+public function delete(User $user, $id)
+{
+$delete = User::findOrFail($id);
+Storage::delete('public/posts/'. $user->image);
 
+$delete->delete(); 
+return redirect('/user')->with('success', 'Berhasil Dihapus!');  
+
+
+}
 
 
 }
