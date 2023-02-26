@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\upload;
 use App\Models\jabatan;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,110 @@ use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
 {
+    
+public function doalpu()
+{
+      
+    $datas = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.username', 'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->where('users.id_jabatan', '=', '1')
+    ->get();
+
+    $data2 = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.username', 'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->where('users.id_jabatan', '=', '2')
+    ->get();
+
+    $data3 = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.username', 'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->where('users.id_jabatan', '=', '3')
+    ->get();
+
+    $datas4 = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.username', 'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->where('users.id_jabatan', '=', '4')
+    ->get();
+
+    $datas5 = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.username', 'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->where('users.id_jabatan', '=', '5')
+    ->get();
+
+    $datas6 = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.username', 'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->where('users.id_jabatan', '=', '6')
+    ->get();
+
+    return view('page.upload.index', [
+        "title" => "upload",
+        "post" => groups::get(),  
+        "datas" => $datas,  
+        "data2" => $data2,  
+        "data3" => $data3,  
+        "datas4" => $datas4,  
+        "datas5" => $datas5,  
+        "datas6" => $datas6,  
+
+
+              
+    ]);
+
+}
+
+public function tambah_upload(Request $request)
+{
+    {
+        $request->validate([
+           'tanggal' => 'required',
+           'id_group' => 'required',
+           'video_title' => 'required',
+           'video' => 'required|file|mimetypes:video/mp4',
+           'produksi' => 'required',
+           'name' => 'required',
+           'platform' => 'required',
+   
+       ]);
+   
+       
+   
+    $file_name = time() . '.' . request()->video->getClientOriginalExtension();
+   
+           request()->video->move(public_path('images'), $file_name);
+   
+        $user = new upload();
+   
+           $user -> id = Str::uuid();
+            $user -> tanggal = $request->tanggal;
+            $user -> id_group = $request->id_group;
+            $user -> video_title = $request->video_title;
+            $user -> video = $file_name;
+            $user -> produksi = json_encode ($request->produksi);
+            $user -> name = json_encode($request->name);
+            $user -> platform = json_encode ($request->platform);
+
+
+   
+        $user->save();
+   
+   return redirect('/uploaded')->with('success', 'Berhasil Ditambahkan!');  
+     }
+}
+
+
+
+
  function index(){
     return view('page/auth/signIn', [
         "title" => "SignIn"

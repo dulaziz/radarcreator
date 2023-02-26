@@ -85,7 +85,42 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-      
+    <script>           
+      $('#d-checkbox').click(function(e) {             
+            if($(this).prop('checked') == true)$('#color').removeAttr("disabled");           
+              else $('#color').attr("disabled","disabled");;        
+                   });    
+
+
+                   $('#a-checkbox').click(function(e) {             
+            if($(this).prop('checked') == true)$('#colors').removeAttr("disabled");           
+              else $('#colors').attr("disabled","disabled");;        
+                   });
+
+                   
+                   $('#b-checkbox').click(function(e) {             
+            if($(this).prop('checked') == true)$('#colorb').removeAttr("disabled");           
+              else $('#colorb').attr("disabled","disabled");;        
+                   });
+
+                   
+                   $('#c-checkbox').click(function(e) {             
+            if($(this).prop('checked') == true)$('#colorc').removeAttr("disabled");           
+              else $('#colorc').attr("disabled","disabled");;        
+                   });
+
+                   
+                   $('#s-checkbox').click(function(e) {             
+            if($(this).prop('checked') == true)$('#colord').removeAttr("disabled");           
+              else $('#colord').attr("disabled","disabled");;        
+                   });
+
+                   
+                   $('#e-checkbox').click(function(e) {             
+            if($(this).prop('checked') == true)$('#colore').removeAttr("disabled");           
+              else $('#colore').attr("disabled","disabled");;        
+                   });
+                        </script>
     <script type="text/javascript">
 $(document).ready(function () {
     $('#example').DataTable();
