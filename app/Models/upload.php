@@ -9,7 +9,7 @@ class upload extends Model
 {
     use HasFactory;
     protected $table ="tb_upload";
-    protected $primarykey ="id";
+    protected $primarykey ="id_upload";
     protected $fillable = ['tanggal', 'id_group', 'video_title', 'video', 'produksi', 'name', 'platform'];
     protected $hidden = [
         'remember_token',

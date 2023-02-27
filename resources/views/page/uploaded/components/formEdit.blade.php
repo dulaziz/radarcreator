@@ -8,18 +8,18 @@
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Judul Video</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" name="judul" id="judul">
+                <input type="text" class="form-control" name="video_title" value="{{$user->video_title}}" id="judul">
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label text-start">Upload Video</label>
-            <div class="col-sm-10">
-                <input type="file" class="form-control bg-dark" name="judul" id="judul">
-                <div class="mt-3 preview-vid">
-                    <video controls src="/img/video.mp4" class=" w-100"></video>
+                <label for="videoFile" class="col-sm-2 col-form-label text-start">Upload Video</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control bg-dark" id="upload" name="video"  onchange="PreviewImage();"  id="videoFile">
+                    <div class="mt-3 preview-vid">
+                        <video controls src="/images/{{$user->video}}" id="uploadPreview" class="w-100"></video>
+                    </div>
                 </div>
             </div>
-        </div>
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Tim Produksi</label>
             <div class="col-sm-10">
@@ -192,4 +192,13 @@
 
     </div>
 </div>
-
+<script type="text/javascript">
+function PreviewImage() {
+var oFReader = new FileReader();
+oFReader.readAsDataURL(document.getElementById("upload").files[0]);
+oFReader.onload = function (oFREvent)
+ {
+    document.getElementById("uploadPreview").src = oFREvent.target.result;
+};
+};
+</script>

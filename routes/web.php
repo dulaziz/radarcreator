@@ -48,18 +48,9 @@ Route::get('/videoUpdated', function () {
 });
 
 // Uploaded
-Route::get('/uploaded', function () {
-    return view('page.uploaded.index', [
-        "title" => "uploaded"
-    ]);
-});
+
 Route::get('/detail', function () {
     return view('page.uploaded.detail', [
-        "title" => "uploaded"
-    ]);
-});
-Route::get('/edit', function () {
-    return view('page.uploaded.edit', [
         "title" => "uploaded"
     ]);
 });
@@ -97,11 +88,12 @@ Route::post('/upload/tambah_upload', [SessionController::class, 'tambah_upload']
 Route::put('/userEdit/update/{id}', [SessionController::class, 'update']);
 Route::delete('user/delete/{id}', [SessionController::class, 'delete']);
 
-
+Route::get('/uploaded', [SessionController::class, 'uploadedd']);
 Route::get('/upload', [SessionController::class, 'doalpu']);
 Route::get('/signIn', [SessionController::class, 'index']);
 Route::get('user', [SessionController::class, 'user']);
 Route::get('/userEdit/{id}', [SessionController::class, 'edit']);
+Route::get('/editUpload/{id}', [SessionController::class, 'editupload']);
 Route::get('/userAdd', [SessionController::class, 'register']);
 
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');

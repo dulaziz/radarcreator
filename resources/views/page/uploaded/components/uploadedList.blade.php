@@ -48,54 +48,29 @@
             </div>
         </div>
         
+   
+        
+        @foreach ($user as $users)
         <div class="d-md-flex align-items-center gap-4">
             <div class="mb-2 mb-md-0 preview-vid">
-                <video controls src="/img/video.mp4" class="w-100"></video>
+                <video controls src="/images/{{ $users->video }}" class="w-100"></video>
             </div>
             <div class="">
-                <h5 class="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-                <div class="d-flex align-items-center gap-2 mb-2 mb-md-3">
-                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 30px; height: 30px;">
-                    <p class="mb-0">Radar Depok</p>
-                </div>
-                <div class="d-flex flex-wrap align-items-center">
-                    <p class="mb-0 me-4"><i class="fas fa-hourglass-half me-2"></i>Pending</p>
-                    <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
-                    <div class="dropdown me-4">
-                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-cog me-2"></i>Action
-                        </span>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="/detail"><i class="fas fa-eye me-2"></i>Detail</a></li>
-                            <li><a class="dropdown-item" href="/edit"><i class="fas fa-pen me-2"></i>Edit</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-
-        <div class="d-md-flex align-items-center gap-4">
-            <div class="mb-2 mb-md-0 preview-vid">
-                <video controls src="/img/video.mp4" class="w-100"></video>
-            </div>
-            <div class="">
-                <h5 class="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
+                <h5 class="mb-3">{{$users->video_title}}</h5>
                 <div class="d-flex align-items-center gap-2 mb-2 mb-md-4">
                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 30px; height: 30px;">
-                    <p class="mb-0">Radar Depok</p>
+                    <p class="mb-0">{{$users->group}}</p>
                 </div>
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</p>
-                    <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
+                    <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i></p>
                     <div class="dropdown me-4">
                         <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog me-2"></i>Action
                         </span>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Detail</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-pen me-2"></i>Edit</a></li>
+                            <li><a class="dropdown-item" href=""><i class="fas fa-eye me-2"></i>Detail</a></li>
+                            <li><a class="dropdown-item" href="/editUpload/{{$users->id}}"><i class="fas fa-pen me-2"></i>Edit</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
                         </ul>
                     </div>
@@ -104,33 +79,7 @@
         </div>
         <hr>
 
-        <div class="d-md-flex align-items-center gap-4">
-            <div class="mb-2 mb-md-0 preview-vid">
-                <video controls src="/img/video.mp4" class="w-100"></video>
-            </div>
-            <div class="">
-                <h5 class="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-                <div class="d-flex align-items-center gap-2 mb-2 mb-md-4">
-                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 30px; height: 30px;">
-                    <p class="mb-0">Radar Depok</p>
-                </div>
-                <div class="d-flex flex-wrap align-items-center">
-                    <p class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i>Take Down</p>
-                    <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>07/07/2023</p>
-                    <div class="dropdown me-4">
-                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-cog me-2"></i>Action
-                        </span>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Detail</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-pen me-2"></i>Edit</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
+     @endforeach
 
         <div class="d-flex justify-content-end">
         <nav aria-label="..." class="">
@@ -160,7 +109,7 @@
     <div class="bg-secondary text-center rounded p-4">
         <h6 class="mb-0 text-start">Recent Uploaded</h6>
         <hr>
-
+<form action="" method="">
         <div class="row mb-4">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
                 <div class="d-flex align-items-center mb-2 mb-md-0">
@@ -322,7 +271,8 @@
                 </ul>
               </nav>
         </div>
-
+</form>
     </div>
 </div> --}}
 <!-- Recent Sales End -->
+@include('sweetalert::alert')

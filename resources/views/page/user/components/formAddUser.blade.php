@@ -77,36 +77,18 @@
             <div class="d-md-flex justify-content-between">
                 <div class="d-md-flex align-items-center mb-3 mb-md-0">
                     <label for="role" class="form-label me-3 mb-1">Role:</label>
+                    @foreach ($usersss as $datas)
+
                     <div class="form-check me-3">
-                        <input class="form-check-input" name="role" type="checkbox" value="user" id="user">
-                        <label class="form-check-label" for="user">
-                        User
-                        </label>
-                        </div>
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="checkbox"  name="role" value="produser" id="prodeser">
-                            <label class="form-check-label" for="prodeser">
-                            Produser
-                            </label>
-                            </div>
-                        <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" name="role" value="admin" id="admin">
-                        <label class="form-check-label" for="admin">
-                        Admin
-                        </label>
-                        </div>
-                        <div class="form-check me-3">
-                        <input class="form-check-input" name="role" type="checkbox" value="admiSosmed" id="adminSosmed">
-                        <label class="form-check-label" for="adminSosmed">
-                        Admin Sosmed
-                        </label>
-                        </div>
-                        <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" name="role" value="superAdmin" id="superAdmin">
-                        <label class="form-check-label" for="superAdmin">
-                        Super Admin
-                        </label>
-                        </div>
+                    <input class="form-check-input" name="id_role" value="{{ $datas->id_role }}
+" type="checkbox">
+                    <label class="form-check-label" for="user">
+                    {{ $datas->role }}
+                       </label>
+
+ </div>
+ @endforeach
+                      
                 </div>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary px-5"><i class="fas fa-plus me-2"></i>Add</button>
@@ -115,7 +97,6 @@
         </form>
     </div>
 </div>
-@include('sweetalert::alert')
 
 <script type="text/javascript">
 function PreviewImage() {

@@ -64,4 +64,6 @@
     </div>
 </div>
 
+@include('sweetalert::alert')
+
 <!-- Recent Sales End -->

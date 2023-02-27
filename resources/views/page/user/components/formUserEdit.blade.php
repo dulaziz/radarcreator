@@ -48,25 +48,21 @@
                         <label for="group" class="form-label">Group</label>
                         <div>
                             <select class="form-select" name="id_group" aria-label="Default select example">
-                            @foreach ($datas as $data)
-                            <option value="2" @selected($data->group == 'Radar Bogor')>Radar Bogor</option>            
-                                <option value="3" @selected($data->group == 'Radar Depok')>Radar Depok</option>            
-                                <option value="4" @selected($data->group == 'Radar Sukabumi')>Radar Sukabumi</option>            
-                                <option value="5" @selected($data->group == 'Radar Bandung')>Radar Bandung</option>            
+                            @foreach ($users as $data)
+                            <option value="{{ $data->id_group }}" {{$data->id_group  == $user->id_group ? 'selected' : '' }}>{{ $data->group }}</option>                                      
                                 @endforeach
                             </select>
+
+
+                            
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Jabatan</label>
                             <select class="form-select" name="id_jabatan" aria-label="Default select example">
-                            @foreach ($datas as $data)
-                            <option value="1" @selected($data->jabatan == 'Produser')>Produser</option>            
-                                <option value="2" @selected($data->jabatan == 'Writer')>Writer</option>            
-                                <option value="3" @selected($data->jabatan == 'Talent/Host')>Talent/Host</option>            
-                                <option value="4" @selected($data->jabatan == 'Camera Person')>Camera Person</option>            
-                                <option value="5" @selected($data->jabatan == 'Voice Over')>Voice Over</option>            
-                                <option value="6" @selected($data->jabatan == 'Video Editor')>Video Editor</option>            
+                            @foreach ($userss as $data)
+                            <option value="{{ $data->id_jabatan }}" {{$data->id_jabatan  == $user->id_jabatan ? 'selected' : '' }}>{{ $data->jabatan }}</option>                                      
+
 
                                 @endforeach
 
@@ -77,42 +73,30 @@
                         <input type="password" class="form-control" name="password" value="{{$user->password}}"  id="password">
                     </div>
                 </div>
-            </div>
-            <div class="d-md-flex justify-content-between">
-                <div class="d-md-flex align-items-center mb-3 mb-md-0">
-                    <label for="role" class="form-label me-3 mb-1">Role:</label>
-                    <div class="form-check me-3">
-                        <input class="form-check-input" name="role" type="checkbox" value="User" {{ in_array('User', $role) ? 'checked' : '' }} id="user">
+              </div>
+            
+               <div class="d-md-flex justify-content-between">
+                  <div class="d-md-flex align-items-center mb-3 mb-md-0">
+                     <label for="role" class="form-label me-3 mb-1">Role:</label>
+                     @foreach ($usersss as $data)
+
+                     <div class="form-check me-3">
+                        <input class="form-check-input" name="id_role" type="checkbox" value="{{ $data->id_role }}" {{$data->id_role  == $user->id_role ? 'checked' : '' }} id="user">
                         <label class="form-check-label" for="user">
-                        User
+                        {{ $data->role }}
                         </label>
+
                       </div>
-                      <div class="form-check me-3">
-                        <input class="form-check-input" name="role"  type="checkbox" value="Admin" {{ in_array('Admin', $role) ? 'checked' : '' }} id="admin">
-                        <label class="form-check-label" for="admin">
-                        Admin
-                        </label>
-                      </div>
-                      <div class="form-check me-3">
-                        <input class="form-check-input" name="role"  type="checkbox" value="Admin Sosmed" {{ in_array('Admin Sosmed', $role) ? 'checked' : '' }} id="adminSosmed">
-                        <label class="form-check-label" for="adminSosmed">
-                        Admin Sosmed
-                        </label>
-                      </div>
-                      <div class="form-check me-3">
-                        <input class="form-check-input"  name="role"  type="checkbox" value="Super Admin" {{ in_array('Super Admin', $role) ? 'checked' : '' }} id="superAdmin">
-                        <label class="form-check-label" for="superAdmin">
-                        Super Admin
-                        </label>
-                      </div>
+                      @endforeach
+
                 </div>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary px-5"><i class="fas fa-save me-2"></i>Update</button>
                 </div>
-            </div>
-        </form>
+              </div>
+              </form>
 
-    </div>
+        </div>
 </div>
 
 <script type="text/javascript">

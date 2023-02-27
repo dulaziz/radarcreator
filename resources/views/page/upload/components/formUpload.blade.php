@@ -43,7 +43,7 @@
                     <div class="row d-flex align-items-center mb-3">
                         <div class="col-md-3 text-start">
                             <div class="form-check">
-                                <input type="checkbox" name="produksi[]" class="form-check-input" id="d-checkbox" >
+                                <input type="checkbox" name="produksi[]" class="form-check-input" value="Produser" id="d-checkbox" >
                                 <label class="form-check-label" for="produser">
                                 Producer
                                 </label>
@@ -61,116 +61,6 @@
                         </div>
                     </div>
 
-                    <div class="row d-flex align-items-center mb-3">
-                        <div class="col-md-3 text-start">
-                            <div class="form-check">
-                                <input type="checkbox"  class="form-check-input" name="produksi[]"  id="a-checkbox">
-                                <label class="form-check-label" for="writer">
-                                Writer
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-select" id="colors" name="name[]"  aria-label="Default select example" disabled="disabled">
-                            <option selected>Pilih Nama</option>
-
-                            @foreach ($data2 as $data)
-
-                            <option value="{{ $data->username }}">{{ $data->username }}</option>
-
-                                @endforeach
-                            </select>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="row d-flex align-items-center mb-3">
-                        <div class="col-md-3 text-start">
-                            <div class="form-check">
-                                <input class="form-check-input" name="produksi[]" type="checkbox" value="" id="b-checkbox">
-                                <label class="form-check-label" for="talent">
-                                Talent/Host
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-select" id="colorb" name="name[]" aria-label="Default select example" disabled>
-                            @foreach ($data3 as $data)
-                            <option selected>Pilih Nama</option>
-
-                            <option value="{{ $data->username }}">{{ $data->username }}</option>
-
-                                @endforeach
-                            </select>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row d-flex align-items-center mb-3">
-                        <div class="col-md-3 text-start">
-                            <div class="form-check">
-                                <input class="form-check-input" name="produksi[]" type="checkbox" value="" id="c-checkbox">
-                                <label class="form-check-label" for="camera">
-                                Camera Person
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-select" name="name[]" id="colorc" aria-label="Default select example" disabled>
-                            @foreach ($datas4 as $data)
-                            <option selected>Pilih Nama</option>
-
-                            <option value="{{ $data->username }}">{{ $data->username }}</option>
-
-                                @endforeach
-                            </select>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row d-flex align-items-center mb-3">
-                        <div class="col-md-3 text-start">
-                            <div class="form-check">
-                                <input class="form-check-input" name="produksi[]" type="checkbox" value="" id="s-checkbox">
-                                <label class="form-check-label" for="voice">
-                                Voice Over
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-select" id="colord" name="name[]" aria-label="Default select example" disabled>
-                            @foreach ($datas5 as $data)
-                            <option selected>Pilih Nama</option>
-
-                            <option value="{{ $data->username }}">{{ $data->username }}</option>
-
-                                @endforeach
-                            </select>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row d-flex align-items-center mb-3">
-                        <div class="col-md-3 text-start">
-                            <div class="form-check">
-                                <input class="form-check-input"  name="produksi[]" type="checkbox" value="" id="e-checkbox">
-                                <label class="form-check-label" for="video">
-                                Video Editor
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="form-select" name="name[]" id="colore" aria-label="Default select example" disabled>
-                            @foreach ($datas6 as $data)
-                            <option selected>Pilih Nama</option>
-
-                            <option value="{{ $data->username }}">{{ $data->username }}</option>
-
-                                @endforeach
-                            </select>
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -220,7 +110,6 @@
 
     </div>
 </div>  
-@include('sweetalert::alert')
 
 <script type="text/javascript">
 function PreviewImage() {

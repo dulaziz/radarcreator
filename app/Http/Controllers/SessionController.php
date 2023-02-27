@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\role;
 use App\Models\upload;
 use App\Models\jabatan;
 use Illuminate\Support\Str;
@@ -91,9 +92,7 @@ public function tambah_upload(Request $request)
            'platform' => 'required',
    
        ]);
-   
-       
-   
+           
     $file_name = time() . '.' . request()->video->getClientOriginalExtension();
    
            request()->video->move(public_path('images'), $file_name);
@@ -108,6 +107,8 @@ public function tambah_upload(Request $request)
             $user -> produksi = json_encode ($request->produksi);
             $user -> name = json_encode($request->name);
             $user -> platform = json_encode ($request->platform);
+            $user -> status = 'Pending';
+
 
 
    
@@ -117,6 +118,40 @@ public function tambah_upload(Request $request)
      }
 }
 
+
+public function uploadedd()
+{
+
+    $user = DB::table('type_group')
+    ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
+        ->get();
+
+    return view('page.uploaded.index', [
+        "title" => "uploaded",
+        "user" => $user,
+
+
+    ]);
+}
+
+public function editupload($id)
+{
+     
+    $datas = DB::table('type_group')
+    ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
+    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->select('type_group.id_group', 'type_group.group', 'tb_upload.id', 'tb_upload.video',   'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->where('tb_upload.id', '=', $id)
+    ->get();
+
+    $user = upload::find($id);
+    return view('page.uploaded.editUpload', [
+        "title" => "uploaded",
+        'user' => $user,
+        'datas' => $datas,
+
+    ]);}
 
 
 
@@ -131,6 +166,8 @@ function user(){
     $user = DB::table('type_group')
     ->join('users', 'users.id_group', '=', 'type_group.id_group')
     ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->join('tb_role', 'tb_role.id_role', '=', 'users.id_role')
+
         ->get();
 
     return view('page/user/index', [
@@ -145,6 +182,8 @@ function user(){
     return view('page/user/userAdd', [
         "title" => "user",
         "user" => groups::get(),
+        "usersss" => role::get(),
+
         "datas" => jabatan::get(),
 
     ]);
@@ -189,7 +228,7 @@ return back()->withFail('Nama dan Password salah !');
         'email' => 'required',
         'password' => 'required',
         'id_jabatan' => 'required',
-        'role' => 'required',
+        'id_role' => 'required',
         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
     ]);
@@ -208,12 +247,12 @@ return back()->withFail('Nama dan Password salah !');
          $user -> email = $request->email;
          $user -> password = Hash::make($request->password);
          $user -> id_jabatan = $request->id_jabatan;
-         $user -> role = $request->role;
+         $user -> id_role = $request->id_role;
          $user -> gambar = $file_name;
 
      $user->save();
 
-return redirect('/userAdd')->with('success', 'Berhasil Ditambahkan!');  
+return redirect('/user')->with('success', 'Berhasil Ditambahkan!');  
   }
 
 
@@ -222,17 +261,20 @@ public function edit($id)
     
     $datas = DB::table('type_group')
     ->join('users', 'users.id_group', '=', 'type_group.id_group')
+    ->join('tb_role', 'tb_role.id_role', '=', 'users.id_role')
     ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
-    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
-    ->where('users.id', '=', $id)
+    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.id_role', 'tb_role.role',  'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
     ->get();
 
     $user = User::find($id);
     return view('page.user.userEdit', [
         "title" => "user",
         'user' => $user,
-        'role' => explode(',', $user->role),
+        'usersss' => role::get(),
         'datas' => $datas,
+        "users" => groups::get(),
+        "userss" => jabatan::get(),
+
     ]);
 }
 
@@ -246,11 +288,12 @@ public function update(Request $request, User $user, $id)
         'email' => 'required',
         'password' => 'required',
         'id_jabatan' => 'required',
-        'role' => 'required',
+        'id_role' => 'required',
         
     ]);
 
     $input = $request->all();
+
 
     if ($image = $request->file('gambar')) {
         $destinationPath = 'images/';
