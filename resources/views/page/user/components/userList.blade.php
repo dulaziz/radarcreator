@@ -33,84 +33,22 @@
                 <thead>
                     <tr class="text-white">
                         <th scope="col">No</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Username</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Group</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Jabatan</th>
+                        <th scope="col">Position/Role</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>01</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>
-                            <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>02</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>
-                            <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>03</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>
-                            <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>04</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>
-                            <div class="d-flex justify-content-center gap-1">
-                                <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>05</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
+                        <td>John Doe</td>
+                        <td>johndoe</td>
+                        <td>johndoe@gmail.com</td>
+                        <td>Radar Depok</td>
+                        <td>Producer (Admin Upload)</td>
                         <td>
                             <div class="d-flex justify-content-center gap-1">
                                 <a class="btn btn-sm btn-primary" href="/userEdit"><i class="fas fa-eye"></i></a>

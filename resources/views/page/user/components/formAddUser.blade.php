@@ -13,8 +13,8 @@
                 src="img/avatar.jpeg"
                 alt="user-avatar"
                 class="rounded-circle"
-                {{-- height="100" --}}
-                width="150"
+                height="100"
+                width="100"
                 id="uploadedAvatar"
                 />
                 <div>
@@ -57,13 +57,18 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Jabatan</label>
+                        <label class="form-label">Position/Role</label>
                             <select class="form-select" name="jabatan" aria-label="Default select example">
                                 <option selected></option>
-                                <option value="1">one</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                                <option value="3">Four</option>
+                                <option value="1">Super Admin (Super Admin)</option>
+                                <option value="1">Admin Finance (Admin Finance)</option>
+                                <option value="1">Admin Sosmed (Admin Sosmed)</option>
+                                <option value="1">Producer (Admin Upload)</option>
+                                <option value="2">Writer (User)</option>
+                                <option value="3">Talet/Host (User)</option>
+                                <option value="4">Camera Person (User)</option>
+                                <option value="5">Voice Over (User)</option>
+                                <option value="5">Video Editor (User)</option>
                             </select>
                         </div>
                     <div class="mb-3">
@@ -72,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-md-flex justify-content-between">
+            {{-- <div class="d-md-flex justify-content-between">
                 <div class="d-md-flex align-items-center mb-3 mb-md-0">
                     <label for="role" class="form-label me-3 mb-1">Role:</label>
                     <div class="form-check me-3">
@@ -106,9 +111,10 @@
                         </label>
                         </div>
                 </div>
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-primary px-5"><i class="fas fa-plus me-2"></i>Add</button>
-                </div>
+            </div> --}}
+            <hr>
+            <div class="d-grid d-md-flex justify-content-end">
+                <button type="submit" class="btn btn-primary px-5"><i class="fas fa-plus me-2"></i>Add</button>
             </div>
         </form>
     </div>

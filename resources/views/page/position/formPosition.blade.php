@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('page.position.components.positionList')
+@include('page.position.components.formPosition')
 
 @endsection

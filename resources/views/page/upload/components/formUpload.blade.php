@@ -9,7 +9,7 @@
         <form action="">
             <div class="mb-3 row">
                 <label for="group" class="col-sm-2 col-form-label">Group</label>
-                <div class="col-sm-5 mb-3 mb-md-0">
+                <div class="col-sm-4 mb-3 mb-md-0">
                     <select class="form-select" aria-label="Default select example">
                         <option selected>Open this select group</option>
                         <option value="1">Radar Bogor</option>
@@ -19,8 +19,15 @@
                         <option value="3">Radar Bandung</option>
                     </select>
                 </div>
-                <div class="col-sm-5">
-                    <input type="date" class="form-control" name="uploadDate" id="uploadDate" >
+                <div class="col-sm-6">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-4 text-center">
+                            <label for="uploadDate" class="form-label mb-0">Upload Date</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="date" class="form-control" name="uploadDate" id="uploadDate" >
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mb-3 row">

@@ -100,6 +100,11 @@ Route::get('/position', function () {
         "title" => "position"
     ]);
 });
+Route::get('/formPosition', function () {
+    return view('page.position.formPosition', [
+        "title" => "form position"
+    ]);
+});
 
 
 // Auth

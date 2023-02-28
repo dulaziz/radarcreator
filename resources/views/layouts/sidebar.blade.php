@@ -11,8 +11,8 @@
             </div>
             <div class="ms-3">
                 {{-- <h6 class="mb-0">NAMA</h6> --}}
-                <h6 class="mb-0">{{Auth::user()->name}}</h6>
-                <span>Radar Depok</span>
+                <h1 class="mb-0 fs-5 text-uppercase">{{Auth::user()->name}}</h1>
+                <p class="mb-0">Producer</p>
             </div>
         </div>
         <div class="navbar-nav w-100 mb-4">
