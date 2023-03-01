@@ -10,7 +10,7 @@ class jabatan extends Model
     use HasFactory;
     protected $table ="type_jabatan";
     protected $primarykey ="id_jabatan";
-    protected $fillable = ['id_jabatan', 'jabatan'];
+    protected $fillable = ['id_jabatan', 'jabatan', 'role'];
    
     
     public function getIncrementing()

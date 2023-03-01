@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
-use App\Models\role;
 use App\Models\upload;
 use App\Models\jabatan;
 use Illuminate\Support\Str;
@@ -17,7 +16,24 @@ use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
 {
+
+    public function dashboard()
+    {
+        $user = DB::table('type_group')
+        ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
+            ->get();
     
+        return view('page.dashboard.index', [
+            "title" => "dashboard",
+            "user" => $user,
+        ]);
+    }
+
+
+
+
+
+
 public function doalpu()
 {
       
@@ -166,9 +182,9 @@ function user(){
     $user = DB::table('type_group')
     ->join('users', 'users.id_group', '=', 'type_group.id_group')
     ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
-    ->join('tb_role', 'tb_role.id_role', '=', 'users.id_role')
 
-        ->get();
+    ->orderBy('users.id', 'asc')
+            ->get();
 
     return view('page/user/index', [
         "title" => "user",
@@ -182,7 +198,6 @@ function user(){
     return view('page/user/userAdd', [
         "title" => "user",
         "user" => groups::get(),
-        "usersss" => role::get(),
 
         "datas" => jabatan::get(),
 
@@ -228,7 +243,6 @@ return back()->withFail('Nama dan Password salah !');
         'email' => 'required',
         'password' => 'required',
         'id_jabatan' => 'required',
-        'id_role' => 'required',
         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
     ]);
@@ -247,7 +261,6 @@ return back()->withFail('Nama dan Password salah !');
          $user -> email = $request->email;
          $user -> password = Hash::make($request->password);
          $user -> id_jabatan = $request->id_jabatan;
-         $user -> id_role = $request->id_role;
          $user -> gambar = $file_name;
 
      $user->save();
@@ -261,16 +274,14 @@ public function edit($id)
     
     $datas = DB::table('type_group')
     ->join('users', 'users.id_group', '=', 'type_group.id_group')
-    ->join('tb_role', 'tb_role.id_role', '=', 'users.id_role')
     ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
-    ->select('type_group.id_group', 'type_group.group', 'users.id', 'users.id_role', 'tb_role.role',  'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->select('type_group.id_group', 'type_group.group', 'users.id',  'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
     ->get();
 
     $user = User::find($id);
     return view('page.user.userEdit', [
         "title" => "user",
         'user' => $user,
-        'usersss' => role::get(),
         'datas' => $datas,
         "users" => groups::get(),
         "userss" => jabatan::get(),
@@ -278,36 +289,45 @@ public function edit($id)
     ]);
 }
 
-public function update(Request $request, User $user, $id)
+public function update(Request $request, User $user)
 {
-    $user = User::findOrfail($id);
-    $request->validate([
-        'name' => 'required',
-        'username' => 'required',
-        'id_group' => 'required',
-        'email' => 'required',
-        'password' => 'required',
-        'id_jabatan' => 'required',
-        'id_role' => 'required',
-        
-    ]);
-
-    $input = $request->all();
+        $request->validate([
+           'name' => 'required',
+           'username' => 'required',
+           'id_group' => 'required',
+           'email' => 'required',
+           'password' => 'required',
+           'id_jabatan' => 'required',
+           'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+   
 
 
+           
+       ]);
+   
+       $user  = User::find($request->id);
+       $user -> name = $request->name;
+            $user -> username = $request->username;
+            $user -> id_group = $request->id_group;
+            $user -> email = $request->email;
+            $user -> password = Hash::make($request->password);
+            $user -> id_jabatan = $request->id_jabatan;
+     
     if ($image = $request->file('gambar')) {
         $destinationPath = 'images/';
         $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
         $image->move($destinationPath, $profileImage);
-        $input['gambar'] = "$profileImage";
+        $user['gambar'] = "$profileImage";
     }else{
-        unset($input['gambar']);
+        unset($user['gambar']);
     }
-      
-    $user->update($input);
+
+   
+        $user->save();
 
     return redirect('/user')->with('success', 'Berhasil Diubah!');  
 }
+
 public function delete(User $user, $id)
 {
 $delete = User::findOrFail($id);

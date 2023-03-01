@@ -14,9 +14,9 @@
                 src="/images/{{ $user->gambar }}"
                 alt="user-avatar"
                 class="rounded-circle"
-                {{-- height="100" --}}
+                height="150" 
                 width="150"
-                id="uploadPreview"
+                                id="uploadPreview"
                 />
                 <div>
                     <label for="upload" class="btn btn-primary my-3" tabindex="0">
@@ -58,10 +58,10 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Jabatan</label>
+                        <label class="form-label">Position/Role</label>
                             <select class="form-select" name="id_jabatan" aria-label="Default select example">
                             @foreach ($userss as $data)
-                            <option value="{{ $data->id_jabatan }}" {{$data->id_jabatan  == $user->id_jabatan ? 'selected' : '' }}>{{ $data->jabatan }}</option>                                      
+                            <option value="{{ $data->id_jabatan }}" {{$data->id_jabatan  == $user->id_jabatan ? 'selected' : '' }}>{{ $data->jabatan }} ({{$data->role}})</option>                                      
 
 
                                 @endforeach
@@ -77,17 +77,6 @@
             
                <div class="d-md-flex justify-content-between">
                   <div class="d-md-flex align-items-center mb-3 mb-md-0">
-                     <label for="role" class="form-label me-3 mb-1">Role:</label>
-                     @foreach ($usersss as $data)
-
-                     <div class="form-check me-3">
-                        <input class="form-check-input" name="id_role" type="checkbox" value="{{ $data->id_role }}" {{$data->id_role  == $user->id_role ? 'checked' : '' }} id="user">
-                        <label class="form-check-label" for="user">
-                        {{ $data->role }}
-                        </label>
-
-                      </div>
-                      @endforeach
 
                 </div>
                 <div class="d-grid">

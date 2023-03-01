@@ -20,7 +20,7 @@
                         <th scope="col">Username</th>
                         <th scope="col">Group</th>
                         <th scope="col">Role</th>
-                        <th scope="col">Jabatan</th>
+                        <th scope="col">Position/Role</th>
                         <th scope="col">Action</th>
                     </tr>
                    
@@ -35,7 +35,7 @@
                         <td>{{ $data->username }}</td>
                         <td>{{ $data->group }}</td>
                         <td>{{ $data->role }}</td>
-                        <td>{{ $data->jabatan }}</td>
+                        <td>{{ $data->jabatan }} ({{$data->role}})</td>
                         <td>
                             
                         <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="user/delete/{{$data->id}}" method="post" enctype="multipart/form-data" >

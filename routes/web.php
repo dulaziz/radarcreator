@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('page.dashboard.index', [
-        "title" => "dashboard"
-    ]);
-});
 
 Route::get('/filter', function () {
     return view('page.dashboard.filter', [
@@ -87,6 +82,8 @@ Route::post('/upload/tambah_upload', [SessionController::class, 'tambah_upload']
 
 Route::put('/userEdit/update/{id}', [SessionController::class, 'update']);
 Route::delete('user/delete/{id}', [SessionController::class, 'delete']);
+
+Route::get('/', [SessionController::class, 'dashboard']);
 
 Route::get('/uploaded', [SessionController::class, 'uploadedd']);
 Route::get('/upload', [SessionController::class, 'doalpu']);

@@ -13,14 +13,14 @@
                 src="img/avatar.jpeg"
                 alt="user-avatar"
                 class="rounded-circle"
-                {{-- height="100" --}}
+                height="150" 
                 width="150"
                 id="uploadPreview"
                 />
                 <div>
                     <label for="upload" class="btn btn-primary my-3" tabindex="0">
                       <span>Upload  photo</span>
-                      <input type="file" id="upload" name="gambar"  onchange="PreviewImage();" hidden accept="image/png, image/jpeg"/>
+                      <input type="file" id="upload" name="gambar"  onchange="PreviewImage();" required hidden accept="image/png, image/jpeg"/>
                     </label>
                     <p class="fw-light mb-0">Allowed JPG, GIF or PNG. Max size of 5MB</p>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" name="email" id="email">
+                        <input type="email" class="form-control" name="email" id="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -40,14 +40,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" name="username" id="username">
+                        <input type="text" class="form-control" name="username" id="username" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="group" class="form-label">Group</label>
                         <div>
-                            <select class="form-select" name="id_group" aria-label="Default select example">
+                            <select class="form-select" name="id_group" aria-label="Default select example" required>
                             <option selected></option>
      
                             @foreach ($user as $data)
@@ -57,37 +57,26 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Jabatan</label>
-                            <select class="form-select" name="id_jabatan" aria-label="Default select example">
+                        <label class="form-label">Position/Role</label>
+                            <select class="form-select" name="id_jabatan" aria-label="Default select example" required>
                             <option selected></option>
     
                             @foreach ($datas as $data)
                                     
-                                <option value="{{ $data->id_jabatan }}">{{ $data->jabatan }}</option>
+                                <option value="{{ $data->id_jabatan }}">{{ $data->jabatan }}   ({{ $data->role}})</option>
                                 @endforeach
-                            </select>
                             </select>
                         </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" id="password">
+                        <input type="password" class="form-control" name="password" id="password" required>
                     </div>
                 </div>
             </div>
             <div class="d-md-flex justify-content-between">
                 <div class="d-md-flex align-items-center mb-3 mb-md-0">
-                    <label for="role" class="form-label me-3 mb-1">Role:</label>
-                    @foreach ($usersss as $datas)
 
-                    <div class="form-check me-3">
-                    <input class="form-check-input" name="id_role" value="{{ $datas->id_role }}
-" type="checkbox">
-                    <label class="form-check-label" for="user">
-                    {{ $datas->role }}
-                       </label>
-
- </div>
- @endforeach
+                  
                       
                 </div>
                 <div class="d-grid">
