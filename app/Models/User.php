@@ -9,19 +9,11 @@ class user extends Authenticatable
     use HasFactory;
     protected $table ="users";
     protected $primarykey ="id";
-    protected $fillable = ['name', 'uuid', 'username', 'group', 'email', 'password', 'jabatan', 'id_role', 'gambar'];
+    protected $fillable = ['name', 'username', 'id_group', 'email', 'password', 'id_jabatan',  'gambar'];
     protected $hidden = [
         'password',
         'remember_token',
     ];
     
-    public function getIncrementing()
-    {
-        return false;
-    }    
-
-    public function category()
-    {   
-return $this->belongsTo(Category::class);
-    }
+   
 }

@@ -80,6 +80,7 @@ Route::post('/signIn/login', [SessionController::class, 'login']);
 Route::post('/userAdd/register_action', [SessionController::class, 'register_action']);
 Route::post('/upload/tambah_upload', [SessionController::class, 'tambah_upload']);
 
+Route::put('/uploaded/update_upload/{id}', [SessionController::class, 'update_upload']);
 Route::put('/userEdit/update/{id}', [SessionController::class, 'update']);
 Route::delete('user/delete/{id}', [SessionController::class, 'delete']);
 

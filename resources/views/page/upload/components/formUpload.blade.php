@@ -40,26 +40,28 @@
             <div class="mb-3 row">
                 <label for="prodTeam" class="col-sm-2 col-form-label text-start">Production Team</label>
                 <div class="col-sm-10">
+
+                    @foreach ($userss as $data)
                     <div class="row d-flex align-items-center mb-3">
                         <div class="col-md-3 text-start">
                             <div class="form-check">
-                                <input type="checkbox" name="produksi[]" class="form-check-input" value="Produser" id="d-checkbox" >
+                                <input type="checkbox"  name="produksi[]" class="form-check-input" value="{{ $data->jabatan }}" >
                                 <label class="form-check-label" for="produser">
-                                Producer
-                                </label>
+                              {{$data->jabatan}}
+                            </label>
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-select" id="color" name="name[]" aria-label="Default select example" disabled="disabled">
-                            <option value="">Pilih Nama</option>
+                            <select type="checkbox"  class="form-select"  name="name[]"  >
+                            <option value="" selected disabled></option>
 
-                            @foreach ($datas as $data)
-                            <option value="{{ $data->username }}">{{ $data->username }}</option>
-
+                            @foreach ($users as $data)
+                            <option  value="{{ $data->name }}">{{$data->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
+                    @endforeach
 
                 </div>
             </div>
@@ -111,6 +113,70 @@
     </div>
 </div>  
 
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('lib/chart/myChart.js') }}"></script>
+    {{-- <script src="{{ asset('lib/chart/chart.min.js') }}"></script> --}}
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Template Javascript -->
+    <script src=  "{{ asset('js/main.js') }}"></script>
+
+    <!-- Date Picker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    @foreach ($userss as $data)
+
+    <script>           
+    
+      $('#d-checkup').click(function(e) {             
+            if($(this).prop('checked') == true)$('#color').removeAttr("disabled");           
+              else $('select').attr("disabled","disabled");;        
+                   });    
+
+
+                        </script>
+                        @endforeach
+    <script type="text/javascript">
+$(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+        
+        $('input[name="datefilter"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+        
+        $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+        
+        $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+        
+        });
+    </script>
+    
+
+
 <script type="text/javascript">
 function PreviewImage() {
 var oFReader = new FileReader();
@@ -121,3 +187,4 @@ oFReader.onload = function (oFREvent)
 };
 };
 </script>
+<script src=  "{{ asset('js/main.js') }}"></script>

@@ -71,7 +71,7 @@
                 <h5 class="mb-3">{{$users->video_title}}</h5>
                 <div class="d-flex align-items-center gap-2 mb-2 mb-md-4">
                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 30px; height: 30px;">
-                    <p class="mb-0">{{$users->group}}</p>
+                    <p class="mb-0">{{$users->name}}</p>
                 </div>
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</p>
