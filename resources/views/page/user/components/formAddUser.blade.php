@@ -47,23 +47,23 @@
                     <div class="mb-3">
                         <label for="group" class="form-label">Group</label>
                         <div>
-                            <select class="form-select" name="id_group" aria-label="Default select example" required>
+                            <select class="form-select" name="group" aria-label="Default select example" required>
                             <option selected></option>
      
                             @foreach ($user as $data)
-                                <option value="{{ $data->id_group }}">{{ $data->group }}</option>
+                                <option value="{{ $data->group }}">{{ $data->group }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Position/Role</label>
-                            <select class="form-select" name="id_jabatan" aria-label="Default select example" required>
+                            <select class="form-select" name="jabatan" aria-label="Default select example" required>
                             <option selected></option>
     
                             @foreach ($datas as $data)
                                     
-                                <option value="{{ $data->id_jabatan }}">{{ $data->jabatan }}   ({{ $data->role}})</option>
+                                <option value="{{ $data->jabatan }}">{{ $data->jabatan }}   ({{ $data->role}})</option>
                                 @endforeach
                             </select>
                         </div>

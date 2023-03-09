@@ -81,17 +81,18 @@ Route::post('/userAdd/register_action', [SessionController::class, 'register_act
 Route::post('/upload/tambah_upload', [SessionController::class, 'tambah_upload']);
 
 Route::put('/uploaded/update_upload/{id}', [SessionController::class, 'update_upload']);
-Route::put('/userEdit/update/{id}', [SessionController::class, 'update']);
+Route::put('/userEdit/update/{tanggal}', [SessionController::class, 'update']);
 Route::delete('user/delete/{id}', [SessionController::class, 'delete']);
+Route::delete('/uploaded/delete_upload/{id}', [SessionController::class, 'delete_upload']);
 
-Route::get('/', [SessionController::class, 'dashboard']);
+
+Route::get('/', [SessionController::class, 'dashboard'])->middleware('RedirectIfNotAuthenticated');
 
 Route::get('/uploaded', [SessionController::class, 'uploadedd']);
 Route::get('/upload', [SessionController::class, 'doalpu']);
 Route::get('/signIn', [SessionController::class, 'index']);
 Route::get('user', [SessionController::class, 'user']);
-Route::get('/userEdit/{id}', [SessionController::class, 'edit']);
+Route::get('/userEdit/{tanggal}', [SessionController::class, 'edit']);
 Route::get('/editUpload/{id}', [SessionController::class, 'editupload']);
 Route::get('/userAdd', [SessionController::class, 'register']);
-
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');

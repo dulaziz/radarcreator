@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\groups;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,67 +19,165 @@ use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
 {
+public function construct()
+{
+$this->middleware('auth');
+}
 
-    public function dashboard()
+    public function uploadedd(Request $request)
+
     {
+    
+     $user = DB::table('type_group')
+    ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group');
+    
+    if($request->roles){
+        $user = upload::where('bulan',$request->roles);
+    }
+    
+    if($request->search){
+        $user = upload::where('video_title','LIKE', '%' .$request->search. '%');
+    }    
+     $user = $user->orderBy('id','DESC')->paginate(10);
+         return view('page.uploaded.index',  [
+            "title" => "uploaded",
+            "user" => $user,
+        ]);
+    }
+    
+    public function dashboard(Request $request)
+    {
+
+        $sum = upload::where('tb_upload.name_upload', '=', Auth::user()->name)->count();
+        $sem = upload::where('tb_upload.status', '=', 'Pending')->count();
+        $sam = upload::where('tb_upload.status', '=', 'Published')->count();
+        $som = upload::where('tb_upload.status', '=', 'TakeDown')->count();
+
+
         $user = DB::table('type_group')
         ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
-            ->get();
+        ->where('tb_upload.name_upload', '=', Auth::user()->name);
+
+               if($request->roles){
+            $user = upload::where('bulan',$request->roles);
+        }
+        if($request->select){
+            $user = upload::where('id_group',$request->select);
+        }
+        
+        if($request->search){
+            $user = upload::where('video_title','LIKE', '%' .$request->search. '%');
+        }  
+        $user = $user->orderBy('id','DESC')->paginate(10);
     
         return view('page.dashboard.index', [
             "title" => "dashboard",
             "user" => $user,
+            "users" => groups::get(),  
+            "sum" => $sum,
+            "sem" => $sem,
+            "sam" => $sam,
+            "som" => $som,
+
+
         ]);
     }
 
 
-    public function update_upload(Request $request, upload $user)
+
+
+    public function update_upload(Request $request, $uuid)
     {
+        $user = upload::find($uuid);
+
+        $input = $request->all();
         $request->validate([
+            'id_group' => 'required',
+            'tanggal' => 'required',
             'video_title' => 'required',
-    
+            'produksi' => 'required',
+            'name' => 'required',
+            'platform' => 'required',
+            'video' => 'mimes:mp4,mov,ogg | max:20000',
+
+
+
         ]);
 
+    if ($request->hasFile('video')) {
+
+        //upload new image
+
+        $image = $request->file('video');
+        $image->storeAs('public/posts', $image->hashName());
+
+        //delete old image
+        Storage::delete('public/posts'.$user->video);
+
+        //update post with new image
+        $user->update([
+            
+            $user ->video     = $image->hashName(),
+            $produksi = implode(',',$input['produksi']),
+            $name = implode(',',$input['name']),
+            $platform = implode(',', $input['platform']),
+
+            $user->id_group = $input['id_group'],
+            $user->tanggal = $input['tanggal'],
+            
+            
+            $user->video_title = $input['video_title'],
+            $user->produksi = $produksi,
+            $user->name = $name,
+            $user->platform = $platform
+     
+        ]);
+        return redirect('/uploaded')->with('success', 'Berhasil Diubah!');  
+
+    } else {
+
+        //update post without image
+        $user->update([
+            $produksi = implode(',',$input['produksi']),
+            $name = implode(',',$input['name']),
+            $platform = implode(',', $input['platform']),
+            $user->id_group = $input['id_group'],
+            $user->tanggal = $input['tanggal'],
+            $user->video_title = $input['video_title'],
+            $user->produksi = $produksi,
+            $user->name = $name,
+            $user->platform = $platform
         
-       
-   $input = $request->all();
-    $produksi = implode(',',$input['produksi']);
-    $name = implode(',',$input['name']);
-    $platform = implode(',', $input['platform']);
+      
+        ]);
+        return redirect('/uploaded')->with('success', 'Berhasil Diubah!');  
 
-    $user  = upload::find($request->id);
-    $user->video_title = $input['video_title'];
-    $user->produksi = $produksi;
-    $user->name = $name;
-    $user->platform = $platform;
+    }
 
 
-    $user->status = 'Pending';
+    }
 
 
 
-         
-        if ($image = $request->file('video')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $user['video'] = "$profileImage";
-        }else{
-            unset($user['video']);
+    public function search(Request $request)
+    {
+        $month = $request->input('tanggal');
+        
+        if ($month) {
+            $posts = upload::searchByMonth($month)->get();
+        } else {
+            $posts = upload::all();
         }
     
-       
-            $user->save();
-    
-        return redirect('/user')->with('success', 'Berhasil Diubah!');  
+        return view('page.upload.index', [
+            "title" => "upload",
+          
+            "posts" => $posts,  
+            
+         
+                  
+        ]);
     }
-    
-
-
-
-
-
-
 
 public function doalpu()
 {
@@ -107,6 +206,13 @@ public function doalpu()
 
 public function tambah_upload(Request $request)
 {
+    $input = $request->all();
+    $user = new upload();
+    $user-> id = Str::uuid();
+
+    setlocale(LC_TIME, 'id_ID.utf8'); // set lokalisasi untuk bahasa Indonesia
+    
+
     {
         $request->validate([
            'tanggal' => 'required',
@@ -119,30 +225,36 @@ public function tambah_upload(Request $request)
    
        ]);
            
-    $file_name = time() . '.' . request()->video->getClientOriginalExtension();
-   
-           request()->video->move(public_path('images'), $file_name);
-   
-   
+            //upload new image
+            $request->hasFile($input['video']);
 
-            $input = $request->all();
+            $image = $request->file('video');
+            $image->storeAs('public/posts', $image->hashName());
+    
+            //delete old image
     $produksi = implode(',',$input['produksi']);
+
     $name = implode(',',$input['name']);
     $platform = implode(',', $input['platform']);
-
-    $user = new upload();
-    $user -> id = Str::uuid();
-    $user->tanggal = $input['tanggal'];
+    $user->tanggal = $input['tanggal']; 
     $user->id_group = $input['id_group'];
     $user->video_title = $input['video_title'];
    
-    $user->video = $file_name;
+    $user->video = $image->hashName();
     $user->produksi = $produksi;
     $user->name = $name;
     $user->platform = $platform;
 
 
+    $user->platform = $platform;
+
+
+
     $user->status = 'Pending';
+    $user->bulan = Carbon::now()->isoFormat('MMMM');
+
+    $user->name_upload = Auth::user()->name;
+    $user->gambar = Auth::user()->gambar;
 
 
    
@@ -153,56 +265,23 @@ public function tambah_upload(Request $request)
 }
 
 
-public function uploadedd()
-{
-
-    $user = DB::table('type_group')
-    ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
-        ->get();
-
-    return view('page.uploaded.index', [
-        "title" => "uploaded",
-        "user" => $user,
 
 
-    ]);
-}
 
 public function editupload($id, tb_user $userr)
 {
      
-    $datas = DB::table('type_group')
-    ->join('users', 'users.id_group', '=', 'type_group.id_group')
-    ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
-    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
-        ->select('type_group.id_group', 'type_group.group', 'tb_upload.id', 'tb_upload.video',    'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
-
-    ->get();
+    
    
    
     $users = DB::table('type_jabatan')
     
-    ->select('type_jabatan.id_khusus', 'type_jabatan.user', 'type_jabatan.jabatan', 'type_jabatan.role', 'type_jabatan.id_jabatan', )
-    
-    ->where('type_jabatan.id_khusus', '=', '1')
-    ->get();
-
-     
-    $userr = DB::table('type_jabatan')
-    
-    ->select('type_jabatan.id_khusus', 'type_jabatan.user', 'type_jabatan.jabatan', 'type_jabatan.role', 'type_jabatan.id_jabatan', )
+    ->select('type_jabatan.id_khusus', 'type_jabatan.user', 'type_jabatan.jabatan', 'type_jabatan.role', 'type_jabatan.jabatan', )
     
     ->where('type_jabatan.id_khusus', '=', '1')
     ->get();
 
 
-
-    $tb_user = DB::table('tb_user')
-    
-    ->select('tb_user.id', 'tb_user.produksi', 'tb_user.name')
-    
-    ->where('tb_user.id', '=', $id)
-    ->get();
 
     $use = DB::table('users')
     
@@ -216,7 +295,6 @@ public function editupload($id, tb_user $userr)
     return view('page.uploaded.editUpload', [
         "title" => "uploaded",
         'user' => $user,
-        'tb_user' => $tb_user,
         "users" => groups::get(),
         "userss" => $users,
         "use" => $use,  
@@ -241,8 +319,8 @@ public function editupload($id, tb_user $userr)
 function user(){
 
     $user = DB::table('type_group')
-    ->join('users', 'users.id_group', '=', 'type_group.id_group')
-    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
+    ->join('users', 'users.group', '=', 'type_group.group')
+    ->join('type_jabatan', 'type_jabatan.jabatan', '=', 'users.jabatan')
 
     ->orderBy('users.id', 'asc')
             ->get();
@@ -288,7 +366,7 @@ return back()->withFail('Nama dan Password salah !');
 
 
 
- public function logout(Request $request){
+ public function logout(){
    Auth::logout();
    Session::flush();
 
@@ -297,46 +375,57 @@ return back()->withFail('Nama dan Password salah !');
 
  public function register_action(Request $request)
  {
+    $input = $request->all();
+
+    $user = new User();
+
+       $user -> id = Str::uuid();
      $request->validate([
         'name' => 'required',
         'username' => 'required',
-        'id_group' => 'required',
+        'group' => 'required',
         'email' => 'required',
         'password' => 'required',
-        'id_jabatan' => 'required',
+        'jabatan' => 'required',
         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
     ]);
 
+  //upload new image
+  $request->hasFile($input['gambar']);
 
- $file_name = time() . '.' . request()->gambar->getClientOriginalExtension();
+  $image = $request->file('gambar');
+  $image->storeAs('public/posts', $image->hashName());
 
-        request()->gambar->move(public_path('images'), $file_name);
-
-     $user = new User();
-
-        $user -> id = Str::uuid();
-         $user -> name = $request->name;
-         $user -> username = $request->username;
-         $user -> id_group = $request->id_group;
-         $user -> email = $request->email;
-         $user -> password = Hash::make($request->password);
-         $user -> id_jabatan = $request->id_jabatan;
-         $user -> gambar = $file_name;
+ 
+        $user->name = $input['name'];
+        $user->username = $input['username'];
+        $user->group = $input['group'];
+        $user->email = $input['email'];
+        $user->password = Hash::make($input['password']);
+        $user->jabatan = $input['jabatan'];
+        $user->gambar = $image->hashName();
+        $user->role = $input['jabatan'];
 
      $user->save();
 
 return redirect('/user')->with('success', 'Berhasil Ditambahkan!');  
-  }
+  
+
+
+
+
+
+}
 
 
 public function edit($id)
 {
     
     $datas = DB::table('type_group')
-    ->join('users', 'users.id_group', '=', 'type_group.id_group')
-    ->join('type_jabatan', 'type_jabatan.id_jabatan', '=', 'users.id_jabatan')
-    ->select('type_group.id_group', 'type_group.group', 'users.id',  'users.id_group', 'type_jabatan.id_jabatan', 'type_jabatan.jabatan')
+    ->join('users', 'users.group', '=', 'type_group.group')
+    ->join('type_jabatan', 'type_jabatan.jabatan', '=', 'users.jabatan')
+    ->select('type_group.group', 'type_group.group', 'users.id',  'users.group', 'type_jabatan.jabatan', 'type_jabatan.jabatan')
     ->get();
 
     $user = User::find($id);
@@ -350,55 +439,83 @@ public function edit($id)
     ]);
 }
 
-public function update(Request $request, User $user)
+public function update(Request $request,  $uuid)
 {
-        $request->validate([
-           'name' => 'required',
+    $user = User::find($uuid);
+
+        $this->validate($request, [
+            'name' => 'required',
            'username' => 'required',
-           'id_group' => 'required',
+           'group' => 'required',
            'email' => 'required',
            'password' => 'required',
-           'id_jabatan' => 'required',
-           'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           'jabatan' => 'required',
+           'gambar' => 'image|mimes:jpeg,png,jpg|max:2048'
    
 
 
            
        ]);
-   
-       $user  = User::find($request->id);
-       $user -> name = $request->name;
-            $user -> username = $request->username;
-            $user -> id_group = $request->id_group;
-            $user -> email = $request->email;
-            $user -> password = Hash::make($request->password);
-            $user -> id_jabatan = $request->id_jabatan;
-     
-    if ($image = $request->file('gambar')) {
-        $destinationPath = 'images/';
-        $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        $image->move($destinationPath, $profileImage);
-        $user['gambar'] = "$profileImage";
-    }else{
-        unset($user['gambar']);
+       if ($request->hasFile('gambar')) {
+
+        //upload new image
+
+        $image = $request->file('gambar');
+        $image->storeAs('public/posts', $image->hashName());
+
+        //delete old image
+        Storage::delete('public/posts'.$user->gambar);
+
+        //update post with new image
+        $user->update([
+            
+            $user -> gambar     = $image->hashName(),
+            $user -> name = $request->name,
+                 $user -> username = $request->username,
+                 $user -> group = $request->group,
+                 $user -> email = $request->email,
+                 $user -> password = Hash::make($request->password),
+                 $user -> jabatan = $request->jabatan
+                 
+        ]);
+        return redirect('/user')->with('success', 'Berhasil Diubah!');  
+
+    } else {
+
+        //update post without image
+        $user->update([
+            $user -> name = $request->name,
+            $user -> username = $request->username,
+            $user -> group = $request->group,
+            $user -> email = $request->email,
+            $user -> password = Hash::make($request->password),
+            $user -> jabatan = $request->jabatan
+        ]);
+        return redirect('/user')->with('success', 'Berhasil Diubah!');  
+
     }
 
-   
-        $user->save();
-
-    return redirect('/user')->with('success', 'Berhasil Diubah!');  
 }
+
 
 public function delete(User $user, $id)
 {
 $delete = User::findOrFail($id);
 Storage::delete('public/posts/'. $user->image);
-
 $delete->delete(); 
 return redirect('/user')->with('success', 'Berhasil Dihapus!');  
 
 
 }
+public function delete_upload(upload $upload, $id)
+{
+$delete = upload::findOrFail($id);
+Storage::delete('public/posts/'. $upload->image);
 
+$delete->delete(); 
+return redirect('/uploaded')->with('success', 'Berhasil Dihapus!');  
+
+
+}
 
 }

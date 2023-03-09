@@ -10,7 +10,7 @@ class tb_user extends Model
     use HasFactory;
     protected $table ="tb_user";
     protected $primarykey ="id_user";
-    protected $fillable = ['produksi','name'];
+    protected $fillable = ['id','produksi','name'];
     protected $hidden = [
         'remember_token',
     ];}

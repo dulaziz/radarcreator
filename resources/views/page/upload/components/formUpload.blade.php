@@ -49,8 +49,10 @@
                                 <label class="form-check-label" for="produser">
                               {{$data->jabatan}}
                             </label>
+                            
                             </div>
                         </div>
+                     
                         <div class="col-md-9">
                             <select type="checkbox"  class="form-select"  name="name[]"  >
                             <option value="" selected disabled></option>

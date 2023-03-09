@@ -9,13 +9,18 @@
     <div class="navbar-nav align-items-center ms-auto">     
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <img class="rounded-circle me-lg-2" src="{{ asset('img/user.jpg') }}" alt="" style="width: 40px; height: 40px;">
+                <img 
+                alt="user-avatar"
+                class="rounded-circle"
+                height="40" 
+                width="40"
+                src="{{ asset('/storage/public/posts/'.Auth::user()->gambar) }}" >
                 <span class="d-none d-lg-inline-flex">{{Auth::user()->name}}</span>
                 {{-- <span class="d-none d-lg-inline-flex">NAMA</span> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                 <a href="/userDetail" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
-                <a href="" class="dropdown-item"><i class="fas fa-power-off"></i> Log Out</a>
+                <a href="{{ route('logout') }}" class="dropdown-item"><i class="fas fa-power-off"></i> Log Out</a>
             </div>
         </div>
     </div>

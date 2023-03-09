@@ -5,13 +5,13 @@
             <a href="/user">Back</a> 
         </div>
         <hr>
-        <form action="../userEdit/update/{{$user->id}}" method="POST" enctype="multipart/form-data" >
+        <form action="../userEdit/update/{{$user->id}}" method="POST" enctype="multipart/form-data">
 @csrf
 @method('PUT')
         <div class="d-flex align-items-center gap-4 text-center">
             <div class="card-body pb-0">
                 <img
-                src="/images/{{ $user->gambar }}"
+                src="{{ asset('/storage/public/posts/'.$user->gambar) }}"
                 alt="user-avatar"
                 class="rounded-circle"
                 height="150" 
@@ -31,25 +31,25 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" value="{{$user->email}}" name="email" id="email">
-                    </div>
-                    <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" value="{{$user->name}}" class="form-control" name="name" id="name">
+                        <input type="text" value="{{$user->name}}" class="form-control" name="name" >
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" value="{{$user->username}}" class="form-control" name="username" id="username">
+                        <label for="email" class="form-label">Username</label>
+                        <input type="text" class="form-control" value="{{$user->username}}" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Email</label>
+                        <input type="text" value="{{$user->email}}" class="form-control" name="email">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="group" class="form-label">Group</label>
                         <div>
-                            <select class="form-select" name="id_group" aria-label="Default select example">
+                            <select class="form-select" name="group" aria-label="Default select example">
                             @foreach ($users as $data)
-                            <option value="{{ $data->id_group }}" {{$data->id_group  == $user->id_group ? 'selected' : '' }}>{{ $data->group }}</option>                                      
+                            <option value="{{ $data->group }}" {{$data->id_group  == $user->id_group ? 'selected' : '' }}>{{ $data->group }}</option>                                      
                                 @endforeach
                             </select>
 
@@ -59,9 +59,9 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Position/Role</label>
-                            <select class="form-select" name="id_jabatan" aria-label="Default select example">
+                            <select class="form-select" name="jabatan" aria-label="Default select example">
                             @foreach ($userss as $data)
-                            <option value="{{ $data->id_jabatan }}" {{$data->id_jabatan  == $user->id_jabatan ? 'selected' : '' }}>{{ $data->jabatan }} ({{$data->role}})</option>                                      
+                            <option value="{{ $data->jabatan }}" {{$data->id_jabatan  == $user->id_jabatan ? 'selected' : '' }}>{{ $data->jabatan }} ({{$data->role}})</option>                                      
 
 
                                 @endforeach

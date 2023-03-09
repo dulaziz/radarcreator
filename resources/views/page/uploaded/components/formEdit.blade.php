@@ -1,9 +1,13 @@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+ 
 @php
 $hobbies = explode(",",$user->produksi);
 
 $hobbiess = explode(",",$user->name);
 
-print_r($hobbiess);
 
 
 print_r($hobbies);
@@ -27,8 +31,8 @@ $hobbiesss = explode(",",$user->platform);
 <div class="mb-3 row">
                 <label for="group" class="col-sm-2 col-form-label">Group</label>
                 <div class="col-sm-5 mb-3 mb-md-0">
-                    <select class="form-select" name="id_group" aria-label="Default select example">
-                        <option selected>Pilih</option>
+                    <select class="form-select"  name="id_group" aria-label="Default select example">
+                            <option selected>Pilih</option>
                         @foreach ($users as $data)
                         <option value="{{ $data->id_group }}" {{$data->id_group  == $user->id_group ? 'selected' : '' }}>{{ $data->group }}</option>                                      
                                 @endforeach
@@ -49,49 +53,55 @@ $hobbiesss = explode(",",$user->platform);
                 <div class="col-sm-10">
                     <input type="file" class="form-control bg-dark" id="upload" name="video"  onchange="PreviewImage();"  id="videoFile">
                     <div class="mt-3 preview-vid">
-                        <video controls src="/images/{{$user->video}}" id="uploadPreview" class="w-100"></video>
+                        <video controls src="{{ asset('/storage/public/posts/'.$user->video) }}" id="uploadPreview" class="w-100"></video>
                     </div>
                 </div>
             </div>
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Tim Produksi</label>
             <div class="col-sm-10">
-
-            @foreach ($tb_user as $datas)
+                
 
             
                 <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-3 text-start">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="produksi[]"  id="produser" value="{{$datas->produksi }}" {{ in_array($datas->produksi, $hobbies) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="produser">
-                            {{ $datas->produksi }}
-                                                    </label>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-
-                        <select class="form-select" name="name[]" >
-
-                        <option value="{{$datas->name}}" selected disabled {{$datas->name  == $hobbiess ? 'selected' : '' }}>{{ $datas->name }}</option>                                      
-
-                        <option value="" ><- Pilih Nama -></option>                                      
-
-  @foreach ($use as $data)
-
-                        <option  value="{{ $data->name }}"  >{{$data->name}}</option>
-                        @endforeach
+                    <select class="selectpicker"   multiple data-live-search="true" name="produksi[]">                            
+                        @foreach ($userss as $datas)
+                        <option  value="{{ $datas->jabatan }}"  {{ in_array($datas->jabatan, $hobbies) ? 'selected' : '' }}>{{$datas->jabatan}}</option>
+                         @endforeach
                     </select>
                     </div>
+                  
                 </div>
-@endforeach 
                
-
-              
               
             </div>
         </div>
 
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label text-start">Nama Produksi</label>
+            <div class="col-sm-10">
+                
+
+            
+                <div class="row d-flex align-items-center mb-3">
+                    <div class="col-md-3 text-start">
+                    <select  class="selectpicker"   multiple data-live-search="true" name="name[]">                            
+                        @foreach ($use as $data)
+                        
+                        <option  value="{{ $data->name }}"  {{ in_array($data->name, $hobbiess) ? 'selected' : '' }}>{{$data->name}}</option>
+                         @endforeach
+                    </select>
+                    </div>
+                  
+                </div>
+               
+              
+            </div>
+        </div>
+
+
+        
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label text-start">Platform Tayang</label>
             <div class="col-sm-10 d-flex align-items-center"> 

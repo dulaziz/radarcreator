@@ -1,12 +1,17 @@
+@if (Auth::check())
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <title>Radar Creator | {{ $title }}</title>
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <!-- ... -->
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
     <link href=  "img/favicon.png" rel="icon">
@@ -86,11 +91,44 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     
-    <script type="text/javascript">
+    <script >
+$(document).ready(function (){
+    $('#category').on('change',function(){
+     var category = $(this).val();
+     $.ajax({
+        url:"/uploaded",
+        type: "GET",
+        data:{'category':category },
+        success:function(data){
+            var user = data.user;
+            var html ='';
+            if (user.length > 0) {
+                for(let i = 0; i<user.length;i++){
+              html +='';
+                }
+            }else{
+                html +='<tr>\ <td>Tidak ditemukan</td>\ </tr>';
+
+            }
+        }
+     });
+    });
+});
+</script>
+
+<script>
 $(document).ready(function () {
     $('#example').DataTable();
 });
 </script>
+
+<!-- Initialize the plugin: -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select').selectpicker();
+    });
+</script>
+
 <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
 <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
@@ -120,3 +158,4 @@ $(document).ready(function () {
 </body>
 
 </html>
+@endif
