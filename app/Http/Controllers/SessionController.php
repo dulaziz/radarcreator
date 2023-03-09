@@ -24,10 +24,55 @@ public function construct()
 $this->middleware('auth');
 }
 
+public function posisi()
+{
+    
+        return view('page.position.index', [
+            "title" => "position",
+            "user" => jabatan::get()
+
+
+        ]);
+
+    
+}
+
+public function tambah_posisi(Request $request)
+{
+    $input = $request->all();
+    $user = new jabatan();
+    {
+        $request->validate([
+           'jabatan' => 'required',
+           'role' => 'required',
+       ]);
+           
+    $user->jabatan = $input['jabatan'];
+    $user->role = $input['role'];
+    $user->id_khusus = '1';
+
+   
+        $user->save();
+   
+   return redirect('/position')->with('success', 'Berhasil Ditambahkan!');  
+     }
+}    
+
+
+
+
+
+
+
     public function uploadedd(Request $request)
 
     {
-    
+        $sum = upload::count();
+                $sem = upload::where('tb_upload.status', '=', 'Pending')->count();
+        $sam = upload::where('tb_upload.status', '=', 'Published')->count();
+        $som = upload::where('tb_upload.status', '=', 'TakeDown')->count();
+
+
      $user = DB::table('type_group')
     ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group');
     
@@ -42,8 +87,14 @@ $this->middleware('auth');
          return view('page.uploaded.index',  [
             "title" => "uploaded",
             "user" => $user,
+            "sum" => $sum,
+            "sem" => $sem,
+            "sam" => $sam,
+            "som" => $som,
+
         ]);
     }
+
     
     public function dashboard(Request $request)
     {
@@ -276,7 +327,7 @@ public function editupload($id, tb_user $userr)
    
     $users = DB::table('type_jabatan')
     
-    ->select('type_jabatan.id_khusus', 'type_jabatan.user', 'type_jabatan.jabatan', 'type_jabatan.role', 'type_jabatan.jabatan', )
+    ->select('type_jabatan.id_khusus', 'type_jabatan.jabatan', 'type_jabatan.role', 'type_jabatan.jabatan', )
     
     ->where('type_jabatan.id_khusus', '=', '1')
     ->get();

@@ -68,17 +68,14 @@ Route::get('/detailRevenue', function () {
 });
 
 // Position
-Route::get('/position', function () {
-    return view('page.position.index', [
-        "title" => "position"
-    ]);
-});
 
 
 // Auth
 Route::post('/signIn/login', [SessionController::class, 'login']);
 Route::post('/userAdd/register_action', [SessionController::class, 'register_action']);
 Route::post('/upload/tambah_upload', [SessionController::class, 'tambah_upload']);
+Route::post('/position/tambah_posisi', [SessionController::class, 'tambah_posisi']);
+
 
 Route::put('/uploaded/update_upload/{id}', [SessionController::class, 'update_upload']);
 Route::put('/userEdit/update/{tanggal}', [SessionController::class, 'update']);
@@ -89,6 +86,8 @@ Route::delete('/uploaded/delete_upload/{id}', [SessionController::class, 'delete
 Route::get('/', [SessionController::class, 'dashboard'])->middleware('RedirectIfNotAuthenticated');
 
 Route::get('/uploaded', [SessionController::class, 'uploadedd']);
+Route::get('/position', [SessionController::class, 'posisi']);
+
 Route::get('/upload', [SessionController::class, 'doalpu']);
 Route::get('/signIn', [SessionController::class, 'index']);
 Route::get('user', [SessionController::class, 'user']);
