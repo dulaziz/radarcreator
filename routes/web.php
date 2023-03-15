@@ -25,12 +25,6 @@ Route::get('/filter', function () {
 
 
 
-// Publish
-Route::get('/publish', function () {
-    return view('page.dashboard.publish', [
-        "title" => "dashboard"
-    ]);
-});
 
 // Upload
 
@@ -50,22 +44,7 @@ Route::get('/detail', function () {
     ]);
 });
 
-// Revenue
-Route::get('/revenue', function () {
-    return view('page.revenue.index', [
-        "title" => "revenue"
-    ]);
-});
-Route::get('/addRevenue', function () {
-    return view('page.revenue.addRevenue', [
-        "title" => "revenue"
-    ]);
-});
-Route::get('/detailRevenue', function () {
-    return view('page.revenue.detailRevenue', [
-        "title" => "revenue"
-    ]);
-});
+
 
 // Position
 
@@ -76,8 +55,11 @@ Route::post('/userAdd/register_action', [SessionController::class, 'register_act
 Route::post('/upload/tambah_upload', [SessionController::class, 'tambah_upload']);
 Route::post('/position/tambah_posisi', [SessionController::class, 'tambah_posisi']);
 
-
+Route::put('/addRevenue/add_revenue/{id}', [SessionController::class, 'add_revenue']);
+Route::put('//{id}/', [SessionController::class, 'update_status']);
 Route::put('/uploaded/update_upload/{id}', [SessionController::class, 'update_upload']);
+Route::put('/publish/updated_status/{id}', [SessionController::class, 'updated_status']);
+
 Route::put('/userEdit/update/{tanggal}', [SessionController::class, 'update']);
 Route::delete('user/delete/{id}', [SessionController::class, 'delete']);
 Route::delete('/uploaded/delete_upload/{id}', [SessionController::class, 'delete_upload']);
@@ -86,12 +68,23 @@ Route::delete('/uploaded/delete_upload/{id}', [SessionController::class, 'delete
 Route::get('/', [SessionController::class, 'dashboard'])->middleware('RedirectIfNotAuthenticated');
 
 Route::get('/uploaded', [SessionController::class, 'uploadedd']);
+
+
+
+Route::get('/publish/{id}', [SessionController::class, 'published']);
+
 Route::get('/position', [SessionController::class, 'posisi']);
 
 Route::get('/upload', [SessionController::class, 'doalpu']);
+Route::get('/reve', [SessionController::class, 'doalpu']);
+
 Route::get('/signIn', [SessionController::class, 'index']);
 Route::get('user', [SessionController::class, 'user']);
 Route::get('/userEdit/{tanggal}', [SessionController::class, 'edit']);
 Route::get('/editUpload/{id}', [SessionController::class, 'editupload']);
 Route::get('/userAdd', [SessionController::class, 'register']);
+Route::get('/revenue', [SessionController::class, 'revenues']);
+Route::get('/addRevenue', [SessionController::class, 'halaman_revenue']);
+Route::get('/detailRevenue/{id}', [SessionController::class, 'detail_revenue']);
+
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');
