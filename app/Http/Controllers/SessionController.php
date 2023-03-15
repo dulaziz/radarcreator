@@ -23,7 +23,177 @@ public function construct()
 {
 $this->middleware('auth');
 }
+public function chart()
+{
+    # code...
+} 
 
+
+public function halaman_revenue($uuid)
+{
+    $user = DB::table('tb_upload') //join table users and table user_details base from matched id;
+    ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
+    ->find($uuid); //find the record matched to the current authenticated user's id from the joint table records
+    $start_date = upload::pluck('bulan')->first();
+
+        return view('page.revenue.addRevenue', [
+           "title" => "revenue",
+           "user" => $user,
+           "start_date" => $start_date
+
+
+        ]); 
+    }
+
+    public function add_revenue(Request $request, $uuid)
+    {
+        $user = upload::find($uuid);
+
+        $input = $request->all();
+        $request->validate([
+            'viewer_bulan' => 'required',
+            'impression_bulan' => 'required',
+            'revenue_bulan' => 'required',
+            'revenuedate_bulan' => 'required',
+            'viewer_harian' => 'required',
+            'impression_harian' => 'required',
+            'revenue_harian' => 'required',
+            'revenuedate_harian' => 'required',
+        ]);
+    
+        $user->update([
+    
+            $user->viewer_bulan = $input['viewer_bulan'],
+            $user->impression_bulan = $input['impression_bulan'],
+            $user->revenue_bulan = $input['revenue_bulan'],
+            $user->revenuedate_bulan = $input['revenuedate_bulan'],
+            $user->viewer_harian = $input['viewer_harian'],
+            $user->impression_harian = $input['impression_harian'],
+            $user->revenue_harian = $input['revenue_harian'],
+            $user->revenuedate_harian = $input['revenuedate_harian'],
+
+    
+        ]);
+        return redirect('/revenue')->with('success', 'Berhasil Diubah!');  
+    
+    
+    }
+        
+    
+
+
+public function revenues(Request $request)
+{
+    $user= DB::table('tb_upload')
+    ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
+    ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.updated_at',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan','tb_upload.impression_bulan','tb_upload.revenue_bulan','tb_upload.revenuedate_bulan','tb_upload.viewer_harian','tb_upload.impression_harian','tb_upload.revenue_harian','tb_upload.revenuedate_harian',)
+    ->where('tb_upload.status', '=', 'Published');
+
+    if($request->select){
+        $user = upload::where('tb_upload.status', '=', 'Published')
+        ->where('id_group',$request->select);
+    }
+    if($request->search){
+        $user = upload::where('tb_upload.status', '=', 'Published')
+        ->where('video_title','LIKE', '%' .$request->search. '%');
+    }  
+    if($request->roles){
+        $user = upload::where('tb_upload.status', '=', 'Published')
+        ->where('bulan',$request->roles);
+    }
+
+    $user = $user->orderBy('updated_at','DESC')->paginate(10);
+
+    return view('page.revenue.index', [
+        "title" => "revenue",
+        "user"  => $user,
+
+        "users" => groups::get(),  
+
+
+    ]);
+}
+
+public function detail_revenue($uuid)
+{
+    $user = DB::table('tb_upload') //join table users and table user_details base from matched id;
+    ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
+    ->find($uuid); //find the record matched to the current authenticated user's id from the joint table records
+    $start_date = upload::pluck('tanggal')->first();
+    $end_date = Carbon::parse($start_date)->addDays(13)->toDateString();
+    $Januari = upload::where('tb_upload.bulan', '=', 'Januari')->count();
+    $Februari = upload::where('tb_upload.bulan', '=', 'Februari')->count();
+    $Maret = upload::where('tb_upload.bulan', '=', 'Maret')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'April')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'Mei')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'Juni')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'Juli')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'Agustus')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'September')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'Oktober')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'November')->count();
+    $sales = upload::where('tb_upload.bulan', '=', 'Desember')->count();
+
+    $sales = upload::where('tb_upload.video', '=', 'Desember')->count();
+
+
+    return view('page.revenue.detailRevenue', [
+        "title" => "revenue",
+        "user"  => $user,
+        "Januari"  => $Januari,
+        "Februari"  => $Februari,
+        "Maret"  => $Maret,
+        "sales"  => $sales,
+        "start_date"  => $start_date,
+        "end_date"  => $end_date,
+
+
+
+
+    ]);
+}
+public function published($uuid)
+{
+    $user = DB::table('tb_upload') //join table users and table user_details base from matched id;
+    ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
+    ->find($uuid); //find the record matched to the current authenticated user's id from the joint table records
+
+
+        return view('page.dashboard.publish', [
+            "title" => "dashboard",
+            "user" => $user,
+        ]);
+    
+}
+// Publish
+
+public function updated_status(Request $request, $uuid)
+{
+    $user = upload::find($uuid);
+
+    $input = $request->all();
+    $request->validate([
+        'status' => 'required',
+        'platform' => 'required',
+        'published_date' => 'required',
+        'publish_link' => 'required',
+
+    ]);
+
+    $user->update([
+
+        $user->status = $input['status'],
+        $user->platform = implode(',', $input['platform']),
+        $user->published_date = $input['published_date'],
+        $user->publish_link = $input['publish_link'],
+
+    ]);
+    return redirect('/')->with('success', 'Berhasil Diubah!');  
+
+
+}
+
+//update position
 public function posisi()
 {
     
@@ -61,68 +231,57 @@ public function tambah_posisi(Request $request)
 
 
 
-
-
-
+//uploaded 
     public function uploadedd(Request $request)
 
     {
-        $sum = upload::count();
-                $sem = upload::where('tb_upload.status', '=', 'Pending')->count();
-        $sam = upload::where('tb_upload.status', '=', 'Published')->count();
-        $som = upload::where('tb_upload.status', '=', 'TakeDown')->count();
-
-
-     $user = DB::table('type_group')
-    ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group');
-    
-    if($request->roles){
-        $user = upload::where('bulan',$request->roles);
-    }
-    
-    if($request->search){
-        $user = upload::where('video_title','LIKE', '%' .$request->search. '%');
-    }    
-     $user = $user->orderBy('id','DESC')->paginate(10);
-         return view('page.uploaded.index',  [
-            "title" => "uploaded",
-            "user" => $user,
-            "sum" => $sum,
-            "sem" => $sem,
-            "sam" => $sam,
-            "som" => $som,
-
-        ]);
-    }
-
-    
-    public function dashboard(Request $request)
-    {
-
         $sum = upload::where('tb_upload.name_upload', '=', Auth::user()->name)->count();
-        $sem = upload::where('tb_upload.status', '=', 'Pending')->count();
-        $sam = upload::where('tb_upload.status', '=', 'Published')->count();
+        $sem = DB::table('tb_upload')
+        ->where('tb_upload.name_upload', '=', auth()->user()->name)
+        ->where('tb_upload.status', '=', 'Pending')
+        ->count(); 
+        $sam = DB::table('tb_upload')
+        ->where('tb_upload.name_upload', '=', auth()->user()->name)
+        ->where('tb_upload.status', '=', 'Published')
+        ->count();
+        $som = DB::table('tb_upload')
+        ->where('tb_upload.name_upload', '=', auth()->user()->name)
+        ->where('tb_upload.status', '=', 'Takedown')
+        ->count();
+
         $som = upload::where('tb_upload.status', '=', 'TakeDown')->count();
 
-
+        if($request->pending){
+            $user = upload::where('tb_upload.status', '=', 'Pending');
+        }
+        
         $user = DB::table('type_group')
         ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
         ->where('tb_upload.name_upload', '=', Auth::user()->name);
 
                if($request->roles){
-            $user = upload::where('bulan',$request->roles);
+            $user = upload::where('tb_upload.name_upload', '=', auth()->user()->name)
+            ->where('bulan',$request->roles);
         }
         if($request->select){
-            $user = upload::where('id_group',$request->select);
+            $user = upload::where('tb_upload.name_upload', '=', auth()->user()->name)
+            ->where('id_group',$request->select);
         }
-        
-        if($request->search){
-            $user = upload::where('video_title','LIKE', '%' .$request->search. '%');
-        }  
-        $user = $user->orderBy('id','DESC')->paginate(10);
+        if($request->statuss){
+            $user = upload::where('tb_upload.name_upload', '=', auth()->user()->name)
+            ->where('status',$request->statuss);
+        }
     
-        return view('page.dashboard.index', [
-            "title" => "dashboard",
+        if($request->search){
+            $user = upload::where('tb_upload.name_upload', '=', auth()->user()->name)
+            ->where('video_title','LIKE', '%' .$request->search. '%');
+        }  
+        $perPage = $request->input('perPage', 10);
+
+$user = $user->orderBy('id','ASC')->paginate($perPage);
+
+        return view('page.uploaded.index', [
+            "title" => "uploaded",
             "user" => $user,
             "users" => groups::get(),  
             "sum" => $sum,
@@ -132,9 +291,44 @@ public function tambah_posisi(Request $request)
 
 
         ]);
+
     }
 
+//Bagian dashbord
+    public function dashboard(Request $request)
+    {
+        $sum = upload::count();
+        $sem = upload::where('tb_upload.status', '=', 'Pending')->count();
+$sam = upload::where('tb_upload.status', '=', 'Published')->count();
+$som = upload::where('tb_upload.status', '=', 'TakeDown')->count();
 
+
+
+$user = DB::table('type_group')
+->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group');
+
+if($request->roles){
+$user = upload::where('bulan',$request->roles);
+}
+if($request->statuss){
+$user = upload::where('status',$request->statuss);
+}
+if($request->search){
+$user = upload::where('video_title','LIKE', '%' .$request->search. '%');
+}    
+    $perPage = $request->input('perPage', 10);
+
+$user = $user->orderBy('id','ASC')->paginate($perPage);
+ return view('page.dashboard.index',  [
+    "title" => "dashboard",
+    "user" => $user,
+    "sum" => $sum,
+    "sem" => $sem,
+    "sam" => $sam,
+    "som" => $som,
+
+]);
+    }
 
 
     public function update_upload(Request $request, $uuid)
@@ -306,9 +500,18 @@ public function tambah_upload(Request $request)
 
     $user->name_upload = Auth::user()->name;
     $user->gambar = Auth::user()->gambar;
+    $user->published_date = '-';
+    $user->publish_link = '-';
 
+    $user->viewer_bulan = '-';
+    $user->impression_bulan = '-';
+    $user->revenue_bulan = '-';
+    $user->revenuedate_bulan = '-';
+    $user->viewer_harian = '-';
+    $user->impression_harian = '-';
+    $user->revenue_harian = '-';
+    $user->revenuedate_harian = '-';
 
-   
         $user->save();
    
    return redirect('/uploaded')->with('success', 'Berhasil Ditambahkan!');  
@@ -565,8 +768,10 @@ Storage::delete('public/posts/'. $upload->image);
 
 $delete->delete(); 
 return redirect('/uploaded')->with('success', 'Berhasil Dihapus!');  
-
-
 }
+
+
+
+
 
 }

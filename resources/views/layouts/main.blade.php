@@ -88,9 +88,9 @@
 
     <!-- Date Picker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />    
     <script >
 $(document).ready(function (){
     $('#category').on('change',function(){
@@ -129,32 +129,47 @@ $(document).ready(function () {
     });
 </script>
 
+
+
 <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
 <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
 
-    <script type="text/javascript">
-        $(function() {
-        
-        $('input[name="datefilter"]').daterangepicker({
-            autoUpdateInput: false,
-            locale: {
-                cancelLabel: 'Clear'
-            }
-        });
-        
-        $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-        });
-        
-        $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-            $(this).val('');
-        });
-        
-        });
-    </script>
-    
 
+<script>
+    $(function() {
+        $('input[name="revenuedate_harian"]').daterangepicker({
+            opens: 'left',
+            locale: {
+                format: 'YYYY-MM-DD'
+                
+                
+            },
+            
+        }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>
+
+
+<script>
+    $(function() {
+        $('input[name="revenuedate_bulan"]').daterangepicker({
+            "opens": "left",
+            "autoApply": true,
+            "locale": {
+                "format": "YYYY-MM"
+            },
+            "minYear": 2000,
+            "maxYear": 2099,
+            "startDate": moment().startOf('month'),
+            "endDate": moment().endOf('month')
+        }, function(start, end, label) {
+            console.log(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+        });
+    });
+</script>
 </body>
 
 </html>

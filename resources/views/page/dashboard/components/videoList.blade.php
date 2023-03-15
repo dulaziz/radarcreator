@@ -10,27 +10,39 @@
         <div class="row mb-5">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
                 <div class="d-flex align-items-center mb-2 mb-md-0">
-                    <span>Show</span>
-                    <select class="form-select ms-2" aria-label=".form-select-sm example">
-                        <option selected>5</option>
-                        <option value="1">5</option>
-                        <option value="2">10</option>
-                        <option value="3">50</option>
-                        <option value="3">100</option>
-                    </select>
                 </div>
                 <div>
                 <form action="/" method="GET">
                         @csrf
 
+                        <div class="d-flex align-items-center mb-2 mb-md-0">                    
+
+                <span>Show</span>
+                
+                
+                                    <select class="form-select ms-2" aria-label=".form-select-sm example" name="perPage" id="perPage" onchange="this.form.submit()">
+        <option value="10" {{ $user->perPage() == 10 ? 'selected' : '' }}>10</option>
+        <option value="25" {{ $user->perPage() == 25 ? 'selected' : '' }}>25</option>
+        <option value="50" {{ $user->perPage() == 50 ? 'selected' : '' }}>50</option>
+        <option value="100" {{ $user->perPage() == 100 ? 'selected' : '' }}>100</option>
+    </select>
+
+                </div>
+
+            </div>
+                <div>
+</form>
+                <form action="/" method="GET">
+                        @csrf
+
                 <div class="input-group">
                     <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
-                    <select class="form-select" name="select" aria-label=".form-select-sm example">
-                        <option selected value="">Filter Group</option>
-                        @foreach ($users as $data)
+                    <select class="form-select" name="statuss" aria-label=".form-select-sm example">
+                        <option selected value="">Filter Status</option>
 
-                        <option value="{{$data->id_group}}">{{$data->group}}</option>
-                        @endforeach
+                        <option value="Published"  >Published</option>
+                        <option value="Pending"   >Pending</option>
+                        <option value="TakeDown"   >Takedown</option>
 
                     </select>
                     <button class="btn btn-dark" type="submit" id="find">  <span>Find</span></i></button>
@@ -39,6 +51,10 @@
 
             </div>
                 <div>
+</form>
+                <form action="/" method="GET">
+                        @csrf
+
 </form>
                 <form action="/" method="GET">
                         @csrf
@@ -101,14 +117,16 @@
                         <p class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</p>
                     <?php elseif($users->status == 'Takedown'):?>
                         <p class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i>TakeDown</p>
-<?php endif;?>
-                    <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i></p>
+                <?php endif;?>
+
+                        <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>{{ $users->tanggal; }}</p>
+                    <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>{{ $users->bulan; }}</p>
                     <div class="dropdown me-4">
                         <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog me-2"></i>Action
                         </span>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a href="/publish" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
+                            <li><a href="/publish/{{$users->id}}" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
                             <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="uploaded/delete/{{$users->id}}" method="post" enctype="multipart/form-data" >
 
                             
@@ -127,24 +145,7 @@
         <hr>
 
      @endforeach
+     {{$user->links()}}
 
-        <div class="d-flex justify-content-end">
-        <nav aria-label="..." class="">
-            <ul class="pagination">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">&raquo;</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-    </div>
 </div>
+@include('sweetalert::alert')

@@ -6,7 +6,7 @@
 <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-6 col-xl-3">
-                <a href="/filter">
+                <a href="/">
                 <div class="bg-secondary c-hover rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fas fa-video fa-3x text-primary"></i>
                     <div class="ms-3">
@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-xl-3">
-                <a href="">
+                <a href="/?_token=9LyQLjMdLgPcXiDalwLz7OXIF5gsy9XXN5dxBlT8&statuss=Published">
                 <div class="bg-secondary c-hover rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fas fa-play fa-3x text-primary"></i>
                     <div class="ms-3">
@@ -28,7 +28,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-xl-3">
-                <a href="">
+                <a href="/?_token=9LyQLjMdLgPcXiDalwLz7OXIF5gsy9XXN5dxBlT8&statuss=Pending">
                 <div class="bg-secondary c-hover rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fas fa-hourglass-half fa-3x text-primary"></i>
                     <div class="ms-3">
@@ -39,7 +39,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-xl-3">
-                <a href="">
+                <a href="/?_token=9LyQLjMdLgPcXiDalwLz7OXIF5gsy9XXN5dxBlT8&statuss=TakeDown">
                 <div class="bg-secondary c-hover rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fas fa-pause fa-3x text-primary"></i>
                     <div class="ms-3">

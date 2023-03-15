@@ -10,7 +10,6 @@ $hobbiess = explode(",",$user->name);
 
 
 
-print_r($hobbies);
 
 $hobbiesss = explode(",",$user->platform);
 

@@ -8,10 +8,10 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3 detail-vid">
-                    <video controls src="/img/video.mp4" class=" w-100"></video>
+                <video controls src="{{ asset('/storage/public/posts/'.$user->video) }}"class="w-100"></video>
                 </div>
                 <a href="">
-                    <p class="fs-5 fw-bold text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p class="fs-5 fw-bold text-white">{{$user->video_title}}.</p>
                 </a>
             </div>
             <div class="col-md-6">
@@ -22,7 +22,7 @@
                             <p class="mb-0">Group</p>
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-0">: Radar Depok</p>
+                            <p class="mb-0">: {{$user->group}}</p>
                         </div>
                     </div>
                     <div class="row mb-1">
@@ -30,29 +30,30 @@
                             <p class="mb-0">Uploaded Date</p>
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-0">: 01 Jan 2045</p>
+                            <p class="mb-0">: {{$user->tanggal}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <h6 class="">Production Team</h6>
-                    <div class="row mb-1">
+                          <div class="row mb-1">
                         <div class="col-md-4">
-                            <p class="mb-0">Producer</p>
+                        @foreach(explode(",", $user->produksi) as $option)
+
+                            <p class="mb-0"> {{$option}}</p>
+                            @endforeach
+
                         </div>
+
                         <div class="col-md-8">
-                            <p class="mb-0">: John Doe</p>
+                        @foreach(explode(",", $user->name) as $option)
+
+                            <p class="mb-0">: {{$option}}</p>
+                            @endforeach
+
                         </div>
                     </div>
-                    <div class="row mb-1">
-                        <div class="col-md-4">
-                            <p class="mb-0">Writer</p>
-                        </div>
-                        <div class="col-md-8">
-                            <p class="mb-0">: Bruno Mars</p>
-                        </div>
-                    </div>
-                </div>
+                   
                 <div class="mb-3">
                     <h6 class="">Status</h6>
                     <div class="row mb-1">
@@ -60,15 +61,22 @@
                             <p class="mb-0">Status</p>
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-0">: <span class="text-success fw-bold">Published</span></p>
-                        </div>
+                        <?php
+                    if($user->status == 'Pending'):?>
+                    <p class="mb-0 text-warning me-4">: <i class="fas fa-hourglass-half me-2"></i>Pending</p>
+
+                    <?php elseif($user->status == 'Published'):?>
+                        <p class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</p>
+                    <?php elseif($user->status == 'Takedown'):?>
+                        <p class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i>TakeDown</p>
+<?php endif;?>                        </div>
                     </div>
                     <div class="row mb-1">
                         <div class="col-md-4">
                             <p class="mb-0">Published Date</p>
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-0">: 01 Jan 2045</p>
+                            <p class="mb-0">: {{$user->tanggal}}</p>
                         </div>
                     </div>
                     <div class="row mb-1">
@@ -76,7 +84,9 @@
                             <p class="mb-0">Platform</p>
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-0">: Facebook</p>
+                        @foreach(explode(",", $user->platform) as $option)
+                            <p class="mb-0">: {{$option}}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>

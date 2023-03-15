@@ -10,17 +10,51 @@
         <div class="row mb-5">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
                 <div class="d-flex align-items-center mb-2 mb-md-0">
-                    <span>Show</span>
-                    <select class="form-select ms-2" aria-label=".form-select-sm example">
-                        <option selected>5</option>
-                        <option value="1">5</option>
-                        <option value="2">10</option>
-                        <option value="3">50</option>
-                        <option value="3">100</option>
-                    </select>
+               
                 </div>
                 <div>
-                    <form action="/uploaded" method="GET">
+                <form action="/uploaded" method="GET">
+                        @csrf
+
+                        <div class="d-flex align-items-center mb-2 mb-md-0">                    
+
+                <span>Show</span>
+                
+                
+                                    <select class="form-select ms-2" aria-label=".form-select-sm example" name="perPage" id="perPage" onchange="this.form.submit()">
+        <option value="10" {{ $user->perPage() == 10 ? 'selected' : '' }}>10</option>
+        <option value="25" {{ $user->perPage() == 25 ? 'selected' : '' }}>25</option>
+        <option value="50" {{ $user->perPage() == 50 ? 'selected' : '' }}>50</option>
+        <option value="100" {{ $user->perPage() == 100 ? 'selected' : '' }}>100</option>
+    </select>
+
+                </div>
+
+            </div>
+                <div>
+</form>
+
+
+
+<form action="/uploaded" method="GET">
+    @csrf
+<div class="input-group">
+                    <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
+                    <select class="form-select" name="select" aria-label=".form-select-sm example">
+                        <option selected value="">Filter Group</option>
+                        @foreach ($users as $data)
+
+                        <option value="{{$data->id_group}}">{{$data->group}}</option>
+                        @endforeach
+
+                    </select>
+                    <button class="btn btn-dark" type="submit" id="find">  <span>Find</span></i></button>
+
+                </div>
+</form>
+            </div>
+                <div>
+                <form action="/uploaded" method="GET">
                         @csrf
                     <div class="input-group">
                         <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
@@ -44,6 +78,7 @@
                 <button class="btn btn-dark" type="submit" id="find">  <span>Find</span></i></button>
 
             </div>
+            
             </form>
             <div class="col-md-4">
             <form action="/uploaded" method="GET">
@@ -116,25 +151,7 @@
 
      @endforeach
 
-        <div class="d-flex justify-content-end">
-        <nav aria-label="..." class="">
-            <ul class="pagination">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">&raquo;</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-    </div>
+       {{$user->links()}}
 </div>
 
 

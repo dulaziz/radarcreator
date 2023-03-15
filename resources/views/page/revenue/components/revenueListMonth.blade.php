@@ -1,7 +1,7 @@
 <!-- Recent Sales Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Video Title</h6>
+        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>{{$user->video_title}}</h6>
         <hr>
 
         <div class="row mb-5">
@@ -18,53 +18,71 @@
                 <div>
             </div>
                 <div>
+                <form action="/uploaded" method="GET">
+                        @csrf
                     <div class="input-group">
-                        <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
-                        <select class="form-select" aria-label=".form-select-sm example">
-                            <option selected>Month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
-                        </select>
+                        <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
+                        <select nam class="form-select" name="roles" type="search" wire:model="search" aria-label=".form-select-sm example">
+                        <option value="">Default</option>
+                        <option value="Januari"  >January</option>
+                        <option value="Febuari"   >February</option>
+                        <option value="Maret"   >Maret</option>
+                        <option value="April"   >April</option>
+                        <option value="Mei" >May</option>
+                        <option value="Juni"  >June</option>
+                        <option value="Juli" >July</option>
+                        <option value="Agustus"  >August</option>
+                        <option value="September"  >September</option>
+                        <option value="Oktober"  >October</option>
+                        <option value="November"  >November</option>
+                        <option value="Desember"  >Desember</option>
+                    </select>
                     </div>
                 </div>
+                <button class="btn btn-dark" type="submit" id="find">  <span>Find</span></i></button>
+
             </div>
+            
+            </form>
+
             <div class="col-md-4">
-                {{-- <input class="form-control" type="text" placeholder="Search" aria-label="default input example"> --}}
+            <form action="/revenue/{$user->id}" method="GET">
+@csrf
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-dark" type="button" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
+                    <input type="text" name="search" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
                 </div>
+            </form>
             </div>
         </div>
+        
 
         <div class="table-responsive">
             <table class="table align-middle table-bordered table-hover mb-0">
-                <thead class="text-center">
+                <thead class="text-center align-middle">
                     <tr class="text-white">
-                        <th scope="col">No</th>
-                        <th scope="col">Month</th>
+                        <th rowspan="2">No</th>
+                        <th rowspan="2">Month</th>
+                        <th colspan="3">Revenue/Month</th>
+                        <th colspan="3">Revenue/14Day</th>
+                        <th rowspan="2">Action</th>
+                    </tr>
+                    <tr class="text-white">
                         <th scope="col">Viewer</th>
                         <th scope="col">impression</th>
                         <th scope="col">Revenue</th>
-                        <th scope="col">Action</th>
-                        {{-- Admin Sosmed Only --}}
-                        {{-- End Admin Sosmed Only --}}
+                        <th scope="col">Viewer</th>
+                        <th scope="col">impression</th>
+                        <th scope="col">Revenue</th>
                     </tr>
                 </thead>
                 <tbody class="text-start">
                     <tr>
                         <td class="text-center">01</td>
                         <td class="text-center">January 2023</td>
+                        <td class="text-white text-center fw-bold">00</td>
+                        <td class="text-white text-center fw-bold">00</td>
+                        <td class="text-center fw-bold">$0000</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-white text-center fw-bold">00</td>
                         <td class="text-center fw-bold">$0000</td>
@@ -82,6 +100,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
@@ -91,6 +112,9 @@
                     <tr>
                         <td class="text-center">03</td>
                         <td class=" text-center">March 2023</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
@@ -106,6 +130,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
@@ -118,6 +145,9 @@
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-white text-center fw-bold">2100</td>
                         <td class="text-success text-center fw-bold">$2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-white text-center fw-bold">2100</td>
+                        <td class="text-success text-center fw-bold">$2100</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
@@ -127,10 +157,12 @@
                 </tbody>
                 <tfoot>
                     <tr class="text-white">
-                        <th colspan="5">
+                        <th colspan="2">
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> Video Title</h6>
                         </th>
-                        <th colspan="4" class="text-warning">$12345</th>
+                        <th colspan="3" class="text-warning text-center">$12345</th>
+                        <th colspan="3" class="text-warning text-center">$12345</th>
+                        <th ></th>
                     </tr>
                 </tfoot>
             </table>
@@ -163,6 +195,9 @@
                 <canvas id="worldwide-sales"></canvas>
             </div>
         </div>
+
+
+        
         <div class="col-sm-12 col-xl-6">
             <div class="bg-secondary rounded h-100 p-4">
                 <h6 class="mb-4">Note</h6>
@@ -194,3 +229,142 @@
         </div>
     </div>
 </div>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('lib/chart/myChart.js') }}"></script>
+    {{-- <script src="{{ asset('lib/chart/chart.min.js') }}"></script> --}}
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Template Javascript -->
+    <script src=  "{{ asset('js/main.js') }}"></script>
+
+    <!-- Date Picker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    
+    <script >
+$(document).ready(function (){
+    $('#category').on('change',function(){
+     var category = $(this).val();
+     $.ajax({
+        url:"/uploaded",
+        type: "GET",
+        data:{'category':category },
+        success:function(data){
+            var user = data.user;
+            var html ='';
+            if (user.length > 0) {
+                for(let i = 0; i<user.length;i++){
+              html +='';
+                }
+            }else{
+                html +='<tr>\ <td>Tidak ditemukan</td>\ </tr>';
+
+            }
+        }
+     });
+    });
+});
+</script>
+
+<script>
+$(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
+
+<!-- Initialize the plugin: -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select').selectpicker();
+    });
+</script>
+
+
+<script>
+
+    // Worldwide Sales Chart
+    var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
+    var myChart1 = new Chart(ctx1, {
+        type: "bar",
+         data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
+           
+            datasets: [{
+                    label: "Video",
+                    data: ['{!!json_encode($Januari)!!}', '{!!json_encode($Februari)!!}','{!!json_encode($Maret)!!}' ],
+                    backgroundColor: "rgba(50, 130, 184, .7)"
+                },
+                {
+                    label: "REVENUE",
+                    data: [8, 35, 40, 60, 70, 55, 75],
+                    backgroundColor: "rgba(255, 194, 13, .5)"
+                },
+                {
+                    label: "Impression",
+                    data: [12, 25, 45, 55, 65, 70, 60],
+                    backgroundColor: "rgba(50, 130, 184, .3)"
+                }
+            ]
+            },
+        options: {
+            responsive: true
+        }
+    });
+
+
+    </script>
+
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+        
+        $('input[name="revenuedate_harian"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+        
+        $('input[name="revenuedate_harian"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+        
+        $('input[name="revenuedate_harian"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+        
+        });
+    </script>
+     <script type="text/javascript">
+        $(function() {
+        
+        $('input[name="revenuedate_bulan"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+        
+        $('input[name="revenuedate_bulan"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+        
+        $('input[name="revenuedate_bulan"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+        
+        });
+    </script>
