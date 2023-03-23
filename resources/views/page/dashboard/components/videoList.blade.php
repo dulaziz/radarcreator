@@ -2,8 +2,7 @@
     <div class="bg-secondary rounded p-4">
 
         <div class="d-flex align-items-center justify-content-between">
-            <h6 class="mb-0">Recent Uploaded</h6>
-            <a href="/upload">Add Video</a>
+            <h6 class="mb-0">Dashboard</h6>
         </div>
         <hr>
 
@@ -104,7 +103,13 @@
             <div class="">
                 <h5 class="mb-3">{{$users->video_title}}</h5>
                 <div class="d-flex align-items-center gap-2 mb-2 mb-md-4">
-                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 30px; height: 30px;">
+                <img 
+                alt="user-avatar"
+                class="rounded-circle"
+                height="30" 
+                width="30"
+                src="{{ asset('/storage/public/posts/'.$users->gambar) }}" >
+                   
                     <p class="mb-0">{{$users->name_upload}}</p>
                 </div>
                 <div class="d-flex flex-wrap align-items-center">
@@ -128,12 +133,9 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a href="/publish/{{$users->id}}" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
                             <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="uploaded/delete/{{$users->id}}" method="post" enctype="multipart/form-data" >
-
-                            
                             <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
                             @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-sm btn-danger" ><i class="fas fa-trash"></i></button>
                             
                             </form>
                        

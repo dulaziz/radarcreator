@@ -1,3 +1,4 @@
+
 <!-- Revenue List Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
@@ -5,41 +6,55 @@
         <hr>
         <div class="row mb-4">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
+                
+            <form action="/revenue" method="GET">
+                        @csrf
+
                 <div class="d-flex align-items-center mb-2 mb-md-0">
-                    <span>Show</span>
-                    <select class="form-select ms-2" aria-label=".form-select-sm example">
-                        <option selected>5</option>
-                        <option value="1">5</option>
-                        <option value="2">10</option>
-                        <option value="3">50</option>
-                        <option value="3">100</option>
-                    </select>
+
+                <span>Show</span>
+                
+                
+                <select class="form-select ms-2" aria-label=".form-select-sm example" name="perPage" id="perPage" onchange="this.form.submit()">
+<option value="10" {{ $user->perPage() == 10 ? 'selected' : '' }}>10</option>
+<option value="25" {{ $user->perPage() == 25 ? 'selected' : '' }}>25</option>
+<option value="50" {{ $user->perPage() == 50 ? 'selected' : '' }}>50</option>
+<option value="100" {{ $user->perPage() == 100 ? 'selected' : '' }}>100</option>
+</select>
                 </div>
-                {{-- Admin Sosmed Only --}}
+            </form>
+
+            
 
                 <div>
+                <?php
+                    if(auth()->user()->role == 'Admin Sosmed'):?>
+
                     <form action="/revenue" method="GET">
                         @csrf
                 <div class="input-group">
                     <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
-                    <select class="form-select" name="select" aria-label=".form-select-sm example">
+                    <select class="form-select" name="select" onchange="this.form.submit()" aria-label=".form-select-sm example">
                         <option selected value="">Filter Group</option>
                         @foreach ($users as $data)
                         <option value="{{$data->id_group}}">{{$data->group}}</option>
                         @endforeach
                     </select>
-                    <button class="btn btn-dark" type="submit" id="find">  <span>Find</span></i></button>
 
                 </div>
                     </form>
+                    <?php endif;?>
             </div>                
                 {{-- End Admin Sosmed Only --}}
                 <div>
+                
+                
+
                 <form action="/revenue" method="GET">
                         @csrf
                     <div class="input-group">
                         <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
-                        <select nam class="form-select" name="roles" type="search" wire:model="search" aria-label=".form-select-sm example">
+                        <select nam class="form-select" name="roles" onchange="this.form.submit()" type="search" wire:model="search" aria-label=".form-select-sm example">
                         <option value="">Default</option>
                         <option value="Januari"  >January</option>
                         <option value="Febuari"   >February</option>
@@ -56,11 +71,9 @@
                     </select>
                     </div>
                 </div>
-                <button class="btn btn-dark" type="submit" id="find">  <span>Find</span></i></button>
 
             </div>
 </form>
-
             <div class="col-md-4">
             <form action="/revenue"  method="GET" >
                 @csrf
@@ -74,7 +87,9 @@
             </div>
 
         </div>        
+
         <div style="overflow-x: scroll;">
+
             <table class="table align-middle table-bordered table-hover mb-0" style="width: 1800px;">
                 <thead class="text-center">
                     <tr class="text-white align-middle">
@@ -86,7 +101,24 @@
                         <th rowspan="2" style="width: 5%;">Status</th>
                         <th colspan="4">Revenue/Bulan</th>
                         <th colspan="4">Revenue/14 Hari</th>
+                        <?php
+                        if(auth()->user()->role == 'Produser'):?>
                         <th rowspan="2" style="width: 2%">Action</th>
+                        <?php endif;?>
+                        <?php
+                        if(auth()->user()->role == 'Admin Sosmed'):?>
+                        <th rowspan="2" style="width: 2%">Action</th>
+                        <?php endif;?>
+                        <?php
+                        if(auth()->user()->role == 'Admin Keuangan'):?>
+                        <th rowspan="2" style="width: 2%">Action</th>
+                        <?php endif;?>
+                        <?php
+                        if(auth()->user()->role == 'Super Admin'):?>
+                        <th rowspan="2" style="width: 2%">Action</th>
+                        <?php endif;?>
+
+
                     </tr>
                     <tr class="text-white">
                         <th scope="col" style="width: 5%;">Viewer</th>
@@ -101,9 +133,11 @@
                     </tr>
                 </thead>
                 <tbody class="text-start">
+                @php $no = 1; @endphp
+
                     @foreach($user as $data)
                     <tr>
-                        <td>05</td>
+                        <td>{{$no++}}</td>
                         <td><a href="">{{$data->video_title}}.</a></td>
                         <td>{{$data->name}}</td>
                         <td>{{$data->tanggal}}</td>
@@ -118,29 +152,100 @@
 
                         <td class="text-white text-center fw-bold">${{$data->viewer_harian}}</td>
                         <td class="text-white text-center fw-bold">${{$data->impression_harian}}</td>
-                        <td class="text-success text-center fw-bold">${{$data->revenue_bulan}}</td>
+                        <td class="text-success text-center fw-bold">${{$data->revenue_harian}}</td>
                         <td class="text-center fw-bold">{{$data->revenuedate_harian}}</td>
+                        
+                        <?php
+                        if(auth()->user()->role == 'Produser'):?>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
+                                <a class="btn btn-sm " href="/editRevenue/{{$data->id}}"><i class="fas fa-pen me-2"></i></a>
+
                             </div>
                         </td>
+                        <?php endif;?>
+                        <?php
+                        if(auth()->user()->role == 'Admin Keuangan'):?>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
+                                ||
+                                <a class="btn btn-sm " href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
+                                <a class="btn btn-sm " href="/editRevenue/{{$data->id}}"><i class="fas fa-pen me-2"></i></a>
+
+                            </div>
+                        </td>
+                        <?php endif;?>
+                        <?php
+                        if(auth()->user()->role == 'Super Admin'):?>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
+                                <a class="btn btn-sm " href="/editRevenue/{{$data->id}}"><i class="fas fa-pen me-2"></i></a>
+
+                            </div>
+                        </td>
+                        <?php endif;?>  <?php
+                        if(auth()->user()->role == 'Admin Sosmed'):?>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
+                                <a class="btn btn-sm " href="/editRevenue/{{$data->id}}"><i class="fas fa-pen me-2"></i></a>
+
+                            </div>
+                            
+                        </td>
+                        <?php endif;?>
                     </tr>
                 </tbody>
                 @endforeach
+            
                 <tfoot class="text-center">
                     <tr class="text-white">
                         <th colspan="6">
+                            
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span></h6>
                         </th>
-                        <th colspan="4" class="text-warning">$12345</th>
-                        <th colspan="4" class="text-warning">$12345</th>
-                        <th colspan="1" class="text-warning"></th>
+                        <th colspan="4" class="text-warning">${{$totals}}</th>
+                        <th colspan="4" href="" class="text-warning update" data-name="name" data-type="text" data-pk="" data-title="Masukan Total">${{$total}}</th>
+
                     </tr>
                 </tfoot>
             </table>
+            
         </div>
+        {{$user->links()}}
 
 
     </div>
+    
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js"></script>
+    <script>$.fn.poshytip={defaults:null}</script>
+    <script type="text/javascript">
+        //datatable
+        $(document).ready(function () {
+            $("#example").DataTable({});
+        });
+    </script>
+    <script type="text/javascript">
+        $.fn.editable.defaults.mode = 'inline';
+      
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
+            }
+        }); 
+        
+        $('.update').editable({
+            url: "/revenue",
+            type: 'text',
+        });
+    
+    </script>
+
+

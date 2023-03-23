@@ -16,5 +16,4 @@ class user extends Authenticatable
         'remember_token',
     ];
     
-   
 }

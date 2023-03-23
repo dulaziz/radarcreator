@@ -19,19 +19,19 @@ $hobbiesss = explode(",",$user->platform);
                 <div class="col-sm-5 d-flex align-items-center"> 
                     <div class="d-flex gap-4 align-items-center flex-wrap">
                         <div class="form-check">
-                            <input class="form-check-input" name="status" type="checkbox" value="Published" id="published" {{ ($user->status == 'Published') ? 'checked' : '' }} >
+                            <input class="form-check-input" type="radio" name="status" value="Published" id="published" {{ ($user->status == 'Published') ? 'checked' : '' }} >
                             <label class="form-check-label" for="published">
                             Published
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" name="status" type="checkbox" value="Pending" id="pending" {{ ($user->status == 'Pending') ? 'checked' : '' }}>
+                            <input class="form-check-input" type="radio"  name="status" value="Pending" id="pending" {{ ($user->status == 'Pending') ? 'checked' : '' }}>
                             <label class="form-check-label" for="pending">
                             Pending
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" name="status" type="checkbox" value="Takedown" id="takeDown" {{ ($user->status == 'Takedown') ? 'checked' : '' }}>
+                            <input class="form-check-input" type="radio"  name="status"  value="Takedown" id="takeDown" {{ ($user->status == 'Takedown') ? 'checked' : '' }}>
                             <label class="form-check-label" for="takeDown">
                             Take Down
                             </label>
@@ -81,7 +81,7 @@ $hobbiesss = explode(",",$user->platform);
             <div class="mb-3 row">
                 <label for="publishedDate" class="col-sm-2 col-form-label">Published Date</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control bg-dark" value="{{$user->tanggal}}" name="published_date" id="publishedDate">
+                    <input type="date" class="form-control bg-dark"  name="published_date" id="publishedDate">
                 </div>
             </div>
 

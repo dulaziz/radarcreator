@@ -58,18 +58,22 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Position/Role</label>
-                            <select class="form-select" name="jabatan" aria-label="Default select example" required>
-                            <option selected></option>
+                            <select class="form-select" onkeyup="isi_otomatis()" name="jabatan" id="jabatan" aria-label="Default select example" required>
+                            <option value="">Pilih</option>
     
                             @foreach ($datas as $data)
                                     
-                                <option value="{{ $data->jabatan }}">{{ $data->jabatan }}   ({{ $data->role}})</option>
+                                <option value="{{ $data->jabatan }}">{{ $data->jabatan }} ({{ $data->role }}) </option>
+
                                 @endforeach
                             </select>
                         </div>
+                        <input type="hidden"  name="role" id="role" >
+
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" name="password" id="password" required>
+
                     </div>
                 </div>
             </div>
@@ -97,3 +101,34 @@ oFReader.onload = function (oFREvent)
 };
 };
 </script>
+
+
+ <!-- JavaScript Libraries -->
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Template Javascript -->
+    <script src=  "{{ asset('js/main.js') }}"></script>
+
+    <script type="text/javascript">
+       $(document).ready(function() {
+    $('#jabatan').on('input', function() {
+        var jabatan = $(this).val();
+        if(jabatan) {
+            $.ajax({
+                url: '/userAdd/getData',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    'jabatan': jabatan
+                },
+                success: function(data) {
+                    $('#role').val(data.role);
+                }
+            });
+        } else {
+            $('#role').val('');
+        }
+    });
+});
+        </script>
+
+

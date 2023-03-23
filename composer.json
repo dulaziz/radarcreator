@@ -12,6 +12,9 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "livewire/livewire": "^2.12",
+        "maatwebsite/excel": "^3.1",
+        "psr/simple-cache": "2.0",
+        "pusher/pusher-php-server": "^7.2",
         "realrashid/sweet-alert": "^6.0",
         "spatie/laravel-activitylog": "^4.7"
     },
@@ -64,6 +67,6 @@
             "pestphp/pest-plugin": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

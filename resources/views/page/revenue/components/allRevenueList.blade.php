@@ -18,10 +18,10 @@ if ($total <= 1500) {
 ?>
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
-        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>{{Auth::user()->name}}</h6>
+        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>User</h6>
         <hr>
 
-        <div class="row mb-4">
+            <div class="row mb-4">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
             <form action="/revenue" method="GET">
                         @csrf
@@ -38,26 +38,41 @@ if ($total <= 1500) {
                 </div>
                 </form>
                 <div>
-                    <div class="input-group mb-2 mb-md-0">
-                        <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
-                        <select class="form-select" name="groups" aria-label=".form-select-sm example">
-                            <option selected>Filter Group</option>
-                            @foreach ($users as $data)
-                            <option value="{{$data->id_group}}">{{$data->group}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div>
-                        
+                    
+                  
+                    <form action="/revenue" method="GET">
+                        @csrf
+                        <div class="input-group mb-2 mb-md-0">
+                            <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-user"></i></label>
+                            <select class="form-select" name="names" onchange="this.form.submit()" aria-label=".form-select-sm example">
+                                <option value="">Pilih Nama </option>
+                                @foreach ($nama_user as $data)
+                                <option value="{{$data->name}}">{{$data->name}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
                 </div>
                 <div>
                     
+                  
+                    <form action="/revenue" method="GET">
+                        @csrf
+                        <div class="input-group mb-2 mb-md-0">
+                            <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
+                            <div class="btn btn-dark"  id="find"><a href="/export-excel">export</i></a></div>
+
+                        </div>
+                </div>
+                <div>
+                    
+                    </form>
+
                 <form action="/revenue" method="GET">
                         @csrf
                     <div class="input-group">
                         <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
-                        <select nam class="form-select" name="roless" onchange="this.form.submit()" type="search" wire:model="search" aria-label=".form-select-sm example">
+                        <select nam class="form-select" name="rolesss" onchange="this.form.submit()" type="search" wire:model="search" aria-label=".form-select-sm example">
                         <option value="">Default</option>
                         <option value="Januari"  >January</option>
                         <option value="Febuari"   >February</option>
@@ -74,7 +89,6 @@ if ($total <= 1500) {
                     </select>
                     </div>
                 </div>
-               
 
             </div>
 </form>
@@ -96,7 +110,7 @@ if ($total <= 1500) {
                     <tr class="text-white">
                         <th scope="col">No</th>
                         <th scope="col">Published</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Nama Upload</th>
                         <th scope="col">Video Title</th>
                         <th scope="col">Production Team</th>
                         <th scope="col">Viewer</th>
@@ -106,7 +120,7 @@ if ($total <= 1500) {
                 </thead>
                 @php $no = 1; @endphp
 
-                @foreach($usersss as $s)
+                @foreach($user as $s)
                 <tbody class="text-start">
 
 
@@ -114,7 +128,7 @@ if ($total <= 1500) {
 
                         <td>{{$no++}}</td>
                         <td class="text-center">{{$s->published_date}}</td>
-                        <td class="text-center">{{$s->tanggal}}</td>
+                        <td class="text-center">{{$s->name_upload}}</td>
                         <td class="text-center">{{$s->video_title}}</td>
 
 
@@ -129,9 +143,9 @@ if ($total <= 1500) {
                 <tfoot>
                     <tr class="text-white">
                         <th colspan="5">
-                            <h6 class="mb-0"><span class="text-muted">Total Revenue: {{Auth::user()->name}}</span> </h6>
+                            <h6 class="mb-0"><span class="text-muted">Total Revenue: User</span> </h6>
                         </th>
-                        <th colspan="3" class="text-warning">${{$totalss}}</th>
+                        <th colspan="3" class="text-warning">${{$totala}}</th>
                     </tr>
                 </tfoot>
             </table>

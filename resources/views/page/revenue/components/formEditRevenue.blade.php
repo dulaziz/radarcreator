@@ -7,9 +7,8 @@
             <div class="col-md-6">
                 <h6 class="">Revenue / 1 Month</h6>
                 <hr>
-                <form action="/addRevenue/add_revenue/{{$user->id}}" method="POST">
+                <form action="/editRevenue/{{$user->id}}/tambah_revenue" method="POST">
                 @csrf
-@method('PUT')
 
                     <div class="d-md-flex gap-2 align-items-center">
                         <fieldset disabled class="mb-3 w-100 w-md-50">
@@ -57,12 +56,33 @@
                     <div class="mb-3">
                         <label for="impression" class="form-label">Impression</label>
                         <input type="text" class="form-control" id="impression" name="impression_harian" value="{{$user->impression_harian}}">
-                        <input type="hidden" class="form-control" name="jumlah" value="{{$count}}">
 
                     </div>
                     <div class="mb-3">
                         <label for="revenue" class="form-label">Revenue</label>
                         <input type="text" class="form-control" id="revenue" name="revenue_harian" value="{{$user->revenue_harian}}">
+                        <input type="hidden" class="form-control" name="jumlah" value="{{$count}}">
+
+                        <input type="hidden" class="form-control" name="tanggal" value="{{$user->tanggal}}">
+                        <input type="hidden" class="form-control" name="id_group" value="{{$user->id_group}}">
+                        <input type="hidden" class="form-control" name="video_title" value="{{$user->video_title}}">
+                        <input type="hidden" class="form-control" name="video" value="{{$user->video}}">
+                        <input type="hidden" class="form-control" name="produksi" value="{{$user->produksi}}">
+                        <input type="hidden" class="form-control" name="name" value="{{$user->name}}">
+
+                        <input type="hidden" class="form-control" name="platform" value="{{$user->platform}}">
+                        <input type="hidden" class="form-control" name="status" value="{{$user->status}}">
+                        <input type="hidden" class="form-control" name="bulan" value="{{$user->bulan}}">
+                        <input type="hidden" class="form-control" name="name_upload" value="{{$user->name_upload}}">
+                        <input type="hidden" class="form-control" name="gambar" value="{{$user->gambar}}">
+
+                        <input type="hidden" class="form-control" name="published_date" value="{{$user->published_date}}">
+                        <input type="hidden" class="form-control" name="publish_link" value="{{$user->publish_link}}">
+
+
+
+
+
                     </div>
             </div>
         </div>

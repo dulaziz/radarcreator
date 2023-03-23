@@ -1,60 +1,9 @@
 <!-- Recent Sales Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>{{$user->video_title}}</h6>
+        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Bulanan</h6>
         <hr>
 
-        <div class="row mb-5">
-            <div class="col-md-8 d-md-flex mb-2 mb-md-0">
-                <div class="d-flex align-items-center mb-2 mb-md-0">
-                    <span>Show</span>
-                    <select class="form-select ms-2" aria-label=".form-select-sm example">
-                        <option selected>5</option>
-                        <option value="1">5</option>
-                        <option value="2">10</option>
-                        <option value="3">20</option>
-                    </select>
-                </div>
-                <div>
-            </div>
-                <div>
-                <form action="/uploaded" method="GET">
-                        @csrf
-                    <div class="input-group">
-                        <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
-                        <select nam class="form-select" name="roles" type="search" wire:model="search" aria-label=".form-select-sm example">
-                        <option value="">Default</option>
-                        <option value="Januari"  >January</option>
-                        <option value="Febuari"   >February</option>
-                        <option value="Maret"   >Maret</option>
-                        <option value="April"   >April</option>
-                        <option value="Mei" >May</option>
-                        <option value="Juni"  >June</option>
-                        <option value="Juli" >July</option>
-                        <option value="Agustus"  >August</option>
-                        <option value="September"  >September</option>
-                        <option value="Oktober"  >October</option>
-                        <option value="November"  >November</option>
-                        <option value="Desember"  >Desember</option>
-                    </select>
-                    </div>
-                </div>
-                <button class="btn btn-dark" type="submit" id="find">  <span>Find</span></i></button>
-
-            </div>
-            
-            </form>
-
-            <div class="col-md-4">
-            <form action="/revenue/{$user->id}" method="GET">
-@csrf
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
-                </div>
-            </form>
-            </div>
-        </div>
         
 
         <div class="table-responsive">
@@ -64,123 +13,41 @@
                         <th rowspan="2">No</th>
                         <th rowspan="2">Month</th>
                         <th colspan="3">Revenue/Month</th>
-                        <th colspan="3">Revenue/14Day</th>
-                        <th rowspan="2">Action</th>
+                        
                     </tr>
                     <tr class="text-white">
                         <th scope="col">Viewer</th>
                         <th scope="col">impression</th>
                         <th scope="col">Revenue</th>
-                        <th scope="col">Viewer</th>
-                        <th scope="col">impression</th>
-                        <th scope="col">Revenue</th>
+                       
                     </tr>
                 </thead>
                 <tbody class="text-start">
+                    
+                @foreach($monthlyData as $data)
                     <tr>
                         <td class="text-center">01</td>
-                        <td class="text-center">January 2023</td>
-                        <td class="text-white text-center fw-bold">00</td>
-                        <td class="text-white text-center fw-bold">00</td>
-                        <td class="text-center fw-bold">$0000</td>
-                        <td class="text-white text-center fw-bold">00</td>
-                        <td class="text-white text-center fw-bold">00</td>
-                        <td class="text-center fw-bold">$0000</td>
+                        <td class="text-center">{{ date('F', mktime(0, 0, 0, $data->month, 1, $data->year)) }} {{ $data->year }}</td>
+                        <td class="text-white text-center fw-bold">${{ $data->viewer }}</td>
+                        <td class="text-white text-center fw-bold">${{ $data->impression }}</td>
+            <td class="text-white text-center fw-bold">${{ $data->revenue }}</td>
+
                         {{-- Admin Sosmed Only --}}
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
-                            </div>
-                        </td>
+                      
                         {{--End Admin Sosmed Only --}}
                     </tr>
-                    <tr>
-                        <td class="text-center">02</td>
-                        <td class="text-center">February 2023</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">03</td>
-                        <td class=" text-center">March 2023</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">04</td>
-                        <td class=" text-center">April 2023</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">05</td>
-                        <td class="text-center">May 2023</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-white text-center fw-bold">2100</td>
-                        <td class="text-success text-center fw-bold">$2100</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue"><i class="fas fa-pen"></i></a>
-                            </div>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr class="text-white">
                         <th colspan="2">
-                            <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> Video Title</h6>
+                            <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> </h6>
                         </th>
-                        <th colspan="3" class="text-warning text-center">$12345</th>
-                        <th colspan="3" class="text-warning text-center">$12345</th>
-                        <th ></th>
+                        <th colspan="3" class="text-warning text-center">${{$totals}}</th>
                     </tr>
                 </tfoot>
             </table>
-            <nav aria-label="..." class="float-end mt-3">
-                <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">&raquo;</a>
-                </li>
-                </ul>
-            </nav>
+            
         </div>
 
     </div>
@@ -291,37 +158,50 @@ $(document).ready(function () {
 
 
 <script>
-
-    // Worldwide Sales Chart
-    var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
-    var myChart1 = new Chart(ctx1, {
-        type: "bar",
-         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
-           
-            datasets: [{
-                    label: "Video",
-                    data: ['{!!json_encode($Januari)!!}', '{!!json_encode($Februari)!!}','{!!json_encode($Maret)!!}' ],
-                    backgroundColor: "rgba(50, 130, 184, .7)"
-                },
-                {
-                    label: "REVENUE",
-                    data: [8, 35, 40, 60, 70, 55, 75],
-                    backgroundColor: "rgba(255, 194, 13, .5)"
-                },
-                {
-                    label: "Impression",
-                    data: [12, 25, 45, 55, 65, 70, 60],
-                    backgroundColor: "rgba(50, 130, 184, .3)"
-                }
-            ]
+        var ctx1 = document.getElementById('worldwide-sales').getContext('2d');
+        var chart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Pendapatan Perbulan',
+                    backgroundColor: "rgba(50, 130, 184, .7)",
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    data: []
             },
-        options: {
-            responsive: true
-        }
-    });
+            {
+                        label: 'Impression Perbulan',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        data: []
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
 
+        fetch('/detailRevenue/{id}/getMonthlyRevenue')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(item => {
+                    chart.data.labels.push('Bulan ' + item.month);
+                    chart.data.datasets[0].data.push(item.revenue);
+                    chart.data.datasets[1].data.push(item.revenues);
 
+                    
+                });
+                chart.update();
+            });
     </script>
 
 <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
