@@ -10,27 +10,25 @@
         <form action="">
             <div class="mb-3 row">
                 <label for="status" class="col-sm-2 col-form-label text-start">Status</label>
-                <div class="col-sm-5 d-flex align-items-center"> 
-                    <div class="d-flex gap-4 align-items-center flex-wrap">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="published">
-                            <label class="form-check-label" for="published">
-                            Published
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="pending">
-                            <label class="form-check-label" for="pending">
-                            Pending
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="takeDown">
-                            <label class="form-check-label" for="takeDown">
-                            Take Down
-                            </label>
-                        </div>
-                    </div>
+                <div class="col-sm-5 d-flex align-items-center gap-4"> 
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="published">
+                        <label class="form-check-label" for="published">
+                          Published
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="pending">
+                        <label class="form-check-label" for="pending">
+                          Pending
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="takeDown">
+                        <label class="form-check-label" for="takeDown">
+                          Take Down
+                        </label>
+                      </div>
                 </div>
             </div>
 

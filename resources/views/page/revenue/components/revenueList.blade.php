@@ -210,8 +210,26 @@
                         <th colspan="6">
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> Radar Depok</h6>
                         </th>
-                        <th colspan="4" class="text-warning">$12345</th>
-                        <th colspan="4" class="text-warning">$12345</th>
+                        <th colspan="4">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-md-4">
+                                    <label for="inputPassword6" class="col-form-label">Revenue/Bulan</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control text-warning">
+                                </div>
+                            </div>
+                        </th>
+                        <th colspan="4">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-md-4">
+                                    <label for="inputPassword6" class="col-form-label">Revenue/14</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control text-warning">
+                                </div>
+                            </div>
+                        </th>
                         <th colspan="1" class="text-warning"></th>
                     </tr>
                 </tfoot>
