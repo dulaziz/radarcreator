@@ -65,6 +65,7 @@
                 </div>
             </div> --}}
         </div>
+        <?php if(auth()->user()->role == 'Super Admin'):?>
 
         <h6 class="nav-link fw-bold">Admin</h6>
         <div class="navbar-nav w-100">
@@ -80,6 +81,42 @@
             </div> --}}
             <a href="/position" class="nav-item nav-link {{ ($title === "position") ? 'active' : '' }}"><i class="fas fa-user-tie me-2"></i>Position</a>    
         </div>
+
+        <?php elseif(auth()->user()->role == 'Admin Sosmed'):?>
+
+<h6 class="nav-link fw-bold">Admin</h6>
+<div class="navbar-nav w-100">
+    <a href="/user" class="nav-item nav-link {{ ($title === "user") ? 'active' : '' }}"><i class="fas fa-users me-2"></i></i>User</a>    
+    {{-- <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+        <div class="dropdown-menu bg-transparent border-0">
+            <a href="signin.html" class="dropdown-item">Sign In</a>
+            <a href="signup.html" class="dropdown-item">Sign Up</a>
+            <a href="404.html" class="dropdown-item">404 Error</a>
+            <a href="blank.html" class="dropdown-item">Blank Page</a>
+        </div>
+    </div> --}}
+    <a href="/position" class="nav-item nav-link {{ ($title === "position") ? 'active' : '' }}"><i class="fas fa-user-tie me-2"></i>Position</a>    
+</div>
+
+<?php elseif(auth()->user()->role == 'Admin Keuangan'):?>
+
+<h6 class="nav-link fw-bold">Admin</h6>
+<div class="navbar-nav w-100">
+    <a href="/user" class="nav-item nav-link {{ ($title === "user") ? 'active' : '' }}"><i class="fas fa-users me-2"></i></i>User</a>    
+    {{-- <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+        <div class="dropdown-menu bg-transparent border-0">
+            <a href="signin.html" class="dropdown-item">Sign In</a>
+            <a href="signup.html" class="dropdown-item">Sign Up</a>
+            <a href="404.html" class="dropdown-item">404 Error</a>
+            <a href="blank.html" class="dropdown-item">Blank Page</a>
+        </div>
+    </div> --}}
+    <a href="/position" class="nav-item nav-link {{ ($title === "position") ? 'active' : '' }}"><i class="fas fa-user-tie me-2"></i>Position</a>    
+</div>
+<?php endif;?>
+
 
     </nav>
 </div>

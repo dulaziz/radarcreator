@@ -1,8 +1,8 @@
 
-<!-- Revenue List Start -->
+
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Radar Depok</h6>
+        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Radar Bogor</h6>
         <hr>
         <div class="row mb-4">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
@@ -143,16 +143,24 @@
                         <td>{{$data->tanggal}}</td>
                         <td>{{$data->platform}}</td>
                         <td>
-                            <span class="text-success fw-bold">{{$data->status}}</span>
+                              <?php
+                    if($data->status == 'Pending'):?>
+                    <span class="mb-0 me-4"><i class="fas fa-hourglass-half me-2"></i>Pending</span>
+
+                    <?php elseif($data->status == 'Published'):?>
+                        <span class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</span>
+                    <?php elseif($data->status == 'Takedown'):?>
+                        <span class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i>TakeDown</span>
+<?php endif;?>
                         </td>
-                        <td class="text-white text-center fw-bold">${{$data->viewer_bulan}}</td>
-                        <td class="text-white text-center fw-bold">${{$data->impression_bulan}}</td>
-                        <td class="text-success text-center fw-bold">${{$data->revenue_bulan}}</td>
+                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->viewer_bulan))}}</td>
+                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->impression_bulan))}}</td>
+                        <td class="text-success text-center fw-bold">${{number_format(floatval($data->revenue_bulan))}}</td>
                         <td class="text-center fw-bold">{{$data->revenuedate_bulan}}</td>
 
-                        <td class="text-white text-center fw-bold">${{$data->viewer_harian}}</td>
-                        <td class="text-white text-center fw-bold">${{$data->impression_harian}}</td>
-                        <td class="text-success text-center fw-bold">${{$data->revenue_harian}}</td>
+                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->viewer_harian))}}</td>
+                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->impression_harian))}}</td>
+                        <td class="text-success text-center fw-bold">${{number_format(floatval($data->revenue_harian))}}</td>
                         <td class="text-center fw-bold">{{$data->revenuedate_harian}}</td>
                         
                         <?php
@@ -160,7 +168,8 @@
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm " href="/editRevenue/{{$data->id}}"><i class="fas fa-pen me-2"></i></a>
+                                ||
+                                <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
 
                             </div>
                         </td>
@@ -171,8 +180,7 @@
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
                                 ||
-                                <a class="btn btn-sm " href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm " href="/editRevenue/{{$data->id}}"><i class="fas fa-pen me-2"></i></a>
+                                <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
 
                             </div>
                         </td>
@@ -182,7 +190,8 @@
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm " href="/editRevenue/{{$data->id}}"><i class="fas fa-pen me-2"></i></a>
+                        ||
+                                <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
 
                             </div>
                         </td>
@@ -191,7 +200,7 @@
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
-                                <a class="btn btn-sm " href="/editRevenue/{{$data->id}}"><i class="fas fa-pen me-2"></i></a>
+                                <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
 
                             </div>
                             
@@ -207,8 +216,11 @@
                             
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span></h6>
                         </th>
-                        <th colspan="4" class="text-warning">${{$totals}}</th>
-                        <th colspan="4" href="" class="text-warning update" data-name="name" data-type="text" data-pk="" data-title="Masukan Total">${{$total}}</th>
+                        @foreach($totals as $datas)
+
+                        <th colspan="4" href="" class="text-warning update" data-name="total" data-type="text" data-pk="{{$datas->id}}" data-title="Masukan Total">{{'$' .number_format(floatval($datas->total), 2)}}</th>
+                        @endforeach
+                        <th colspan="4" href="" class="text-warning">{{'$' .number_format($total)}}</th>
 
                     </tr>
                 </tfoot>
@@ -226,12 +238,7 @@
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js"></script>
     <script>$.fn.poshytip={defaults:null}</script>
-    <script type="text/javascript">
-        //datatable
-        $(document).ready(function () {
-            $("#example").DataTable({});
-        });
-    </script>
+    
     <script type="text/javascript">
         $.fn.editable.defaults.mode = 'inline';
       
@@ -242,7 +249,7 @@
         }); 
         
         $('.update').editable({
-            url: "/revenue",
+            url: "/revenue/updates",
             type: 'text',
         });
     

@@ -51,25 +51,23 @@
                     </div>
                     <div class="mb-3">
                         <label for="viewer" class="form-label">Viewer</label>
-                        <input type="text" class="form-control" id="viewer" name="viewer_harian" value="{{$user->viewer_harian}}">
+                        <input type="text" class="form-control" id="viewer" name="viewer_harian" >
                     </div>
                     <div class="mb-3">
                         <label for="impression" class="form-label">Impression</label>
-                        <input type="text" class="form-control" id="impression" name="impression_harian" value="{{$user->impression_harian}}">
+                        <input type="text" class="form-control" id="impression" name="impression_harian" >
 
                     </div>
                     <div class="mb-3">
                         <label for="revenue" class="form-label">Revenue</label>
-                        <input type="text" class="form-control" id="revenue" name="revenue_harian" value="{{$user->revenue_harian}}">
+                        <input type="text" class="form-control" id="revenue" name="revenue_harian" >
                         <input type="hidden" class="form-control" name="jumlah" value="{{$count}}">
-
                         <input type="hidden" class="form-control" name="tanggal" value="{{$user->tanggal}}">
                         <input type="hidden" class="form-control" name="id_group" value="{{$user->id_group}}">
                         <input type="hidden" class="form-control" name="video_title" value="{{$user->video_title}}">
                         <input type="hidden" class="form-control" name="video" value="{{$user->video}}">
                         <input type="hidden" class="form-control" name="produksi" value="{{$user->produksi}}">
                         <input type="hidden" class="form-control" name="name" value="{{$user->name}}">
-
                         <input type="hidden" class="form-control" name="platform" value="{{$user->platform}}">
                         <input type="hidden" class="form-control" name="status" value="{{$user->status}}">
                         <input type="hidden" class="form-control" name="bulan" value="{{$user->bulan}}">

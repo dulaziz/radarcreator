@@ -108,6 +108,8 @@
 
                         <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>{{ $users->tanggal; }}</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>{{ $users->bulan; }}</p>
+                    <?php
+                  if(auth()->user()->role == 'Admin Keuangan'):?>
                     <div class="dropdown me-4">
                         <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog me-2"></i>Action
@@ -122,6 +124,44 @@
                        
                         </ul>
                     </div>
+                    <?php endif;?>
+
+                    <?php
+                  if(auth()->user()->role == 'Admin Sosmed'):?>
+                    <div class="dropdown me-4">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-2"></i>Action
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a href="/publish/{{$users->id}}" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
+                            <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="videoUpdated/end/{{$users->id}}" method="post" enctype="multipart/form-data" >
+                            @csrf
+                                @method('delete')
+                            <li><button class="dropdown-item"  type="submit"><i class="fas fa-trash me-2"></i>Delete</button></li>
+                            </form>
+                       
+                        </ul>
+                    </div>
+                    <?php endif;?>
+
+                    <?php
+                  if(auth()->user()->role == 'Super Admin'):?>
+                    <div class="dropdown me-4">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-2"></i>Action
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a href="/publish/{{$users->id}}" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
+                            <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="videoUpdated/end/{{$users->id}}" method="post" enctype="multipart/form-data" >
+                            @csrf
+                                @method('delete')
+                            <li><button class="dropdown-item"  type="submit"><i class="fas fa-trash me-2"></i>Delete</button></li>
+                            </form>
+                       
+                        </ul>
+                    </div>
+                    <?php endif;?>
+
                 </div>
             </div>
         </div>
@@ -131,4 +171,265 @@
      {{$user->links()}}
 
 </div>
+<?php
+if(auth()->user()->role == 'Admin Keuangan'):
+?>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <h6 class="mb-0 text-start"><span class="text-muted">Log Activity </span></h6>
+        <hr>
+
+        <div class="row mb-4">
+            <div class="col-md-8 d-md-flex mb-2 mb-md-0">
+            <form action="/videoUpdated" method="GET">
+                        @csrf
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                <span>Show</span>
+                
+                
+                <select class="form-select ms-2" aria-label=".form-select-sm example" name="page" id="Page" onchange="this.form.submit()">
+<option value="10" {{ $userss->perPage() == 10 ? 'selected' : '' }}>10</option>
+<option value="25" {{ $userss->perPage() == 25 ? 'selected' : '' }}>25</option>
+<option value="50" {{ $userss->perPage() == 50 ? 'selected' : '' }}>50</option>
+<option value="100" {{ $userss->perPage() == 100 ? 'selected' : '' }}>100</option>
+</select>
+                </div>
+                </form>
+               
+                <div>
+                        
+                </div>
+                <div>
+                    
+               
+                </div>
+               
+
+            </div>
+            <div class="col-md-4">
+            <form action="/videoUpdated"  method="GET" >
+                @csrf
+
+                <div class="input-group">
+                    <input class="form-control" type="text" name="searchh" placeholder="Search" aria-label="default input example">
+                    <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table align-middle table-bordered table-hover mb-0">
+                <thead class="text-center">
+                    <tr class="text-white">
+                        <th scope="col">No</th>
+                        <th scope="col">Log Name</th>
+                        <th scope="col">Deskripsi</th>
+                        <th scope="col">Type Subject</th>
+                        <th scope="col">Dibuat Tanggal</th>
+
+                    </tr>
+                </thead>
+                @php $no = 1; @endphp
+
+                @foreach($userss as $s)
+                <tbody class="text-start">
+
+
+                    <tr>
+
+                        <td class="text-center">{{$no++}}</td>
+                        <td class="text-center">{{$s->log_name}}</td>
+                        <td class="text-center">{{$s->description}}</td>
+                        <td class="text-center">{{$s->subject_type}}</td>
+                        <td class="text-center">{{$s->created_at}}</td>
+
+                    </tr>
+
+                </tbody>
+                @endforeach
+                <tfoot>
+                </tfoot>
+            </table>
+            {{$userss->links()}}
+        </div>
+
+    </div>
+    <?php endif;?>
+
+    <?php
+if(auth()->user()->role == 'Admin Sosmed'):
+?>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <h6 class="mb-0 text-start"><span class="text-muted">Log Activity </span></h6>
+        <hr>
+
+        <div class="row mb-4">
+            <div class="col-md-8 d-md-flex mb-2 mb-md-0">
+            <form action="/videoUpdated" method="GET">
+                        @csrf
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                <span>Show</span>
+                
+                
+                <select class="form-select ms-2" aria-label=".form-select-sm example" name="page" id="Page" onchange="this.form.submit()">
+<option value="10" {{ $userss->perPage() == 10 ? 'selected' : '' }}>10</option>
+<option value="25" {{ $userss->perPage() == 25 ? 'selected' : '' }}>25</option>
+<option value="50" {{ $userss->perPage() == 50 ? 'selected' : '' }}>50</option>
+<option value="100" {{ $userss->perPage() == 100 ? 'selected' : '' }}>100</option>
+</select>
+                </div>
+                </form>
+               
+                <div>
+                        
+                </div>
+                <div>
+                    
+               
+                </div>
+               
+
+            </div>
+            <div class="col-md-4">
+            <form action="/videoUpdated"  method="GET" >
+                @csrf
+
+                <div class="input-group">
+                    <input class="form-control" type="text" name="searchh" placeholder="Search" aria-label="default input example">
+                    <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table align-middle table-bordered table-hover mb-0">
+                <thead class="text-center">
+                    <tr class="text-white">
+                        <th scope="col">No</th>
+                        <th scope="col">Log Name</th>
+                        <th scope="col">Deskripsi</th>
+                        <th scope="col">Type Subject</th>
+                        <th scope="col">Dibuat Tanggal</th>
+
+                    </tr>
+                </thead>
+                @php $no = 1; @endphp
+
+                @foreach($userss as $s)
+                <tbody class="text-start">
+
+
+                    <tr>
+
+                        <td class="text-center">{{$no++}}</td>
+                        <td class="text-center">{{$s->log_name}}</td>
+                        <td class="text-center">{{$s->description}}</td>
+                        <td class="text-center">{{$s->subject_type}}</td>
+                        <td class="text-center">{{$s->created_at}}</td>
+
+                    </tr>
+
+                </tbody>
+                @endforeach
+                <tfoot>
+                </tfoot>
+            </table>
+            {{$userss->links()}}
+        </div>
+
+    </div>
+    <?php endif;?>
+
+    <?php
+if(auth()->user()->role == 'Super Admin'):
+?>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <h6 class="mb-0 text-start"><span class="text-muted">Log Activity </span></h6>
+        <hr>
+
+        <div class="row mb-4">
+            <div class="col-md-8 d-md-flex mb-2 mb-md-0">
+            <form action="/videoUpdated" method="GET">
+                        @csrf
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                <span>Show</span>
+                
+                
+                <select class="form-select ms-2" aria-label=".form-select-sm example" name="page" id="Page" onchange="this.form.submit()">
+<option value="10" {{ $userss->perPage() == 10 ? 'selected' : '' }}>10</option>
+<option value="25" {{ $userss->perPage() == 25 ? 'selected' : '' }}>25</option>
+<option value="50" {{ $userss->perPage() == 50 ? 'selected' : '' }}>50</option>
+<option value="100" {{ $userss->perPage() == 100 ? 'selected' : '' }}>100</option>
+</select>
+                </div>
+                </form>
+               
+                <div>
+                        
+                </div>
+                <div>
+                    
+               
+                </div>
+               
+
+            </div>
+            <div class="col-md-4">
+            <form action="/videoUpdated"  method="GET" >
+                @csrf
+
+                <div class="input-group">
+                    <input class="form-control" type="text" name="searchh" placeholder="Search" aria-label="default input example">
+                    <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table align-middle table-bordered table-hover mb-0">
+                <thead class="text-center">
+                    <tr class="text-white">
+                        <th scope="col">No</th>
+                        <th scope="col">Log Name</th>
+                        <th scope="col">Deskripsi</th>
+                        <th scope="col">Type Subject</th>
+                        <th scope="col">Dibuat Tanggal</th>
+
+                    </tr>
+                </thead>
+                @php $no = 1; @endphp
+
+                @foreach($userss as $s)
+                <tbody class="text-start">
+
+
+                    <tr>
+
+                        <td class="text-center">{{$no++}}</td>
+                        <td class="text-center">{{$s->log_name}}</td>
+                        <td class="text-center">{{$s->description}}</td>
+                        <td class="text-center">{{$s->subject_type}}</td>
+                        <td class="text-center">{{$s->created_at}}</td>
+
+                    </tr>
+
+                </tbody>
+                @endforeach
+                <tfoot>
+                </tfoot>
+            </table>
+            {{$userss->links()}}
+        </div>
+
+    </div>
+    <?php endif;?>
+
 @include('sweetalert::alert')

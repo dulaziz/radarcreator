@@ -1,21 +1,4 @@
-<?php
-if ($total <= 1500) {
-    $harga_barang_dilaravel = round($total * 0.8);
-    $harga_barang_lainnya = round($total * 0.2 / 3);
-    $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
-} else if ($total <= 2500) {
-    $harga_barang_dilaravel = $total * 0.7;
-    $harga_barang_lainnya = round($total * 0.3 / 3);
 
-    $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
-} else if ($total >= 2501) {
-    $harga_barang_dilaravel = $total * 0.6;
-    $harga_barang_lainnya = round($total * 0.4 / 3);
-    $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
-} else {
-    $total_harga_barang = $total;
-}
-?>
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
         <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>{{Auth::user()->name}}</h6>
@@ -119,9 +102,9 @@ if ($total <= 1500) {
 
 
                         <td class="text-center">{{$s->name}}</td>
-                        <td class="text-white text-center fw-bold">${{$s->viewer_harian}}</td>
-                        <td class="text-white text-center fw-bold">${{$s->impression_harian}}</td>
-                        <td class="text-success text-center fw-bold">${{$s->isentif}}</td>
+                        <td class="text-white text-center fw-bold">${{number_format(floatval($s->viewer_harian))}}</td>
+                        <td class="text-white text-center fw-bold">${{number_format(floatval($s->impression_harian))}}</td>
+                        <td class="text-success text-center fw-bold">${{number_format(floatval($s->isentif))}}</td>
                     </tr>
 
                 </tbody>
@@ -131,7 +114,7 @@ if ($total <= 1500) {
                         <th colspan="5">
                             <h6 class="mb-0"><span class="text-muted">Total Revenue: {{Auth::user()->name}}</span> </h6>
                         </th>
-                        <th colspan="3" class="text-warning">${{$totalss}}</th>
+                        <th colspan="3" class="text-warning">${{number_format(floatval($totalss))}}</th>
                     </tr>
                 </tfoot>
             </table>

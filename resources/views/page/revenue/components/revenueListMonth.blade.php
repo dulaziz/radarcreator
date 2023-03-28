@@ -28,9 +28,9 @@
                     <tr>
                         <td class="text-center">01</td>
                         <td class="text-center">{{ date('F', mktime(0, 0, 0, $data->month, 1, $data->year)) }} {{ $data->year }}</td>
-                        <td class="text-white text-center fw-bold">${{ $data->viewer }}</td>
-                        <td class="text-white text-center fw-bold">${{ $data->impression }}</td>
-            <td class="text-white text-center fw-bold">${{ $data->revenue }}</td>
+                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->viewer)) }}</td>
+                        <td class="text-white text-center fw-bold">${{ number_format(floatval($data->impression)) }}</td>
+            <td class="text-white text-center fw-bold">${{ number_format(floatval($data->revenue)) }}</td>
 
                         {{-- Admin Sosmed Only --}}
                       
@@ -43,7 +43,7 @@
                         <th colspan="2">
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span> </h6>
                         </th>
-                        <th colspan="3" class="text-warning text-center">${{$totals}}</th>
+                        <th colspan="3" class="text-warning text-center">${{number_format(floatval($totals))}}</th>
                     </tr>
                 </tfoot>
             </table>

@@ -126,6 +126,10 @@
 
                         <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>{{ $users->tanggal; }}</p>
                     <p class="mb-0 me-4"><i class="bi bi-calendar me-2"></i>{{ $users->bulan; }}</p>
+ <?php
+ if(auth()->user()->role == 'Admin Keuangan'):?>
+
+
                     <div class="dropdown me-4">
                         <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog me-2"></i>Action
@@ -141,6 +145,50 @@
                        
                         </ul>
                     </div>
+                    
+    
+                    <?php endif;?>
+
+                    <?php
+ if(auth()->user()->role == 'Admin Sosmed'):?>
+                    <div class="dropdown me-4">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-2"></i>Action
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a href="/publish/{{$users->id}}" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
+                            <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="uploaded/delete/{{$users->id}}" method="post" enctype="multipart/form-data" >
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                            @csrf
+                                @method('delete')   
+                            </form>            
+                        </ul>
+                    </div>
+                    <?php endif;?>
+
+                    <?php
+ if(auth()->user()->role == 'Super Admin'):?>
+
+
+                    <div class="dropdown me-4">
+                        <span class="dropdown-toggle text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-2"></i>Action
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a href="/publish/{{$users->id}}" class="dropdown-item"><i class="bi bi-share-fill me-2"></i>Publish</a></li>
+                            <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="uploaded/delete/{{$users->id}}" method="post" enctype="multipart/form-data" >
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                            @csrf
+                                @method('delete')
+                            
+                            </form>
+                       
+                        </ul>
+                    </div>
+                    
+    
+                    <?php endif;?>
+
                 </div>
             </div>
         </div>

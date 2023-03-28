@@ -13,6 +13,8 @@ use App\Models\upload;
 use App\Models\jabatan;
 use App\Exports\Revenue;
 
+use App\Models\Tb_total;
+
 use App\Models\tb_user;
 use Faker\Provider\UserAgent;
 use Illuminate\Support\Str;
@@ -25,6 +27,24 @@ class SessionController extends Controller
     {
         $this->middleware('auth');
     }
+    public function getNewData()
+    {
+        $data = upload::where('created_at', '>', \Carbon\Carbon::now()->subMinutes(5))->get();
+        return response()->json($data);
+    }
+    public function updates(Request $request)
+    {
+        if ($request->ajax()) {
+            Tb_total::find($request->pk)
+                ->update([
+                    $request->name => $request->value
+                ]);
+  
+            return response()->json(['success' => true]);
+        }
+    }
+
+
 
     public function exportExcel()
     {
@@ -39,13 +59,11 @@ class SessionController extends Controller
         $sem = upload::where('tb_upload.status', '=', 'Pending')->count();
         $sam = upload::where('tb_upload.status', '=', 'Published')->count();
         $som = upload::where('tb_upload.status', '=', 'TakeDown')->count();
-
-
-
         $user = DB::table('type_group')
             ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
             ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.updated_at', 'tb_upload.name_upload', 'tb_upload.bulan', 'tb_upload.published_date', 'tb_upload.video',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',);
-
+        $userss = DB::table('activity_log')
+        ->select('activity_log.log_name', 'activity_log.description', 'activity_log.subject_type', 'activity_log.created_at');
 
         if ($request->roles) {
             $user = upload::where('bulan', $request->roles);
@@ -56,15 +74,23 @@ class SessionController extends Controller
         if ($request->search) {
             $user = upload::where('video_title', 'LIKE', '%' . $request->search . '%');
         }
+        if ($request->searchh) {
+            $userss = upload::where('video_title', 'LIKE', '%' . $request->searchhh . '%');
+        }
         $perPage = $request->input('perPage', 10);
 
         $user = $user->orderBy('updated_at', 'DESC')->paginate($perPage);
+
+        $Page = $request->input('Page', 10);
+        $userss = $userss->orderBy('updated_at', 'DESC')->paginate($Page);
+
 
 
         return view('page.dashboard.videoUpdated', [
             "title" => "video updated",
             "user" => $user,
             "sum" => $sum,
+            "userss" => $userss,
             "sem" => $sem,
             "sam" => $sam,
             "som" => $som,
@@ -296,10 +322,7 @@ class SessionController extends Controller
         $bulanSekarang = date('m');
 $tahunSekarang = date('Y');
 
-        $totals = DB::table('tb_upload')
-        ->whereMonth('created_at', $bulanSekarang)
-        ->whereYear('created_at', $tahunSekarang)
-        ->sum('revenue_bulan');
+       
 
                 $total = DB::table('tb_upload')
                 ->whereMonth('created_at', $bulanSekarang)
@@ -318,14 +341,21 @@ $tahunSekarang = date('Y');
         ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
         ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.isentif', 'tb_upload.updated_at', 'tb_upload.published_date',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
         ->where('tb_upload.name_upload', '=', auth()->user()->name)
-        ->where('tb_upload.status', '=', 'Published')
+        ->where(function($query) {
+            $query->where('status', 'Takedown')
+                  ->orWhere('status', 'Published');
+        })
+    
         ->whereMonth('tb_upload.created_at', $bulanSekarang);
     
         $tanggalSekarang = Carbon::now()->translatedFormat('F');;
         $user = DB::table('tb_upload')
             ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
             ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.updated_at', 'tb_upload.name_upload',  'tb_upload.isentif', 'tb_upload.id', 'tb_upload.published_date',  'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
-            ->where('tb_upload.status', '=', 'Published')
+            ->where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
             ->whereMonth('tb_upload.created_at', $bulanSekarang);
 
         if ($request->select) {
@@ -339,26 +369,38 @@ $tahunSekarang = date('Y');
 
 
         if ($request->search) {
-            $user = upload::where('tb_upload.status', '=', 'Published')
+            $user = upload::where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
+
                 ->where('video_title', 'LIKE', '%' . $request->search . '%');
                  $tanggalSekarang = Carbon::now()->translatedFormat('F');;
         }
         if ($request->searchs) {
-            $usersss = upload::where('tb_upload.status', '=', 'Published')
+            $usersss = upload::where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
                 ->where('video_title', 'LIKE', '%' . $request->searchs . '%')
                 ->where('tb_upload.name_upload', '=', auth()->user()->name);
                
         }
         if ($request->roles) {
-            $user = upload::where('tb_upload.status', '=', 'Published')
+            $user = upload::where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
             ->where('bulan',$request->roles);
-            $totals = $user->sum('revenue_bulan');
             $total = $user->sum('revenue_harian');
         }
 
         
         if ($request->roless) {
-            $usersss = upload::where('tb_upload.status', '=', 'Published')
+            $usersss = upload::where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
             ->where('bulan',$request->roless)
             ->where('tb_upload.name_upload', '=', auth()->user()->name);
             $totalss = $usersss->sum('isentif');
@@ -366,7 +408,10 @@ $tahunSekarang = date('Y');
         }
 
         if ($request->rolesss) {
-            $user = upload::where('tb_upload.status', '=', 'Published')
+            $user = upload::where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
             ->where('bulan',$request->roless);
 
         
@@ -375,13 +420,19 @@ $tahunSekarang = date('Y');
         }
 
         if ($request->names) {
-            $user = upload::where('tb_upload.status', '=', 'Published')
+            $user = upload::where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
             ->where('name_upload',$request->names)     
             ->whereMonth('tb_upload.created_at', $bulanSekarang);   
             $totala = $user->sum('isentif');
         }
         if ($request->nama_user) {
-            $user = upload::where('tb_upload.status', '=', 'Published')
+            $user = upload::where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
                 ->where('name_upload', $request->nama_user);
         }
 
@@ -401,7 +452,7 @@ $tahunSekarang = date('Y');
             "bulan_sekarang"  => $bulan_sekarang,
             "tanggalSekarang"  => $tanggalSekarang,
 
-            "totals"  => $totals,
+            "totals"  => Tb_total::get(),
             "totalss"  => $totalss,
 
             "sum"  => $sum,
@@ -711,25 +762,15 @@ $tahunSekarang = date('Y');
 
     public function doalpu()
     {
-
-
-
         $users = DB::table('type_jabatan')
             ->select('type_jabatan.id_khusus', 'type_jabatan.jabatan', 'type_jabatan.role')
             ->where('type_jabatan.id_khusus', '=', '1')
             ->get();
-
-
-
-
         return view('page.upload.index', [
             "title" => "upload",
             "post" => groups::get(),
             "users" => User::get(),
             "userss" => $users,
-
-
-
         ]);
     }
 
@@ -739,10 +780,8 @@ $tahunSekarang = date('Y');
         $input = $request->all();
         $user = new upload();
         $user->id = Str::uuid();
-
+    
         setlocale(LC_TIME, 'id_ID.utf8'); // set lokalisasi untuk bahasa Indonesia
-
-
         {
             $request->validate([
                 'tanggal' => 'required',
@@ -774,12 +813,7 @@ $tahunSekarang = date('Y');
             $user->produksi = $produksi;
             $user->name = $name;
             $user->platform = $platform;
-
-
             $user->platform = $platform;
-
-
-
             $user->status = 'Pending';
             $user->bulan = Carbon::now()->isoFormat('MMMM');
 
@@ -813,17 +847,10 @@ $tahunSekarang = date('Y');
     public function editupload($id, tb_user $userr)
     {
 
-
-
-
         $users = DB::table('type_jabatan')
-
             ->select('type_jabatan.id_khusus', 'type_jabatan.jabatan', 'type_jabatan.role', 'type_jabatan.jabatan',)
-
             ->where('type_jabatan.id_khusus', '=', '1')
             ->get();
-
-
 
         $use = DB::table('users')
 
