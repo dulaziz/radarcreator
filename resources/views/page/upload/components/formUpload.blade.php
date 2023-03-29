@@ -33,7 +33,7 @@
                 <div class="col-sm-10">
                     <input type="file" class="form-control bg-dark" id="upload" name="video"  onchange="PreviewImage();"  id="videoFile">
                     <div class="mt-3 preview-vid">
-                        <video controls src="/img/video.mp4" id="uploadPreview" class="w-100"></video>
+                        <video controls id="uploadPreview" class="w-100"></video>
                     </div>
                 </div>
             </div>
