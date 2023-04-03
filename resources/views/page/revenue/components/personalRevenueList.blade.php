@@ -85,6 +85,8 @@
                         <th scope="col">Viewer</th>
                         <th scope="col">impression</th>
                         <th scope="col">Revenue</th>
+                        <th rowspan="2" style="width: 2%">Action</th>
+
                     </tr>
                 </thead>
                 @php $no = 1; @endphp
@@ -105,6 +107,11 @@
                         <td class="text-white text-center fw-bold">${{number_format(floatval($s->viewer_harian))}}</td>
                         <td class="text-white text-center fw-bold">${{number_format(floatval($s->impression_harian))}}</td>
                         <td class="text-success text-center fw-bold">${{number_format(floatval($s->isentif))}}</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-primary" href="/detailIsentif/{{$s->id}}"><i class="bi bi-cash"></i></a>
+                            </div>
+                        </td>
                     </tr>
 
                 </tbody>
@@ -115,6 +122,7 @@
                             <h6 class="mb-0"><span class="text-muted">Total Revenue: {{Auth::user()->name}}</span> </h6>
                         </th>
                         <th colspan="3" class="text-warning">${{number_format(floatval($totalss))}}</th>
+
                     </tr>
                 </tfoot>
             </table>

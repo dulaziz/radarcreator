@@ -51,10 +51,14 @@ Route::post('/userAdd/register_action', [SessionController::class, 'register_act
 Route::post('/upload/tambah_upload', [SessionController::class, 'tambah_upload']);
 Route::post('/position/tambah_posisi', [SessionController::class, 'tambah_posisi']);
 Route::post('/editRevenue/{id}/tambah_revenue', [SessionController::class, 'tambah_revenue']);
+Route::post('/editRevenue/{id}/tambah_revenue', [SessionController::class, 'tambah_revenue']);
+
 Route::post('/revenue/updates', [SessionController::class, 'updates']);
 
 
 Route::put('/addRevenue/add_revenue/{id}', [SessionController::class, 'add_revenue']);
+Route::post('/Total/tambah_total/', [SessionController::class, 'tambah_total']);
+
 Route::put('//{id}/', [SessionController::class, 'update_status']);
 Route::put('/uploaded/update_upload/{id}', [SessionController::class, 'update_upload']);
 Route::put('/publish/updated_status/{id}', [SessionController::class, 'updated_status']);
@@ -70,6 +74,9 @@ Route::get('/', [SessionController::class, 'dashboard'])->middleware('RedirectIf
 
 Route::get('/uploaded', [SessionController::class, 'uploadedd']);
 Route::get('/publish/{id}', [SessionController::class, 'published']);
+
+Route::get('/detailIsentif/{id}', [SessionController::class, 'detailIsentif']);
+
 
 Route::get('/notification', [SessionController::class, 'getNewData']);
 
@@ -93,6 +100,9 @@ Route::get('/revenue', [SessionController::class, 'revenues']);
 
 
 Route::get('/editRevenue/{id}', [SessionController::class, 'editRevenue']);
+
+Route::get('/Total', [SessionController::class, 'tambahTotal']);
+
 
 Route::get('/addRevenue', [SessionController::class, 'halaman_revenue']);
 Route::get('/detailRevenue/{id}', [SessionController::class, 'detail_revenue']);

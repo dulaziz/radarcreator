@@ -39,6 +39,12 @@ if(auth()->user()->role == 'Super Admin'):?>
 @include('page.revenue.components.allRevenueList')
  <?php endif;?>
 
+ <?php
+if(auth()->user()->role == 'Super Admin'):?>
+@include('page.revenue.components.personalRevenueList')
+ <?php endif;?>
+
+
 
 
 @endsection

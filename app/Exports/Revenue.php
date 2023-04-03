@@ -18,7 +18,7 @@ class Revenue implements FromCollection, WithHeadings
         
     
         return DB::table('tb_upload')
-            ->select('tb_upload.isentif', 'tb_upload.impression_harian', 'tb_upload.viewer_harian', 'tb_upload.name_upload', 'tb_upload.published_date')
+            ->select('tb_upload.video_title', 'tb_upload.isentif', 'tb_upload.impression_harian', 'tb_upload.viewer_harian', 'tb_upload.name_upload', 'tb_upload.published_date')
             ->where('tb_upload.status', '=', 'Published')
             ->whereMonth('tb_upload.created_at', $bulanSekarang)
             ->whereYear('tb_upload.created_at', $tahunSekarang)
@@ -26,6 +26,6 @@ class Revenue implements FromCollection, WithHeadings
     }
     public function headings(): array
     {
-        return ["Revenue_14Hari ", "Impression", "Viewer", "Nama", "Tanggal Publish"];
+        return ["Judul Video", "Revenue_14Hari ", "Impression", "Viewer", "Nama", "Tanggal Publish"];
     }
 }

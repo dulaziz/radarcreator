@@ -15,5 +15,12 @@ class user extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function insentifs()
+    {
+        return $this->belongsToMany(upload::class);
+    }
+
     
 }
+
+

@@ -34,6 +34,7 @@ class SessionController extends Controller
     }
     public function updates(Request $request)
     {
+
         if ($request->ajax()) {
             Tb_total::find($request->pk)
                 ->update([
@@ -50,6 +51,31 @@ class SessionController extends Controller
     {
         $nama_file = 'Laporan perbulan'.date('Y-m-d_H-i-s').'.xlsx';
         return Excel::download(new Revenue, $nama_file);
+    }
+    public function detailIsentif($uuid)
+    {
+        $name = auth()->user()->name; // Mendapatkan nama pengguna yang sedang login
+        $names = explode(", ", $name); 
+        $user = DB::table('tb_upload') 
+            ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
+          
+            ->find($uuid);
+            //find the record matched to the current authenticated user's id from the joint table records
+            $count = DB::table('tb_upload')
+                            ->where(function($query) use ($names) {
+                                foreach($names as $name) {
+                                    $query->orWhere('name', 'LIKE', '%' . $name . '%');
+                                }
+                            })
+                            ->where('id', $uuid)
+                            ->count();
+            
+            echo "Jumlah pengguna yang memiliki nama yang sama dengan nama pengguna " . $name . " adalah " . $count;
+
+        return view('page.dashboard.detailIsentif', [
+            "title" => "dashboard",
+            "user" => $user,
+        ]);
     }
 
 
@@ -157,6 +183,7 @@ class SessionController extends Controller
             $user->revenue_harian = $input['revenue_harian'],
             $user->revenuedate_harian = $input['revenuedate_harian'],
             $user->jumlah = $input['jumlah'],
+            
             $user->isentif =  $harga_barang_lainnya,
 
 
@@ -187,8 +214,40 @@ class SessionController extends Controller
         ]);
     }
 
+    public function tambahTotal()
+    {
+        return view('page.revenue.Total', [
+            "title" => "revenue",
+
+        ]);
+    }
+
+    public function tambah_total(Request $request)
+    {
+        $input = $request->all();
+
+        $user = new Tb_total();
+
+        $request->validate([
+            'total' => 'required',
+            'revenuedate_bulan' => 'required',
+    
+        ]);
+
+        $user->total = $input['total'];
+        $user->tanggal = $input['revenuedate_bulan'];
+
+        $user->save();
+
+        return redirect('/revenue')->with('success', 'Berhasil Ditambahkan!');
+    }
+
+
+
+
     public function tambah_revenue(Request $request)
     {
+        
         $input = $request->all();
         $user = new upload();
         $user->id = Str::uuid();
@@ -199,20 +258,20 @@ class SessionController extends Controller
             'revenuedate_bulan' => 'required',
             'viewer_harian' => 'required',
             'impression_harian' => 'required',
-            'revenue_harian' => 'required',
-            'revenuedate_harian' => 'required',
+            'revenue_harian.lte:revenue_bulan' => 'Revenue harian tidak boleh lebih dari revenue bulanan !',
+             'revenuedate_harian' => 'required',
 
         ]);
-        if ($input['revenue_harian'] <= 1500) {
+        if ($input['total'] <= 1500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']* (float)0.8;
             $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 / (float)$input['jumlah']);
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
-        } else if ($input['revenue_harian']  <= 2500) {
+        } else if ($input['total']  <= 2500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']  * (float)0.7;
             $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 / (float) $input['jumlah']);
         
             $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
-        } else if ($input['revenue_harian']  >= 2501) {
+        } else if ($input['total']  >= 2501) {
             $harga_barang_dilaravel = (float)$input['revenue_harian'] * (float)0.6;
             $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 / (float)$input['jumlah']);
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
@@ -245,6 +304,8 @@ class SessionController extends Controller
             $user->revenuedate_harian = $input['revenuedate_harian'];
             $user->jumlah = $input['jumlah'];
             $user->isentif =  $harga_barang_lainnya;
+            $user->total = $input['total'];
+
         $user->save();
 
         return redirect('/revenue')->with('toast_success', 'Berhasil Ditambahkan!');
@@ -266,19 +327,24 @@ class SessionController extends Controller
             'revenuedate_bulan' => 'required',
             'viewer_harian' => 'required',
             'impression_harian' => 'required',
-            'revenue_harian' => 'required',
+            'revenue_harian' => 'required|numeric|lte:revenue_bulan',
             'revenuedate_harian' => 'required',
+        ],
+        [
+            'revenue_harian.lte' => 'Revenue harian tidak boleh lebih dari revenue bulanan !',
+
         ]);
-        if ($input['revenue_harian'] <= 1500) {
+    
+        if ($input['total'] <= 1500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']* (float)0.8;
             $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 / (float)$input['jumlah']);
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
-        } else if ($input['revenue_harian']  <= 2500) {
+        } else if ($input['total']  <= 2500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']  * (float)0.7;
             $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 / (float) $input['jumlah']);
         
             $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
-        } else if ($input['revenue_harian']  >= 2501) {
+        } else if ($input['total']  >= 2501) {
             $harga_barang_dilaravel = (float)$input['revenue_harian'] * (float)0.6;
             $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 / (float)$input['jumlah']);
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
@@ -296,6 +362,7 @@ class SessionController extends Controller
             $user->revenue_harian = $input['revenue_harian'],
             $user->revenuedate_harian = $input['revenuedate_harian'],
             $user->jumlah = $input['jumlah'],
+            $user->total = $input['total'],
             $user->isentif =  $harga_barang_lainnya,
 
 
@@ -317,7 +384,7 @@ class SessionController extends Controller
         }
     }
 
-    public function revenues(Request $request,)
+    public function revenues(Request $request)
     {
         $bulanSekarang = date('m');
 $tahunSekarang = date('Y');
@@ -337,10 +404,33 @@ $tahunSekarang = date('Y');
                 ->whereMonth('created_at', $bulanSekarang)
                 ->whereYear('created_at', $tahunSekarang)
                 ->sum('isentif');
+
+                $totals = DB::table('tb_total')
+                ->select('tb_total.id', 'tb_total.total', 'tb_total.tanggal',)
+                ->whereMonth('created_at', $bulanSekarang)
+                ->whereYear('created_at', $tahunSekarang);
+
+              
+                $name = auth()->user()->name; // Mendapatkan nama pengguna yang sedang login
+                $names = explode(", ", $name); // Membagi nama menjadi array dengan memisahkan spasi
+                $count = DB::table('tb_upload')
+                            ->where(function($query) use ($names) {
+                                foreach($names as $name) {
+                                    $query->orWhere('name', 'LIKE', '%' . $name . '%');
+                                }
+                            })
+                            ->count();
+                
+                echo "Jumlah pengguna yang memiliki nama yang sama dengan nama pengguna " . $name . " adalah " . $count;
         $usersss = DB::table('tb_upload')
         ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
         ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.isentif', 'tb_upload.updated_at', 'tb_upload.published_date',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
-        ->where('tb_upload.name_upload', '=', auth()->user()->name)
+
+        ->where(function($query) use ($names) {
+            foreach($names as $name) {
+                $query->orWhere('name', 'LIKE', '%' . $name . '%');
+            }
+        })
         ->where(function($query) {
             $query->where('status', 'Takedown')
                   ->orWhere('status', 'Published');
@@ -442,6 +532,9 @@ $tahunSekarang = date('Y');
         $user = $user->orderBy('updated_at', 'DESC')->paginate($perPage);
         $usersss = $usersss->orderBy('updated_at', 'DESC')->paginate($perPage);
 
+        $totals = $totals->orderBy('updated_at', 'DESC')->paginate($perPage);
+
+
 
         return view('page.revenue.index', [
             "title" => "revenue",
@@ -452,7 +545,10 @@ $tahunSekarang = date('Y');
             "bulan_sekarang"  => $bulan_sekarang,
             "tanggalSekarang"  => $tanggalSekarang,
 
-            "totals"  => Tb_total::get(),
+            "totals"  => $totals,
+
+
+
             "totalss"  => $totalss,
 
             "sum"  => $sum,
@@ -469,6 +565,8 @@ $tahunSekarang = date('Y');
                       ->get();
         return response()->json($revenues);
     }
+
+    
     public function detail_revenue($uuid)
     {
         $user = DB::table('tb_upload') 
@@ -482,6 +580,18 @@ $tahunSekarang = date('Y');
      ->orderBy('year', 'ASC')
      ->orderBy('month', 'ASC')
      ->get();
+
+     
+     $bulanSekarang = date('m');
+     $tahunSekarang = date('Y');
+     $tb_total = DB::table('tb_total')
+     ->select('total')
+     ->whereMonth('updated_at', $bulanSekarang)
+     ->whereYear('updated_at', $tahunSekarang)
+     ->get();
+
+     
+
  $totals = DB::table('tb_upload')
         ->sum('revenue_bulan');
         $start_date = upload::pluck('tanggal')->first();
@@ -490,6 +600,7 @@ $tahunSekarang = date('Y');
         return view('page.revenue.detailRevenue', [
             "title" => "revenue",
             "user"  => $user,
+            "total"  => $tb_total,
             "monthlyData" =>$monthlyData,
             "count"  => $count,
             "start_date"  => $start_date,
@@ -832,6 +943,8 @@ $tahunSekarang = date('Y');
             $user->revenuedate_harian = '-';
             $user->isentif = '-';
             $user->jumlah = '-';
+            $user->total = '-';
+
 
 
             $user->save();

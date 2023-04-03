@@ -27,4 +27,12 @@ class upload extends Model
     {
         return LogOptions::defaults();
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    
 }
+
+
