@@ -1,8 +1,34 @@
 
 
+<?php
+{
+    $total_orang = 6;
+    $insentif = 400;
+    $nilai_bagian = [];
+
+    // Pembagian untuk 3 orang yang sama
+    $bagian_sama = ['A', 'A', 'A'];
+    $insentif_sama = round($insentif / 2); // 200
+    $nilai_sama = $insentif_sama / count($bagian_sama); // 100
+    $nilai_bagian['Jumlah A'] = $nilai_sama * count($bagian_sama); // 300
+
+    // Pembagian untuk 3 orang yang berbeda
+    $bagian_berbeda = ['B', 'C', 'D'];
+    $insentif_berbeda = $insentif - $insentif_sama; // 200
+    $nilai_per_orang = round($insentif_berbeda / count($bagian_berbeda)); // 67
+    foreach ($bagian_berbeda as $bagian) {
+        $nilai_bagian[$bagian] = $nilai_per_orang;
+    }
+    
+    // Menggabungkan nilai bagian dengan bagian
+    $hasil = array_merge($bagian_sama, $bagian_berbeda);
+    echo "Jumlah pengguna dengan nama " . implode(', ', $names) . ": " . $nameCount;
+}
+?>
+
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Radar Bogor</h6>
+        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>{{!! json_encode($nilai_bagian) !!}}</h6>
         <hr>
         <div class="row mb-4">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
@@ -175,7 +201,7 @@
                         </td>
                         <?php endif;?>
                         <?php
-                        if(auth()->user()->role == 'Admin Keuangan'):?>
+                        if(auth()->user()->role == 'Admin Finance'):?>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
@@ -218,9 +244,12 @@
                         </th>
                         @foreach($totals as $datas)
 
-                        <th colspan="4" href="" class="text-warning update" data-name="total" data-type="text" data-pk="{{$datas->id}}" data-title="Masukan Total">{{'$' .number_format(floatval($datas->total), 2)}}</th>
+                        <th colspan="4" href="" class="text-warning update" data-name="total" data-type="text" data-pk="{{$datas->id}}" data-title="Masukan Total">{{'$' .number_format(floatval($datas->total))}}</th>
                         @endforeach
                         <th colspan="4" href="" class="text-warning">{{'$' .number_format($total)}}</th>
+                         
+                        <th colspan="4" href="" class="text-warning"><a class="btn btn-sm btn-success" href="/Total"><i class="bi bi-plus"></i></a></th>
+
 
                     </tr>
                 </tfoot>
