@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \RealRashid\SweetAlert\ToSweetAlert::class,
+            
         ],
 
         'api' => [
@@ -66,6 +67,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'RedirectIfNotAuthenticated' => \App\Http\Middleware\RedirectIfNotAuthenticated::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
+        'check-status' => \App\Http\Middleware\CheckStatus::class,
+
 
     ];
 }

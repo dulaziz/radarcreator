@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\upload;
+use App\Models\insentif;
+
 use App\Models\jabatan;
 use App\Exports\Revenue;
 
@@ -23,6 +25,169 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 class SessionController extends Controller
 {
+    public function indexIsentif()
+    {
+
+        return view('page.dashboard.indexIsentif', [
+            "title" => "dashboard",
+
+
+
+
+        ]);
+    }
+
+
+    public function detaiIsentif($uuid)
+    {
+        $start_date = upload::pluck('tanggal')->first();
+        $end_date = Carbon::parse($start_date)->addDays(13)->toDateString();
+    
+        $bulanSekarang = date('m');
+    $tahunSekarang = date('Y');
+    
+        $namess = auth()->user()->name; // Mendapatkan nama pengguna yang sedang login
+        $user = DB::table('tb_upload') 
+            ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
+            ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.video', 'tb_upload.produksi', 'tb_upload.isentif', 'tb_upload.updated_at', 'tb_upload.published_date',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
+            ->find($uuid);
+            //find the record matched to the current authenticated user's id from the joint table records
+    
+     // Ambil string nama dari user yang sedang login
+    
+    // Pisahkan string menjadi array nama
+    $names = explode(',', $user->name);
+    // Hitung jumlah kemunculan setiap nama dalam array
+    $nameCounts = array_count_values($names);
+    // Tentukan insentif
+    $insentif = intval($user->isentif);
+    // Hitung jumlah orang yang memenuhi syarat
+    $numEligible = count($names);
+    // Bagi insentif dengan jumlah orang yang memenuhi syarat
+    $insentifPerPerson = ($insentif / $numEligible);
+    // Tampilkan pembagian insentif untuk user yang sedang login
+    $person =  $insentifPerPerson *  $nameCounts[auth()->user()->name];
+    foreach ($nameCounts as $name => $count) {
+    if ($name !== $user->name) {
+    
+        $person =  $insentifPerPerson *  $nameCounts[auth()->user()->name];
+    }
+    }
+    foreach ($nameCounts as $name => $count) {
+    if ($name !== $user->name) {
+    
+       $multiperson = $insentifPerPerson * $count;
+    }
+    }
+    $tb_total = DB::table('tb_total')
+->select('total')
+->whereMonth('updated_at', $bulanSekarang)
+->whereYear('updated_at', $tahunSekarang)
+->get();
+
+
+        return view('page.dashboard.indexdetai', [
+            "title" => "dashboard",
+            "user" => $user,
+            "total" => $tb_total,
+            "person" => $person,
+            "multiperson" => $multiperson,
+            "start_date" => $start_date,
+            "end_date" => $end_date,
+
+
+
+
+        ]);
+    }
+    public function update_isentif(Request $request, $uuid)
+    {
+        $user = DB::table('tb_upload') 
+        ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
+        ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.video', 'tb_upload.produksi', 'tb_upload.isentif', 'tb_upload.updated_at', 'tb_upload.published_date',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
+        ->find($uuid);
+       
+        $user = upload::find($uuid);      
+        $input = $request->all();
+        $nilai_implode = $request->input('insentif');        
+        $data_array = is_array($nilai_implode) ? $nilai_implode : [];
+
+        $nilai_implode1 = $request->input('nama');        
+        $data_array1 = is_array($nilai_implode1) ? $nilai_implode1 : [];
+
+        $nilai_implode2 = $request->input('impression_harian');        
+        $data_array2 = is_array($nilai_implode2) ? $nilai_implode2 : [];
+
+        $nilai_implode3 = $request->input('viewer_harian');        
+        $data_array3 = is_array($nilai_implode3) ? $nilai_implode3 : [];
+
+        $nilai_implode4 = $request->input('video_title');        
+        $data_array4 = is_array($nilai_implode4) ? $nilai_implode4 : [];
+
+        $nilai_implode5 = $request->input('published');        
+        $data_array5 = is_array($nilai_implode5) ? $nilai_implode5 : [];
+
+        $nilai_implode6 = $request->input('status');        
+        $data_array6 = is_array($nilai_implode6) ? $nilai_implode6 : [];
+
+        $nilai_implode7 = $request->input('pembagian');        
+        $data_array7 = is_array($nilai_implode7) ? $nilai_implode7 : [];
+
+
+        $request->validate([
+          
+            'total' => 'required',
+            'revenuedate_bulan' => 'required',
+            'revenuedate_harian' => 'required',
+            'revenue_harian' => 'required',
+
+        ]);
+        if ($input['total'] <= 1500) {
+            $harga_barang_dilaravel = (float)$input['revenue_harian']* (float)0.8;
+            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 );
+            $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
+            
+        } else if ($input['total']  <= 2500) {
+            $harga_barang_dilaravel = (float)$input['revenue_harian']  * (float)0.7;
+            $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 );
+        
+            $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
+        } else if ($input['total']  >= 2501) {
+            $harga_barang_dilaravel = (float)$input['revenue_harian'] * (float)0.6;
+            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 );
+            $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
+        } else {
+            $total_harga_barang = $input['revenue_harian'];
+        }
+        $user->update([
+
+            $user->revenuedate_bulan  = $input['revenuedate_bulan'],
+            $user->revenue_harian  = $input['revenue_harian'],
+            $user->insentif = implode(',', $input['insentif']),
+
+            $user->total = $input['total'],
+            $user->revenuedate_harian = $input['revenuedate_harian'],
+            $user->isentif =  'Selesai',
+
+
+        ]);
+        foreach ($data_array as $index => $data) {
+            $tabel2 = new insentif;
+            $tabel2->nama = $data_array1[$index];
+            $tabel2->pendapatan =(string) $data;
+            $tabel2->pembagian =$data_array7[$index];
+
+            $tabel2->judul_video =$data_array4[$index];
+            $tabel2->viewer =$data_array3[$index];
+            $tabel2->impression = $data_array2[$index];
+            $tabel2->published = $data_array5[$index];
+            $tabel2->status = $data_array6[$index];
+
+            $tabel2->save();
+        }
+        return redirect('/revenue')->with('success', 'Berhasil Diubah!');
+    }
+
     public function construct()
     {
         $this->middleware('auth');
@@ -47,34 +212,83 @@ class SessionController extends Controller
 
 
 
-    public function exportExcel()
+    public function exportExcel(Request $request)
     {
+        $dateRange = $request->input('revenuedate_harian');
+
+        // Pisahkan tanggal mulai dan tanggal akhir
+        $dates = explode(' - ', $dateRange);
+        $startDate = Carbon::parse($dates[0])->startOfDay();
+        $endDate = Carbon::parse($dates[1])->endOfDay();
+      
+        // Ambil data dari database berdasarkan rentang tanggal
+        $data = DB::table('isentif')
+        ->select('isentif.judul_video', 'isentif.nama', 'isentif.published', 'isentif.impression', 'isentif.viewer',  'isentif.pendapatan', )
+        ->where('isentif.status', '=', 'Published')->
+        whereBetween('published', [$startDate, $endDate])->get();
+      
         $nama_file = 'Laporan perbulan'.date('Y-m-d_H-i-s').'.xlsx';
-        return Excel::download(new Revenue, $nama_file);
+        return Excel::download(new Revenue($data), $nama_file);
     }
     public function detailIsentif($uuid)
     {
-        $name = auth()->user()->name; // Mendapatkan nama pengguna yang sedang login
-        $names = explode(", ", $name); 
+        $start_date = upload::pluck('tanggal')->first();
+        $end_date = Carbon::parse($start_date)->addDays(13)->toDateString();
+
+        $bulanSekarang = date('m');
+$tahunSekarang = date('Y');
+
+        $namess = auth()->user()->name; // Mendapatkan nama pengguna yang sedang login
         $user = DB::table('tb_upload') 
             ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
-          
+            ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.video', 'tb_upload.produksi', 'tb_upload.isentif', 'tb_upload.updated_at', 'tb_upload.published_date',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
             ->find($uuid);
             //find the record matched to the current authenticated user's id from the joint table records
-            $count = DB::table('tb_upload')
-                            ->where(function($query) use ($names) {
-                                foreach($names as $name) {
-                                    $query->orWhere('name', 'LIKE', '%' . $name . '%');
-                                }
-                            })
-                            ->where('id', $uuid)
-                            ->count();
-            
-            echo "Jumlah pengguna yang memiliki nama yang sama dengan nama pengguna " . $name . " adalah " . $count;
+
+     // Ambil string nama dari user yang sedang login
+
+// Pisahkan string menjadi array nama
+$names = explode(',', $user->name);
+// Hitung jumlah kemunculan setiap nama dalam array
+$nameCounts = array_count_values($names);
+// Tentukan insentif
+$insentif = intval($user->isentif);
+// Hitung jumlah orang yang memenuhi syarat
+$numEligible = count($names);
+// Bagi insentif dengan jumlah orang yang memenuhi syarat
+$insentifPerPerson = ($insentif / $numEligible);
+// Tampilkan pembagian insentif untuk user yang sedang login
+foreach ($nameCounts as $name => $counts) {
+    if ($name !== $user->name) {
+
+        $person =  $insentifPerPerson *  $counts;
+    }
+}
+foreach ($nameCounts as $name => $count) {
+    if ($name !== $user->name) {
+
+       $multiperson = $insentifPerPerson * $count;
+    }
+}
+$tb_total = DB::table('tb_total')
+->select('total')
+->whereMonth('updated_at', $bulanSekarang)
+->whereYear('updated_at', $tahunSekarang)
+->get();
+
 
         return view('page.dashboard.detailIsentif', [
             "title" => "dashboard",
             "user" => $user,
+            "total" => $tb_total,
+            "person" => $person,
+            "multiperson" => $multiperson,
+            "start_date" => $start_date,
+            "end_date" => $end_date,
+
+
+
+
         ]);
     }
 
@@ -92,7 +306,7 @@ class SessionController extends Controller
         ->select('activity_log.log_name', 'activity_log.description', 'activity_log.subject_type', 'activity_log.created_at');
 
         if ($request->roles) {
-            $user = upload::where('bulan', $request->roles);
+            $user = upload::whereMonth('tanggal', $request->roles);
         }
         if ($request->statuss) {
             $user = upload::where('status', $request->statuss);
@@ -120,6 +334,7 @@ class SessionController extends Controller
             "sem" => $sem,
             "sam" => $sam,
             "som" => $som,
+            
             "users" => groups::get(),
 
         ]);
@@ -158,16 +373,16 @@ class SessionController extends Controller
         ]);
         if ($input['revenue_harian'] <= 1500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']* (float)0.8;
-            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 / (float)$input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 );
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
         } else if ($input['revenue_harian']  <= 2500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']  * (float)0.7;
-            $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 / (float) $input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 );
         
             $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
         } else if ($input['revenue_harian']  >= 2501) {
             $harga_barang_dilaravel = (float)$input['revenue_harian'] * (float)0.6;
-            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 / (float)$input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 );
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
         } else {
             $total_harga_barang = $input['revenue_harian'];
@@ -258,22 +473,28 @@ class SessionController extends Controller
             'revenuedate_bulan' => 'required',
             'viewer_harian' => 'required',
             'impression_harian' => 'required',
-            'revenue_harian.lte:revenue_bulan' => 'Revenue harian tidak boleh lebih dari revenue bulanan !',
              'revenuedate_harian' => 'required',
+             'revenue_harian' => 'required|numeric|lte:revenue_bulan',
+
+
+        ],  
+         [
+            'revenue_harian.lte' => 'Revenue harian tidak boleh lebih dari revenue bulanan !',
 
         ]);
+    
         if ($input['total'] <= 1500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']* (float)0.8;
-            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 / (float)$input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 );
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
         } else if ($input['total']  <= 2500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']  * (float)0.7;
-            $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 / (float) $input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 );
         
             $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
         } else if ($input['total']  >= 2501) {
             $harga_barang_dilaravel = (float)$input['revenue_harian'] * (float)0.6;
-            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 / (float)$input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 );
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
         } else {
             $total_harga_barang = $input['revenue_harian'];
@@ -305,6 +526,8 @@ class SessionController extends Controller
             $user->jumlah = $input['jumlah'];
             $user->isentif =  $harga_barang_lainnya;
             $user->total = $input['total'];
+            $user->insentif = $input['insentif'];
+
 
         $user->save();
 
@@ -337,16 +560,16 @@ class SessionController extends Controller
     
         if ($input['total'] <= 1500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']* (float)0.8;
-            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 / (float)$input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.2 );
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
         } else if ($input['total']  <= 2500) {
             $harga_barang_dilaravel = (float)$input['revenue_harian']  * (float)0.7;
-            $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 / (float) $input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian']  * (float)0.3 );
         
             $total_harga_barang = $harga_barang_dilaravel + $harga_barang_lainnya;
         } else if ($input['total']  >= 2501) {
             $harga_barang_dilaravel = (float)$input['revenue_harian'] * (float)0.6;
-            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 / (float)$input['jumlah']);
+            $harga_barang_lainnya = round((float)$input['revenue_harian'] * (float)0.4 );
             $total_harga_barang = (float)$input['revenue_harian'] + (float)$harga_barang_lainnya;
         } else {
             $total_harga_barang = $input['revenue_harian'];
@@ -363,7 +586,7 @@ class SessionController extends Controller
             $user->revenuedate_harian = $input['revenuedate_harian'],
             $user->jumlah = $input['jumlah'],
             $user->total = $input['total'],
-            $user->isentif =  $harga_barang_lainnya,
+            $user->isentif =  'Noted',
 
 
 
@@ -388,22 +611,24 @@ class SessionController extends Controller
     {
         $bulanSekarang = date('m');
 $tahunSekarang = date('Y');
-
+$name = auth()->user()->name; // Mendapatkan nama pengguna yang sedang login
+$names = explode(", ", $name); // Membagi nama menjadi array dengan memisahkan spasi
        
 
                 $total = DB::table('tb_upload')
                 ->whereMonth('created_at', $bulanSekarang)
                 ->whereYear('created_at', $tahunSekarang)
                 ->sum('revenue_harian');
-                $totala = DB::table('tb_upload')
+                $totala = DB::table('isentif')
                 ->whereMonth('created_at', $bulanSekarang)
                 ->whereYear('created_at', $tahunSekarang)
-                ->sum('isentif');
-                $totalss = DB::table('tb_upload')
-                ->where('tb_upload.name_upload', '=', auth()->user()->name)
+                ->sum('pendapatan');
+                $totalss = DB::table('isentif')
+                ->where('isentif.nama', '=', auth()->user()->name)
+
                 ->whereMonth('created_at', $bulanSekarang)
                 ->whereYear('created_at', $tahunSekarang)
-                ->sum('isentif');
+                ->sum('pendapatan');
 
                 $totals = DB::table('tb_total')
                 ->select('tb_total.id', 'tb_total.total', 'tb_total.tanggal',)
@@ -411,8 +636,7 @@ $tahunSekarang = date('Y');
                 ->whereYear('created_at', $tahunSekarang);
 
               
-                $name = auth()->user()->name; // Mendapatkan nama pengguna yang sedang login
-                $names = explode(", ", $name); // Membagi nama menjadi array dengan memisahkan spasi
+              
                 $count = DB::table('tb_upload')
                             ->where(function($query) use ($names) {
                                 foreach($names as $name) {
@@ -421,32 +645,36 @@ $tahunSekarang = date('Y');
                             })
                             ->count();
                 
-                echo "Jumlah pengguna yang memiliki nama yang sama dengan nama pengguna " . $name . " adalah " . $count;
-        $usersss = DB::table('tb_upload')
-        ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
-        ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.isentif', 'tb_upload.updated_at', 'tb_upload.published_date',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
+        $usersss = DB::table('isentif')
+        ->select('*')
+        ->where('isentif.nama', '=', auth()->user()->name)
 
-        ->where(function($query) use ($names) {
-            foreach($names as $name) {
-                $query->orWhere('name', 'LIKE', '%' . $name . '%');
-            }
-        })
         ->where(function($query) {
             $query->where('status', 'Takedown')
                   ->orWhere('status', 'Published');
         })
     
-        ->whereMonth('tb_upload.created_at', $bulanSekarang);
+        ->whereMonth('isentif.created_at', $bulanSekarang);
     
         $tanggalSekarang = Carbon::now()->translatedFormat('F');;
         $user = DB::table('tb_upload')
             ->join('type_group', 'tb_upload.id_group', '=', 'type_group.id_group')
-            ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.updated_at', 'tb_upload.name_upload',  'tb_upload.isentif', 'tb_upload.id', 'tb_upload.published_date',  'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
+            ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.updated_at', 'tb_upload.name_upload',  'tb_upload.isentif', 'tb_upload.id', 'tb_upload.published_date',  'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian', 'tb_upload.isentif')
             ->where(function($query) {
                 $query->where('status', 'Takedown')
                       ->orWhere('status', 'Published');
             })
             ->whereMonth('tb_upload.created_at', $bulanSekarang);
+        
+            $pmn = DB::table('isentif')
+            ->select('*')
+            ->where(function($query) {
+                $query->where('status', 'Takedown')
+                      ->orWhere('status', 'Published');
+            })
+            ->whereMonth('isentif.created_at', $bulanSekarang);
+
+            $people = upload::all();
 
         if ($request->select) {
             $user = upload::where('tb_upload.status', '=', 'Published')
@@ -468,56 +696,80 @@ $tahunSekarang = date('Y');
                  $tanggalSekarang = Carbon::now()->translatedFormat('F');;
         }
         if ($request->searchs) {
-            $usersss = upload::where(function($query) {
+            $usersss = insentif::where(function($query) {
                 $query->where('status', 'Takedown')
                       ->orWhere('status', 'Published');
             })
-                ->where('video_title', 'LIKE', '%' . $request->searchs . '%')
-                ->where('tb_upload.name_upload', '=', auth()->user()->name);
-               
+            ->where('judul_video', 'LIKE', '%' . $request->searchs . '%')
+            ->where('isentif.nama', '=', auth()->user()->name);
+
+            $totalss = $usersss->sum('pendapatan');
+
         }
+        $roles = $request->input('roles');
         if ($request->roles) {
+            $bulan = date('m', strtotime($roles));
+            $tahun = date('Y', strtotime($roles));
             $user = upload::where(function($query) {
                 $query->where('status', 'Takedown')
                       ->orWhere('status', 'Published');
             })
-            ->where('bulan',$request->roles);
+            ->whereMonth('created_at', $bulan)
+            ->whereYear('created_at', $tahun);          
             $total = $user->sum('revenue_harian');
+           
         }
-
-        
+        $roless = $request->input('roless');
         if ($request->roless) {
-            $usersss = upload::where(function($query) {
+            $bulan = date('m', strtotime($roless));
+            $tahun = date('Y', strtotime($roless));
+            $usersss = insentif::where(function($query) {
                 $query->where('status', 'Takedown')
                       ->orWhere('status', 'Published');
             })
-            ->where('bulan',$request->roless)
-            ->where('tb_upload.name_upload', '=', auth()->user()->name);
-            $totalss = $usersss->sum('isentif');
+            ->whereMonth('published', $bulan)
+            ->whereYear('published', $tahun)
+            ->where('isentif.nama', '=', auth()->user()->name);
+          
+            $totalss = $usersss->sum('pendapatan');
            
         }
-
-        if ($request->rolesss) {
-            $user = upload::where(function($query) {
+        $tanggal = $request->input('tanggal');
+        if ($request->tanggal) {
+            $bulan = date('m', strtotime($tanggal));
+            $tahun = date('Y', strtotime($tanggal));
+    
+            $pmn = insentif::where(function($query) {
                 $query->where('status', 'Takedown')
                       ->orWhere('status', 'Published');
             })
-            ->where('bulan',$request->roless);
+            ->whereMonth('published', $bulan)
+            ->whereYear('published', $tahun);
+
 
         
-            $totala = $user->sum('isentif');
+            $totala = $pmn->sum('pendapatan');
            
         }
+// Mengambil data nama dari database
+$namaDicari = $request->names;
+   // Mengubah nama menjadi array menggunakan explode
 
-        if ($request->names) {
-            $user = upload::where(function($query) {
-                $query->where('status', 'Takedown')
-                      ->orWhere('status', 'Published');
-            })
-            ->where('name_upload',$request->names)     
-            ->whereMonth('tb_upload.created_at', $bulanSekarang);   
-            $totala = $user->sum('isentif');
-        }
+    // Mengubah nama menjadi array menggunakan explode
+    $arrayNama = explode(',', $namaDicari);
+   
+   
+        if ($namaDicari) {
+        $pmn = insentif::where(function($query) {
+            $query->where('status', 'Takedown')
+                  ->orWhere('status', 'Published');
+        })
+        ->where('nama', 'LIKE', '%' . $namaDicari . '%')
+        ->whereMonth('isentif.created_at', $bulanSekarang);   
+        $totala = $pmn->sum('pendapatan');
+        $namas = $pmn->sum('pendapatan');
+}
+
         if ($request->nama_user) {
             $user = upload::where(function($query) {
                 $query->where('status', 'Takedown')
@@ -527,20 +779,36 @@ $tahunSekarang = date('Y');
         }
 
         $perPage = $request->input('perPage', 10);
+        $Page = $request->input('Page', 10);
 
 
-        $user = $user->orderBy('updated_at', 'DESC')->paginate($perPage);
-        $usersss = $usersss->orderBy('updated_at', 'DESC')->paginate($perPage);
+ 
+        $user = $user->orderBy('updated_at', 'DESC')->paginate(10, ['*'], 'page2');
+        $pmn = DB::table('isentif')->paginate(10, ['*'], 'page1');
+               
+        $usersss = $usersss->orderBy('updated_at', 'DESC')->paginate(2, ['*'], 'page3');
 
         $totals = $totals->orderBy('updated_at', 'DESC')->paginate($perPage);
-
-
+           // Inisialisasi array untuk menyimpan jumlah kata yang sama dan berbeda pada kolom masing-masing
+           $sameWordsCount = 0;
+           $uniqueWordsCount = 0;
+           
+          
 
         return view('page.revenue.index', [
             "title" => "revenue",
             "user"  => $user,
             "totala"  => $totala,
             "usersss"  => $usersss,
+            "pmn"  => $pmn,
+
+            "namaDicari"  => $namaDicari,
+
+
+
+            
+
+
             "total"  => $total,
             "bulan_sekarang"  => $bulan_sekarang,
             "tanggalSekarang"  => $tanggalSekarang,
@@ -709,11 +977,12 @@ $tahunSekarang = date('Y');
 
         $user = DB::table('type_group')
             ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
+            ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.gambar', 'tb_upload.updated_at', 'tb_upload.name_upload', 'tb_upload.bulan', 'tb_upload.published_date', 'tb_upload.video',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',)
             ->where('tb_upload.name_upload', '=', Auth::user()->name);
 
         if ($request->roles) {
             $user = upload::where('tb_upload.name_upload', '=', auth()->user()->name)
-                ->where('bulan', $request->roles);
+            ->whereMonth('tanggal', $request->roles);
         }
         if ($request->select) {
             $user = upload::where('tb_upload.name_upload', '=', auth()->user()->name)
@@ -730,7 +999,7 @@ $tahunSekarang = date('Y');
         }
         $perPage = $request->input('perPage', 10);
 
-        $user = $user->orderBy('id', 'ASC')->paginate($perPage);
+        $user = $user->orderBy('updated_at', 'DESC')->paginate($perPage);
 
         return view('page.uploaded.index', [
             "title" => "uploaded",
@@ -756,11 +1025,12 @@ $tahunSekarang = date('Y');
 
 
         $user = DB::table('type_group')
-            ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group');
+            ->join('tb_upload', 'tb_upload.id_group', '=', 'type_group.id_group')
+            ->select('type_group.group', 'tb_upload.video_title', 'tb_upload.gambar', 'tb_upload.updated_at', 'tb_upload.name_upload', 'tb_upload.bulan', 'tb_upload.published_date', 'tb_upload.video',  'tb_upload.id', 'tb_upload.name', 'tb_upload.tanggal', 'tb_upload.status', 'type_group.id_group', 'tb_upload.status', 'tb_upload.platform',   'tb_upload.viewer_bulan', 'tb_upload.impression_bulan', 'tb_upload.revenue_bulan', 'tb_upload.revenuedate_bulan', 'tb_upload.viewer_harian', 'tb_upload.impression_harian', 'tb_upload.revenue_harian', 'tb_upload.revenuedate_harian',);
 
         if ($request->roles) {
-            $user = upload::where('bulan', $request->roles);
-        }
+            $user = upload::whereMonth('tanggal', $request->roles); // Melakukan query pencarian berdasarkan bulan
+                }
         if ($request->statuss) {
             $user = upload::where('status', $request->statuss);
         }
@@ -769,7 +1039,7 @@ $tahunSekarang = date('Y');
         }
         $perPage = $request->input('perPage', 10);
 
-        $user = $user->orderBy('id', 'ASC')->paginate($perPage);
+        $user = $user->orderBy('updated_at', 'DESC')->paginate($perPage);
         return view('page.dashboard.index',  [
             "title" => "dashboard",
             "user" => $user,
@@ -941,8 +1211,10 @@ $tahunSekarang = date('Y');
             $user->impression_harian = '-';
             $user->revenue_harian = '-';
             $user->revenuedate_harian = '-';
-            $user->isentif = '-';
+            $user->isentif = 'Unoted';
             $user->jumlah = '-';
+            $user->insentif = '-';
+
             $user->total = '-';
 
 
@@ -1002,7 +1274,7 @@ $tahunSekarang = date('Y');
     {
 
         $user = DB::table('type_group')
-            ->join('users', 'users.group', '=', 'type_group.group')
+            ->join('users', 'users.id_group', '=', 'type_group.id_group')
             ->join('type_jabatan', 'type_jabatan.jabatan', '=', 'users.jabatan')
 
             ->orderBy('users.id', 'asc')
@@ -1080,16 +1352,21 @@ $tahunSekarang = date('Y');
 
         $user->id = Str::uuid();
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:users,name,message=>"Nama sudah digunakan."',
             'username' => 'required',
             'group' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email,message=>"Email sudah digunakan."',
             'password' => 'required',
             'jabatan' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        ]);
+        ],
+        [
+            'name.unique' => 'Nama sudah digunakan.',
+            'email.unique' => 'Email sudah digunakan.'
 
+        ]
+    );
         //upload new image
         $request->hasFile($input['gambar']);
 
@@ -1116,13 +1393,34 @@ $tahunSekarang = date('Y');
     {
 
         $datas = DB::table('type_group')
-            ->join('users', 'users.group', '=', 'type_group.group')
+            ->join('users', 'users.id_group', '=', 'type_group.group')
             ->join('type_jabatan', 'type_jabatan.jabatan', '=', 'users.jabatan')
-            ->select('type_group.group', 'type_group.group', 'users.id',  'users.group', 'type_jabatan.jabatan', 'type_jabatan.jabatan')
+            ->select('type_group.group', 'type_group.group', 'users.id',  'users.id_group', 'type_jabatan.jabatan', 'type_jabatan.jabatan')
             ->get();
 
         $user = User::find($id);
         return view('page.user.userEdit', [
+            "title" => "user",
+            'user' => $user,
+            'datas' => $datas,
+            "users" => groups::get(),
+            "userss" => jabatan::get(),
+
+        ]);
+    }
+
+    
+    public function only($id)
+    {
+
+        $datas = DB::table('type_group')
+            ->join('users', 'users.id_group', '=', 'type_group.id_group')
+            ->join('type_jabatan', 'type_jabatan.jabatan', '=', 'users.jabatan')
+            ->select('type_group.group', 'type_group.group', 'users.id',  'users.id_group', 'type_jabatan.jabatan', 'type_jabatan.jabatan')
+            ->get();
+
+        $user = User::find($id);
+        return view('page.user.userOnly', [
             "title" => "user",
             'user' => $user,
             'datas' => $datas,
@@ -1146,6 +1444,55 @@ $tahunSekarang = date('Y');
             'gambar' => 'image|mimes:jpeg,png,jpg|max:2048'
 
 
+        ]);
+        if ($request->hasFile('gambar')) {
+
+            //upload new image
+
+            $image = $request->file('gambar');
+            $image->storeAs('public/posts', $image->hashName());
+
+            //delete old image
+            Storage::delete('public/posts' . $user->gambar);
+
+            //update post with new image
+            $user->update([
+
+                $user->gambar     = $image->hashName(),
+                $user->name = $request->name,
+                $user->username = $request->username,
+                $user->id_group = $request->group,
+                $user->email = $request->email,
+                $user->password = Hash::make($request->password),
+                $user->jabatan = $request->jabatan
+
+            ]);
+        } else {
+
+            //update post without image
+            $user->update([
+                $user->name = $request->name,
+                $user->username = $request->username,
+                $user->id_group = $request->group,
+                $user->email = $request->email,
+                $user->password = Hash::make($request->password),
+                $user->jabatan = $request->jabatan
+            ]);
+        }
+        return redirect('/user')->with('success', 'Berhasil Diubah!');
+
+    }
+
+
+    public function updateEdit(Request $request,  $uuid)
+    {
+        $user = User::find($uuid);
+
+        $this->validate($request, [
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg|max:2048'
 
 
         ]);
@@ -1165,10 +1512,7 @@ $tahunSekarang = date('Y');
                 $user->gambar     = $image->hashName(),
                 $user->name = $request->name,
                 $user->username = $request->username,
-                $user->group = $request->group,
                 $user->email = $request->email,
-                $user->password = Hash::make($request->password),
-                $user->jabatan = $request->jabatan
 
             ]);
         } else {
@@ -1177,15 +1521,14 @@ $tahunSekarang = date('Y');
             $user->update([
                 $user->name = $request->name,
                 $user->username = $request->username,
-                $user->group = $request->group,
                 $user->email = $request->email,
-                $user->password = Hash::make($request->password),
-                $user->jabatan = $request->jabatan
             ]);
         }
-        return redirect('/user')->with('success', 'Berhasil Diubah!');
+        return redirect('/')->with('success', 'Berhasil Diubah!');
 
     }
+
+
 
 
     public function delete(User $user, $id)

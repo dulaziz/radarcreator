@@ -96,6 +96,7 @@
 
     </div>
 </div>
+</div>
 
 @include('page.revenue.components.formAddRevenue')
 

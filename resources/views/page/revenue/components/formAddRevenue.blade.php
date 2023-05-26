@@ -19,20 +19,20 @@
                         <span class="d-none d-md-block pt-3">to:</span>
                         <div class="mb-3 w-100 w-md-50">
                             <label for="datefilter" class="form-label">Revenue Date</label>
-                            <input type="text" class="form-control" id="revenuedate_bulan" name="revenuedate_bulan" >
+                            <input type="text" class="form-control" value="{{$user->revenuedate_bulan}}" id="revenuedate_bulan" name="revenuedate_bulan" >
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="viewer" class="form-label">Viewer</label>
-                        <input type="text" class="form-control" id="viewer" name="viewer_bulan">
+                        <input type="text" class="form-control" id="viewer" value="{{$user->viewer_bulan}}"name="viewer_bulan">
                     </div>
                     <div class="mb-3">
                         <label for="impression" class="form-label">Impression</label>
-                        <input type="text" class="form-control" id="impression" name="impression_bulan">
+                        <input type="text" class="form-control" id="impression" value="{{$user->impression_bulan}}" name="impression_bulan">
                     </div>
                     <div class="mb-3">
                         <label for="revenue" class="form-label">Revenue</label>
-                        <input type="text" class="form-control" id="revenue" name="revenue_bulan">
+                        <input type="text" class="form-control" id="revenue" value="{{$user->revenue_bulan}}" name="revenue_bulan">
                        
                     </div>
             </div>
@@ -59,7 +59,7 @@
                         <label for="impression" class="form-label">Impression</label>
                         <input type="text" class="form-control" id="impression" name="impression_harian" value="{{$user->impression_harian}}">
                    @foreach($total as $data)
-                        <input type="text" class="form-control" id="total" name="total" value="{{$data->total}}">
+                        <input type="hidden" class="form-control" id="total" name="total" value="{{$data->total}}">
 @endforeach
                         <input type="hidden" class="form-control" name="jumlah" value="{{$count}}">
 

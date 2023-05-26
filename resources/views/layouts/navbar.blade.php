@@ -20,7 +20,7 @@
                 class="rounded-circle"
                 height="60" 
                 width="60"
-                src="{{ asset('/storage/posts/'.Auth::user()->gambar) }}" >
+                src="{{ asset('/storage/public/posts/'.Auth::user()->gambar) }}">
                         <h1 class="mb-1 fs-5 text-uppercase">{{Auth::user()->name}}</h1>
                         <div class="mb-3">
                             <span>{{Auth::user()->jabatan}}</span> | <span>{{Auth::user()->group}}</span>

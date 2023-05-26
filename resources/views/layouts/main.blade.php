@@ -40,6 +40,8 @@
 
     <!-- Date Picker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
 </head>
 
@@ -96,7 +98,10 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />    
-    <script >
+   
+
+   
+   <script >
 $(document).ready(function (){
     $('#category').on('change',function(){
      var category = $(this).val();
@@ -139,11 +144,42 @@ $(document).ready(function () {
 <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
 <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+<script >
+    $(function () {
+        $('.datetimepicker-input').datetimepicker({
+            viewMode: 'months',
+              format: 'YYYY-MM'
+        });
+    });
+</script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
+        });
+    </script>
 <script>
     $(function() {
         $('input[name="revenuedate_harian"]').daterangepicker({
+            opens: 'left',
+            locale: {
+                format: 'YYYY-MM-DD'
+                
+                
+            },
+            
+        }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>
+
+<script>
+    $(function() {
+        $('input[name="date_range"]').daterangepicker({
             opens: 'left',
             locale: {
                 format: 'YYYY-MM-DD'
@@ -175,6 +211,8 @@ $(document).ready(function () {
         });
     });
 </script>
+
+
 </body>
 
 </html>

@@ -21,7 +21,11 @@
                         <th scope="col">Group</th>
                         <th scope="col">Role</th>
                         <th scope="col">Position/Role</th>
+                        <?php
+                        if(auth()->user()->role == 'Super Admin'):?>
+
                         <th scope="col">Action</th>
+                        <?php endif;?>
                     </tr>
                    
                 </thead>
@@ -36,6 +40,8 @@
                         <td>{{ $data->group }}</td>
                         <td>{{ $data->role }}</td>
                         <td>{{ $data->jabatan }} ({{$data->role}})</td>
+                        <?php
+                        if(auth()->user()->role == 'Super Admin'):?>
                         <td>
                             
                         <form   onsubmit="return confirm('Apakah Anda Yakin ?');"action="user/delete/{{$data->id}}" method="post" enctype="multipart/form-data" >
@@ -48,6 +54,8 @@
                                 <button type="submit" class="btn btn-sm btn-danger" ><i class="fas fa-trash"></i></button>
                             
                             </form>
+                            <?php endif;?>
+
                             </div>
                         </td>
                     </tr>

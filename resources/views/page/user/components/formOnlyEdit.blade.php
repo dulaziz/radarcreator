@@ -2,10 +2,10 @@
     <div class="bg-secondary rounded p-4">
         <div class="d-flex align-items-center justify-content-between">
             <h6 class="mb-0 text-start">User Edit</h6>
-            <a href="/user">Back</a> 
+            <a href="/">Back</a> 
         </div>
         <hr>
-        <form action="../userEdit/update/{{$user->id}}" method="POST" enctype="multipart/form-data">
+        <form action="../userOnly/update/{{$user->id}}" method="POST" enctype="multipart/form-data">
 @csrf
 @method('PUT')
         <div class="d-flex align-items-center gap-4 text-center">
@@ -47,32 +47,17 @@
                     <div class="mb-3">
                         <label for="group" class="form-label">Group</label>
                         <div>
-                        <select class="form-select"  name="group" aria-label="Default select example">
-                        <option selected>Pilih</option>
-                        @foreach ($users as $data)
-                            <option value="{{ $data->id_group }}" {{$data->id_group  == $user->id_group ? 'selected' : '' }}>{{ $data->group }}</option>                                      
-                        @endforeach
-                    </select>
+                            <select class="form-select" name="group" aria-label="Default select example">
+                            @foreach ($users as $data)
+                            <option value="{{ $data->group }}" {{$data->id_group  == $user->id_group ? 'selected' : '' }}>{{ $data->group }}</option>                                      
+                                @endforeach
+                            </select>
 
 
                             
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Position/Role</label>
-                            <select class="form-select" name="jabatan" aria-label="Default select example">
-                            @foreach ($userss as $data)
-                            <option value="{{ $data->jabatan }}" {{$data->id_jabatan  == $user->id_jabatan ? 'selected' : '' }}>{{ $data->jabatan }} ({{$data->role}})</option>                                      
-
-
-                                @endforeach
-
-                            </select>
-                        </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" value="{{$user->password}}"  id="password">
-                    </div>
+                 
                 </div>
               </div>
             

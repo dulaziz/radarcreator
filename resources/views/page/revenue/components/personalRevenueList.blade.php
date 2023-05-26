@@ -6,23 +6,25 @@
 
         <div class="row mb-4">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
-            <form action="/revenue" method="GET">
-                        @csrf
-                <div class="d-flex align-items-center mb-2 mb-md-0">
-                <span>Show</span>
-                
-                
-                <select class="form-select ms-2" aria-label=".form-select-sm example" name="page" id="Page" onchange="this.form.submit()">
-<option value="10" {{ $user->perPage() == 10 ? 'selected' : '' }}>10</option>
-<option value="25" {{ $user->perPage() == 25 ? 'selected' : '' }}>25</option>
-<option value="50" {{ $user->perPage() == 50 ? 'selected' : '' }}>50</option>
-<option value="100" {{ $user->perPage() == 100 ? 'selected' : '' }}>100</option>
-</select>
-                </div>
+                <form action="/revenue" method="GET">
+                    @csrf
+                    <div class="d-flex align-items-center mb-2 mb-md-0">
+                        <span>Show</span>
+
+
+                        <select class="form-select ms-2" aria-label=".form-select-sm example" name="page" id="Page"
+                            onchange="this.form.submit()">
+                            <option value="10" {{ $user->perPage() == 10 ? 'selected' : '' }}>10</option>
+                            <option value="25" {{ $user->perPage() == 25 ? 'selected' : '' }}>25</option>
+                            <option value="50" {{ $user->perPage() == 50 ? 'selected' : '' }}>50</option>
+                            <option value="100" {{ $user->perPage() == 100 ? 'selected' : '' }}>100</option>
+                        </select>
+                    </div>
                 </form>
                 <div>
                     <div class="input-group mb-2 mb-md-0">
-                        <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="fas fa-building"></i></label>
+                        <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i
+                                class="fas fa-building"></i></label>
                         <select class="form-select" name="groups" aria-label=".form-select-sm example">
                             <option selected>Filter Group</option>
                             @foreach ($users as $data)
@@ -32,43 +34,35 @@
                     </div>
                 </div>
                 <div>
-                        
+
                 </div>
                 <div>
-                    
-                <form action="/revenue" method="GET">
+
+                    <form action="/revenue" method="GET">
                         @csrf
-                    <div class="input-group">
-                        <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
-                        <select nam class="form-select" name="roless" onchange="this.form.submit()" type="search" wire:model="search" aria-label=".form-select-sm example">
-                        <option value="">Default</option>
-                        <option value="Januari"  >January</option>
-                        <option value="Febuari"   >February</option>
-                        <option value="Maret"   >Maret</option>
-                        <option value="April"   >April</option>
-                        <option value="Mei" >May</option>
-                        <option value="Juni"  >June</option>
-                        <option value="Juli" >July</option>
-                        <option value="Agustus"  >August</option>
-                        <option value="September"  >September</option>
-                        <option value="Oktober"  >October</option>
-                        <option value="November"  >November</option>
-                        <option value="Desember"  >Desember</option>
-                    </select>
-                    </div>
+                        <div class="input-group">
+                        <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
+
+<input type="text" name="roless" class="form-control datetimepicker-input" data-target="#tanggalPicker" />
+<button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
+
+
+                        </div>
                 </div>
-               
+
 
             </div>
-</form>
+            </form>
             <div class="col-md-4">
-            <form action="/revenue"  method="GET" >
-                @csrf
+                <form action="/revenue" method="GET">
+                    @csrf
 
-                <div class="input-group">
-                    <input class="form-control" type="text" name="searchs" placeholder="Search" aria-label="default input example">
-                    <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
-                </div>
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="searchs" placeholder="Search"
+                            aria-label="default input example">
+                        <button class="btn btn-dark" type="submit" id="button-addon2"><i
+                                class="fas fa-search text-muted"></i></button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -77,15 +71,13 @@
             <table class="table align-middle table-bordered table-hover mb-0">
                 <thead class="text-center">
                     <tr class="text-white">
-                        <th scope="col">No</th>
+                    <th scope="col">No</th>
                         <th scope="col">Published</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Nama Upload</th>
                         <th scope="col">Video Title</th>
-                        <th scope="col">Production Team</th>
                         <th scope="col">Viewer</th>
                         <th scope="col">impression</th>
                         <th scope="col">Revenue</th>
-                        <th rowspan="2" style="width: 2%">Action</th>
 
                     </tr>
                 </thead>
@@ -97,22 +89,17 @@
 
                     <tr>
 
-                        <td>{{$no++}}</td>
-                        <td class="text-center">{{$s->published_date}}</td>
-                        <td class="text-center">{{$s->tanggal}}</td>
-                        <td class="text-center">{{$s->video_title}}</td>
+                    <td>{{$no++}}</td>
+                        <td class="text-center">{{$s->published}}</td>
+                        <td class="text-center">{{$s->nama}}</td>
+                        <td class="text-center">{{$s->judul_video}}</td>
 
-
-                        <td class="text-center">{{$s->name}}</td>
-                        <td class="text-white text-center fw-bold">${{number_format(floatval($s->viewer_harian))}}</td>
-                        <td class="text-white text-center fw-bold">${{number_format(floatval($s->impression_harian))}}</td>
-                        <td class="text-success text-center fw-bold">${{number_format(floatval($s->isentif))}}</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailIsentif/{{$s->id}}"><i class="bi bi-cash"></i></a>
-                            </div>
+                        <td class="text-white text-center fw-bold">{{number_format(floatval($s->viewer))}}</td>
+                        <td class="text-white text-center fw-bold">{{number_format(floatval($s->impression))}}</td>
+                        <td class="text-success text-center fw-bold">${{number_format(floatval($s->pendapatan), 2)}}</td>
                         </td>
-                    </tr>
+                      
+                             </tr>
 
                 </tbody>
                 @endforeach
@@ -121,12 +108,12 @@
                         <th colspan="5">
                             <h6 class="mb-0"><span class="text-muted">Total Revenue: {{Auth::user()->name}}</span> </h6>
                         </th>
-                        <th colspan="3" class="text-warning">${{number_format(floatval($totalss))}}</th>
-
+                        <th colspan="3" class="text-warning">${{number_format(floatval($totalss), 2)}}</th>
                     </tr>
                 </tfoot>
             </table>
-            {{$user->links()}}
+            {{ $usersss->withQueryString()->links() }}
         </div>
 
     </div>
+</div>

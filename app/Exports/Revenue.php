@@ -11,21 +11,22 @@ class Revenue implements FromCollection, WithHeadings
     /**
     * @return \Illuminate\Support\Collection
     */
+    protected $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
     public function collection()
     {
-        $bulanSekarang = date('m');
-        $tahunSekarang = date('Y');
-        
-    
-        return DB::table('tb_upload')
-            ->select('tb_upload.video_title', 'tb_upload.isentif', 'tb_upload.impression_harian', 'tb_upload.viewer_harian', 'tb_upload.name_upload', 'tb_upload.published_date')
-            ->where('tb_upload.status', '=', 'Published')
-            ->whereMonth('tb_upload.created_at', $bulanSekarang)
-            ->whereYear('tb_upload.created_at', $tahunSekarang)
-            ->get();
+        return $this->data;
     }
+
     public function headings(): array
     {
-        return ["Judul Video", "Revenue_14Hari ", "Impression", "Viewer", "Nama", "Tanggal Publish"];
+        return ["Judul Video", "Production Team ", "Tanggal Publish", "Impression", "Viewer", "Revenue 14 Hari"];
+
     }
 }
+

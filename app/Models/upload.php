@@ -16,7 +16,7 @@ class upload extends Model
     protected $keyType = 'string';
     protected $table ="tb_upload";
     protected $primarykey ="id";
-    protected $fillable = ['tanggal', 'id_group', 'video_title', 'video', 'produksi', 'name', 'platform', 'status', 'bulan', 'name_upload'];
+    protected $fillable = ['tanggal', 'id_group', 'video_title', 'video', 'produksi', 'name', 'platform', 'status', 'bulan', 'isentif', 'name_upload'];
     protected $hidden = [
         'remember_token',
     ];
@@ -26,6 +26,11 @@ class upload extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults();
+    }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return $this->name . " {$eventName} Oleh: " . auth()->user()->name;
     }
     public function users()
     {

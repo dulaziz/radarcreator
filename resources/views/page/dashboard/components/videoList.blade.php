@@ -39,18 +39,18 @@
                         <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
                         <select nam class="form-select" name="roles" type="search" wire:model="search" aria-label=".form-select-sm example">
                             <option value="">Default</option>
-                            <option value="Januari"  >January</option>
-                            <option value="Febuari"   >February</option>
-                            <option value="Maret"   >Maret</option>
-                            <option value="April"   >April</option>
-                            <option value="Mei" >May</option>
-                            <option value="Juni"  >June</option>
-                            <option value="Juli" >July</option>
-                            <option value="Agustus"  >August</option>
-                            <option value="September"  >September</option>
-                            <option value="Oktober"  >October</option>
-                            <option value="November"  >November</option>
-                            <option value="Desember"  >Desember</option>
+                            <option value="1"  >January</option>
+                            <option value="2"   >February</option>
+                            <option value="3"   >Maret</option>
+                            <option value="4"   >April</option>
+                            <option value="5" >May</option>
+                            <option value="6"  >June</option>
+                            <option value="7" >July</option>
+                            <option value="8"  >August</option>
+                            <option value="9"  >September</option>
+                            <option value="10"  >October</option>
+                            <option value="11"  >November</option>
+                            <option value="12"  >Desember</option>
                         </select>
                         <button class="btn btn-dark" type="submit" id="find">  <span>Find</span></i></button>
                     </div>

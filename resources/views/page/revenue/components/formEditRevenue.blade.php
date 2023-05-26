@@ -73,6 +73,10 @@
                         <input type="hidden" class="form-control" name="bulan" value="{{$user->bulan}}">
                         <input type="hidden" class="form-control" name="name_upload" value="{{$user->name_upload}}">
                         <input type="hidden" class="form-control" name="gambar" value="{{$user->gambar}}">
+                        <input type="hidden" class="form-control" name="total" value="{{$user->total}}">
+                        <input type="hidden" class="form-control" name="isentif" value="{{$user->isentif}}">
+
+                        <input type="hidden" class="form-control" name="insentif" value="{{$user->insentif}}">
 
                         <input type="hidden" class="form-control" name="published_date" value="{{$user->published_date}}">
                         <input type="hidden" class="form-control" name="publish_link" value="{{$user->publish_link}}">

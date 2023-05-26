@@ -25,8 +25,11 @@ if(auth()->user()->role == 'User'):?>
  <?php endif;?>
 
  <?php
-if(auth()->user()->role == 'Admin Keuangan'):?>
+if(auth()->user()->role == 'Admin Finance'):?>
+  @include('page.revenue.components.revenueList')
+
 @include('page.revenue.components.allRevenueList')
+
  <?php endif;?>
 
  <?php
@@ -41,6 +44,11 @@ if(auth()->user()->role == 'Super Admin'):?>
 
  <?php
 if(auth()->user()->role == 'Super Admin'):?>
+@include('page.revenue.components.personalRevenueList')
+ <?php endif;?>
+
+ <?php
+if(auth()->user()->role == 'Admin Finance'):?>
 @include('page.revenue.components.personalRevenueList')
  <?php endif;?>
 

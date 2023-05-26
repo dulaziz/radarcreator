@@ -13,7 +13,7 @@ class ActivityLog extends Model
     public  function getActivitylogOptions(): array
     {
          return [
-            $this->belongsTo(User::class, 'id')];
+            $this->belongsTo(upload::class, 'id')];
     }
 
 }

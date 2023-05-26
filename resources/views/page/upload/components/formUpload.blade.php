@@ -19,7 +19,7 @@
                     </select>
                 </div>
                 <div class="col-sm-5">
-                    <input type="date" class="form-control" name="tanggal" id="uploadDate" >
+                    <input type="date" class="form-control" name="tanggal" id="uploadDate" value="{{ date('Y-m-d') }}">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -46,6 +46,7 @@
                         <div class="col-md-3 text-start">
                             <div class="form-check">
                                 <input type="checkbox"  name="produksi[]" class="form-check-input" value="{{ $data->jabatan }}" >
+                               
                                 <label class="form-check-label" for="produser">
                               {{$data->jabatan}}
                             </label>
@@ -64,7 +65,10 @@
                         </div>
                     </div>
                     @endforeach
-
+                    <input type="checkbox"  name="produksi[]" class="form-check-input" checked value="Admin" >
+                               
+                               <label class="form-check-label" for="produser">
+                             Admin
                 </div>
             </div>
 

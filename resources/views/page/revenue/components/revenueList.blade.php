@@ -22,33 +22,17 @@
     
     // Menggabungkan nilai bagian dengan bagian
     $hasil = array_merge($bagian_sama, $bagian_berbeda);
-    echo "Jumlah pengguna dengan nama " . implode(', ', $names) . ": " . $nameCount;
 }
 ?>
 
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded p-4">
-        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>{{!! json_encode($nilai_bagian) !!}}</h6>
+        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>Radar Bogor</h6>
         <hr>
         <div class="row mb-4">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
                 
-            <form action="/revenue" method="GET">
-                        @csrf
-
-                <div class="d-flex align-items-center mb-2 mb-md-0">
-
-                <span>Show</span>
-                
-                
-                <select class="form-select ms-2" aria-label=".form-select-sm example" name="perPage" id="perPage" onchange="this.form.submit()">
-<option value="10" {{ $user->perPage() == 10 ? 'selected' : '' }}>10</option>
-<option value="25" {{ $user->perPage() == 25 ? 'selected' : '' }}>25</option>
-<option value="50" {{ $user->perPage() == 50 ? 'selected' : '' }}>50</option>
-<option value="100" {{ $user->perPage() == 100 ? 'selected' : '' }}>100</option>
-</select>
-                </div>
-            </form>
+         
 
             
 
@@ -78,28 +62,19 @@
 
                 <form action="/revenue" method="GET">
                         @csrf
-                    <div class="input-group">
-                        <label class="input-group-text  ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
-                        <select nam class="form-select" name="roles" onchange="this.form.submit()" type="search" wire:model="search" aria-label=".form-select-sm example">
-                        <option value="">Default</option>
-                        <option value="Januari"  >January</option>
-                        <option value="Febuari"   >February</option>
-                        <option value="Maret"   >Maret</option>
-                        <option value="April"   >April</option>
-                        <option value="Mei" >May</option>
-                        <option value="Juni"  >June</option>
-                        <option value="Juli" >July</option>
-                        <option value="Agustus"  >August</option>
-                        <option value="September"  >September</option>
-                        <option value="Oktober"  >October</option>
-                        <option value="November"  >November</option>
-                        <option value="Desember"  >Desember</option>
-                    </select>
-                    </div>
+                        <div class="input-group">
+                        <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
+
+<input type="text" name="roles" class="form-control datetimepicker-input" data-target="#tanggalPicker" />
+<button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
+
+
+                        </div>
                 </div>
 
+
             </div>
-</form>
+            </form>
             <div class="col-md-4">
             <form action="/revenue"  method="GET" >
                 @csrf
@@ -121,7 +96,6 @@
                     <tr class="text-white align-middle">
                         <th rowspan="2" style="width: 2%;">No</th>
                         <th rowspan="2" style="width: 20%;">Video Title</th>
-                        <th rowspan="2" style="width: 15%;">Production Team</th>
                         <th rowspan="2" style="width: 7%;">Published</th>
                         <th rowspan="2" style="width: 5%;">Platform</th>
                         <th rowspan="2" style="width: 5%;">Status</th>
@@ -136,7 +110,7 @@
                         <th rowspan="2" style="width: 2%">Action</th>
                         <?php endif;?>
                         <?php
-                        if(auth()->user()->role == 'Admin Keuangan'):?>
+                        if(auth()->user()->role == 'Admin Finance'):?>
                         <th rowspan="2" style="width: 2%">Action</th>
                         <?php endif;?>
                         <?php
@@ -165,36 +139,34 @@
                     <tr>
                         <td>{{$no++}}</td>
                         <td><a href="">{{$data->video_title}}.</a></td>
-                        <td>{{$data->name}}</td>
                         <td>{{$data->tanggal}}</td>
                         <td>{{$data->platform}}</td>
                         <td>
                               <?php
                     if($data->status == 'Pending'):?>
-                    <span class="mb-0 me-4"><i class="fas fa-hourglass-half me-2"></i>Pending</span>
+                    <span class="mb-0 me-4"><i class="fas fa-hourglass-half me-2"></i></span>
 
                     <?php elseif($data->status == 'Published'):?>
-                        <span class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i>Published</span>
+                        <span class="mb-0 text-success me-4"><i class="fas fa-play me-2"></i></span>
                     <?php elseif($data->status == 'Takedown'):?>
-                        <span class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i>TakeDown</span>
+                        <span class="mb-0 text-danger me-4"><i class="fas fa-pause me-2"></i></span>
 <?php endif;?>
                         </td>
-                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->viewer_bulan))}}</td>
-                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->impression_bulan))}}</td>
-                        <td class="text-success text-center fw-bold">${{number_format(floatval($data->revenue_bulan))}}</td>
+                        <td class="text-white text-center fw-bold">{{number_format(floatval($data->viewer_bulan))}}</td>
+                        <td class="text-white text-center fw-bold">{{number_format(floatval($data->impression_bulan))}}</td>
+                        <td class="text-success text-center fw-bold">${{number_format(floatval($data->revenue_bulan), 2)}}</td>
                         <td class="text-center fw-bold">{{$data->revenuedate_bulan}}</td>
 
-                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->viewer_harian))}}</td>
-                        <td class="text-white text-center fw-bold">${{number_format(floatval($data->impression_harian))}}</td>
-                        <td class="text-success text-center fw-bold">${{number_format(floatval($data->revenue_harian))}}</td>
+                        <td class="text-white text-center fw-bold">{{number_format(floatval($data->viewer_harian))}}</td>
+                        <td class="text-white text-center fw-bold">{{number_format(floatval($data->impression_harian))}}</td>
+                        <td class="text-success text-center fw-bold">${{number_format(floatval($data->revenue_harian), 2)}}</td>
                         <td class="text-center fw-bold">{{$data->revenuedate_harian}}</td>
                         
                         <?php
                         if(auth()->user()->role == 'Produser'):?>
                         <td>
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
-                                ||
                                 <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
 
                             </div>
@@ -203,10 +175,10 @@
                         <?php
                         if(auth()->user()->role == 'Admin Finance'):?>
                         <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
-                                ||
+                            <div class="d-flex justify-content-center gap-1">
+                            <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
                                 <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
+                                <a class="btn btn-sm btn-warning" href="/detailIsentif/{{$data->id}}"><i class="bi bi-calculator"></i></a>
 
                             </div>
                         </td>
@@ -214,17 +186,25 @@
                         <?php
                         if(auth()->user()->role == 'Super Admin'):?>
                         <td>
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
-                        ||
                                 <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
+                                <?php
+                        if($data->isentif === 'Noted'):?>
+                                <a class="btn btn-sm btn-warning" href="/detailIsentif/{{$data->id}}"><i class="bi bi-calculator"></i></a>
+                                <?php endif;?>  
+                                <?php
+                        if($data->isentif === 'Selesai'):?>
+                                <a class="btn btn-sm btn-warning" ><i class="bi bi-card-checklist" style="color: rgb(0, 0, 255);"></i></a>
+                                <?php endif;?> 
+
 
                             </div>
                         </td>
                         <?php endif;?>  <?php
                         if(auth()->user()->role == 'Admin Sosmed'):?>
                         <td>
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center gap-1">
                                 <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
                                 <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
 
@@ -238,7 +218,7 @@
             
                 <tfoot class="text-center">
                     <tr class="text-white">
-                        <th colspan="6">
+                        <th colspan="5">
                             
                             <h6 class="mb-0"><span class="text-muted">Total Revenue:</span></h6>
                         </th>
@@ -256,7 +236,7 @@
             </table>
             
         </div>
-        {{$user->links()}}
+        {{ $user->withQueryString()->links() }}
 
 
     </div>

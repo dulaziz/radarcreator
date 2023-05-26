@@ -32,11 +32,24 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" name="email" id="email" required>
+                        <input type="email"  name="email" id="email" class="form-control @error('email') is-invalid @enderror" required>
+                        @error('email')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" class="form-control" name="name" id="name">
+                        @error('name')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+
+
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
