@@ -15,6 +15,8 @@ return [
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
+
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -39,9 +41,8 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
-            'throw' => false,
+
         ],
 
         's3' => [
@@ -51,12 +52,29 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
-            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
-            'throw' => false,
+            'visibility' => 'public',
+
+        ],
+        'do_spaces' => [
+            'driver' => 's3',
+            'key' => env('DO_SPACES_KEY'),
+            'secret' => env('DO_SPACES_SECRET'),
+            'region' => env('DO_SPACES_REGION'),
+            'bucket' => env('DO_SPACES_BUCKET'),
+            'endpoint' => env('DO_SPACES_ENDPOINT'),
+            'url' => env('DO_SPACES_URL'),
+            'visibility' => 'public',
+            'override_visibility' => true, // Opsional: Memastikan visibilitas tetap publik setelah diubah namanya
+            'root' => null, // Opsional: Menghapus prefix direktori root
+
         ],
 
+        
     ],
+
+    
+
+
 
     /*
     |--------------------------------------------------------------------------

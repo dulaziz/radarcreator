@@ -784,7 +784,7 @@ $namaDicari = $request->names;
 
  
         $user = $user->orderBy('updated_at', 'DESC')->paginate(10, ['*'], 'page2');
-        $pmn = DB::table('isentif')->paginate(10, ['*'], 'page1');
+        $pmn = $pmn->orderBy('updated_at', 'DESC')->paginate(10, ['*'], 'page1');
                
         $usersss = $usersss->orderBy('updated_at', 'DESC')->paginate(2, ['*'], 'page3');
 
@@ -998,7 +998,6 @@ $namaDicari = $request->names;
                 ->where('video_title', 'LIKE', '%' . $request->search . '%');
         }
         $perPage = $request->input('perPage', 10);
-
         $user = $user->orderBy('updated_at', 'DESC')->paginate($perPage);
 
         return view('page.uploaded.index', [
@@ -1073,9 +1072,10 @@ $namaDicari = $request->names;
         if ($request->hasFile('video')) {
 
             //upload new image
+            $date = now()->format('Ymd');
 
-            $image = $request->file('video');
-            $image->storeAs('public/posts', $image->hashName());
+            $filename = $date . '_' . Str::lower($request->file('video')->getClientOriginalName());
+            $path = Storage::disk('do_spaces')->put('public/posts/' .$filename,file_get_contents($request->file('video')->getRealPath()), 'public');
 
             //delete old image
             Storage::delete('public/posts' . $user->video);
@@ -1083,7 +1083,7 @@ $namaDicari = $request->names;
             //update post with new image
             $user->update([
 
-                $user->video     = $image->hashName(),
+                $user->video     = $filename,
                 $produksi = implode(',', $input['produksi']),
                 $name = implode(',', $input['name']),
                 $platform = implode(',', $input['platform']),
@@ -1176,11 +1176,12 @@ $namaDicari = $request->names;
             ]);
 
             //upload new image
-            $request->hasFile($input['video']);
-
-            $image = $request->file('video');
-            $image->storeAs('public/posts', $image->hashName());
-
+        
+            // Mendapatkan tanggal saat ini dalam format Ymd (misal: 20230602)
+            $date = now()->format('Ymd');
+            
+                $filename = $date . '_' . Str::lower($request->file('video')->getClientOriginalName());
+                $path = Storage::disk('do_spaces')->put('public/posts/' .$filename,file_get_contents($request->file('video')->getRealPath()), 'public');
             //delete old image
             $produksi = implode(',', $input['produksi']);
 
@@ -1190,7 +1191,7 @@ $namaDicari = $request->names;
             $user->id_group = $input['id_group'];
             $user->video_title = $input['video_title'];
 
-            $user->video = $image->hashName();
+            $user->video = $filename;
             $user->produksi = $produksi;
             $user->name = $name;
             $user->platform = $platform;
@@ -1220,10 +1221,10 @@ $namaDicari = $request->names;
 
 
             $user->save();
-
+            }
             return redirect('/uploaded')->with('success', 'Berhasil Ditambahkan!');
         }
-    }
+    
 
 
 
@@ -1273,8 +1274,7 @@ $namaDicari = $request->names;
     function user()
     {
 
-        $user = DB::table('type_group')
-            ->join('users', 'users.id_group', '=', 'type_group.id_group')
+        $user = DB::table('users')
             ->join('type_jabatan', 'type_jabatan.jabatan', '=', 'users.jabatan')
 
             ->orderBy('users.id', 'asc')
@@ -1371,7 +1371,7 @@ $namaDicari = $request->names;
         $request->hasFile($input['gambar']);
 
         $image = $request->file('gambar');
-        $image->storeAs('public/posts', $image->hashName());
+        $image->storeAs('public/posts',  $image->hashName());
 
 
         $user->name = $input['name'];
@@ -1393,9 +1393,9 @@ $namaDicari = $request->names;
     {
 
         $datas = DB::table('type_group')
-            ->join('users', 'users.id_group', '=', 'type_group.group')
+            ->join('users', 'users.group', '=', 'type_group.group')
             ->join('type_jabatan', 'type_jabatan.jabatan', '=', 'users.jabatan')
-            ->select('type_group.group', 'type_group.group', 'users.id',  'users.id_group', 'type_jabatan.jabatan', 'type_jabatan.jabatan')
+            ->select('type_group.group', 'type_group.group', 'users.id',  'users.group', 'type_jabatan.jabatan', 'type_jabatan.jabatan')
             ->get();
 
         $user = User::find($id);
@@ -1414,9 +1414,9 @@ $namaDicari = $request->names;
     {
 
         $datas = DB::table('type_group')
-            ->join('users', 'users.id_group', '=', 'type_group.id_group')
+            ->join('users', 'users.group', '=', 'type_group.group')
             ->join('type_jabatan', 'type_jabatan.jabatan', '=', 'users.jabatan')
-            ->select('type_group.group', 'type_group.group', 'users.id',  'users.id_group', 'type_jabatan.jabatan', 'type_jabatan.jabatan')
+            ->select('type_group.group', 'type_group.group', 'users.id',  'users.group', 'type_jabatan.jabatan', 'type_jabatan.jabatan')
             ->get();
 
         $user = User::find($id);
@@ -1450,7 +1450,7 @@ $namaDicari = $request->names;
             //upload new image
 
             $image = $request->file('gambar');
-            $image->storeAs('public/posts', $image->hashName());
+            $image->storeAs('public/posts',  $image->hashName());
 
             //delete old image
             Storage::delete('public/posts' . $user->gambar);
@@ -1461,7 +1461,7 @@ $namaDicari = $request->names;
                 $user->gambar     = $image->hashName(),
                 $user->name = $request->name,
                 $user->username = $request->username,
-                $user->id_group = $request->group,
+                $user->group = $request->group,
                 $user->email = $request->email,
                 $user->password = Hash::make($request->password),
                 $user->jabatan = $request->jabatan
@@ -1473,7 +1473,7 @@ $namaDicari = $request->names;
             $user->update([
                 $user->name = $request->name,
                 $user->username = $request->username,
-                $user->id_group = $request->group,
+                $user->group = $request->group,
                 $user->email = $request->email,
                 $user->password = Hash::make($request->password),
                 $user->jabatan = $request->jabatan
@@ -1501,7 +1501,7 @@ $namaDicari = $request->names;
             //upload new image
 
             $image = $request->file('gambar');
-            $image->storeAs('public/posts', $image->hashName());
+            $image->storeAs('public/posts',  $image->hashName());
 
             //delete old image
             Storage::delete('public/posts' . $user->gambar);

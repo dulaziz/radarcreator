@@ -66,11 +66,13 @@
                     </div>
                     @endforeach
                     <input type="checkbox"  name="produksi[]" class="form-check-input" checked value="Admin" >
-                               
+                    <input type="hidden" class="form-control" name="name[]"  value="admin" >
+
                                <label class="form-check-label" for="produser">
                              Admin
                 </div>
             </div>
+            
 
             <div class="mb-3 row">
                 <label for="platformPublish" class="col-sm-2 col-form-label text-start">Platform Publish</label>

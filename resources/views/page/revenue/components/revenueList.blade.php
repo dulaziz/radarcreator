@@ -178,8 +178,14 @@
                             <div class="d-flex justify-content-center gap-1">
                             <a class="btn btn-sm btn-primary" href="/detailRevenue/{{$data->id}}"><i class="bi bi-cash"></i></a>
                                 <a class="btn btn-sm btn-success" href="/editRevenue/{{$data->id}}"><i class="bi bi-plus"></i></a>
+                                <?php
+                        if($data->isentif === 'Noted'):?>
                                 <a class="btn btn-sm btn-warning" href="/detailIsentif/{{$data->id}}"><i class="bi bi-calculator"></i></a>
-
+                                <?php endif;?>  
+                                <?php
+                        if($data->isentif === 'Selesai'):?>
+                                <a class="btn btn-sm btn-warning" ><i class="bi bi-card-checklist" style="color: rgb(0, 0, 255);"></i></a>
+                                <?php endif;?> 
                             </div>
                         </td>
                         <?php endif;?>

@@ -46,7 +46,7 @@ $hobbiesss = explode(",",$user->platform);
                 <div class="col-sm-10">
                     <input type="file" class="form-control bg-dark" id="upload" name="video"  onchange="PreviewImage();"  id="videoFile">
                     <div class="mt-3 preview-vid">
-                        <video controls src="{{ asset('/storage/public/posts/'.$user->video) }}" id="uploadPreview" class="w-100"></video>
+                    <video controls src="{{ asset('https://erbege.sgp1.cdn.digitaloceanspaces.com/public/posts/' .$user->video) }}" id="uploadPreview"  height="200px" width="500px"></video>
                     </div>
                 </div>
             </div>

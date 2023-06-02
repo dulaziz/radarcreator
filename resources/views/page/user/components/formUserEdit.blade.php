@@ -50,7 +50,7 @@
                         <select class="form-select"  name="group" aria-label="Default select example">
                         <option selected>Pilih</option>
                         @foreach ($users as $data)
-                            <option value="{{ $data->id_group }}" {{$data->id_group  == $user->id_group ? 'selected' : '' }}>{{ $data->group }}</option>                                      
+                            <option value="{{ $data->group }}" {{$data->group  == $user->group ? 'selected' : '' }}>{{ $data->group }}</option>                                      
                         @endforeach
                     </select>
 
@@ -62,7 +62,7 @@
                         <label class="form-label">Position/Role</label>
                             <select class="form-select" name="jabatan" aria-label="Default select example">
                             @foreach ($userss as $data)
-                            <option value="{{ $data->jabatan }}" {{$data->id_jabatan  == $user->id_jabatan ? 'selected' : '' }}>{{ $data->jabatan }} ({{$data->role}})</option>                                      
+                            <option value="{{ $data->jabatan }}" {{$data->jabatan  == $user->jabatan ? 'selected' : '' }}>{{ $data->jabatan }} ({{$data->role}})</option>                                      
 
 
                                 @endforeach

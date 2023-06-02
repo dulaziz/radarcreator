@@ -43,6 +43,7 @@
 
                             </select>
                         </div>
+                    </form>
                 </div>
                 <div>
                     
@@ -54,7 +55,7 @@
                         <div class="input-group mb-2 mb-md-0">
                         <label class="input-group-text ms-md-2 bg-dark" for="inputGroupSelect02"><i class="far fa-calendar-alt"></i></label>
 
-                    <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#tanggalPicker" />
+                    <input type="text" name="rolesss" class="form-control datetimepicker-input" data-target="#tanggalPicker" />
                     <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search text-muted"></i></button>
 
     

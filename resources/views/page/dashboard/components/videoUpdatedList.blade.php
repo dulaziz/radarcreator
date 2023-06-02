@@ -92,7 +92,7 @@
         @foreach ($user as $users)
         <div class="d-md-flex align-items-center gap-4">
             <div class="mb-2 mb-md-0 preview-vid">
-                <video controls src="{{ asset('/storage/public/posts/'.$users->video) }}" class="w-100"></video>
+            <video controls src="{{ asset('https://erbege.sgp1.cdn.digitaloceanspaces.com/public/posts/' .$users->video) }}" height="200px" width="500px"></video>
             </div>
             <div class="">
                 <h5 class="mb-3">{{$users->video_title}}</h5>

@@ -259,6 +259,7 @@ $totalInsentif += $personInsentif;
                         <input type="hidden" name="status[]" class="form-control" id="viewer" value="{{$user->status}}">
 
 @endforeach
+
 @foreach ($produksi as $pro => $count) 
                     <?php
 $personInsentiff = $insentiff * $count;
