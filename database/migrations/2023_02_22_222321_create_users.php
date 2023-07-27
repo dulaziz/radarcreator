@@ -18,7 +18,7 @@ return new class extends Migration
             $table->uuid('uuid');
             $table->string('name');
             $table->string('username');
-            $table->string('id_group');
+            $table->string('group');
             $table->string('email');
             $table->string('password');
             $table->string('jabatan');
