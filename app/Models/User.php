@@ -10,7 +10,7 @@ class user extends Authenticatable
     protected $keyType = 'string';
     protected $table ="users";
     protected $primarykey ="id";
-    protected $fillable = ['name', 'username', 'id_group', 'email', 'password', 'id_jabatan',  'gambar'];
+    protected $fillable = ['name', 'username', 'group', 'email', 'password', 'jabatan', 'role',  'gambar'];
     protected $hidden = [
         'password',
         'remember_token',
