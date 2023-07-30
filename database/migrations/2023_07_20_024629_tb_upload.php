@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_total', function (Blueprint $table) {
+        Schema::create('tb_upload', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('tanggal');
             $table->string('id_group');
