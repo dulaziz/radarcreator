@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('tb_total', function (Blueprint $table) {
             $table->id();
             $table->string("total");
+            $table->string("tanggal");
+
+
+            $table->timestamps();
+
         });
     }
 

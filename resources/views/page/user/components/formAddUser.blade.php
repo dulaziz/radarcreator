@@ -55,6 +55,19 @@
                         <label for="username" class="form-label">Username</label>
                         <input type="text" class="form-control" name="username" id="username" required>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Position/Role</label>
+                            <select class="form-select"  name="role" id="role" aria-label="Default select example" required>
+                            <option value="">Pilih</option>
+                                    
+                                <option value="Super Admin ">Super Admin </option>
+                                <option value="Admin Finance">Admin Finance</option>
+                                <option value="Admin Sosmed">Admin Sosmed</option>
+                                <option value="Admin Upload">Admin Upload </option>
+                                <option value="User">User </option>
+
+                            </select>
+                        </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -81,7 +94,6 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input type="hidden"  name="role" id="role" >
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
@@ -115,6 +127,28 @@ oFReader.onload = function (oFREvent)
 };
 </script>
 
+<script type="text/javascript">
+       $(document).ready(function() {
+    $('#jabatan').on('input', function() {
+        var jabatan = $(this).val();
+        if(jabatan) {
+            $.ajax({
+                url: '/userAdd/getData',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    'jabatan': jabatan
+                },
+                success: function(data) {
+                    $('#role').val(data.role);
+                }
+            });
+        } else {
+            $('#role').val('');
+        }
+    });
+});
+        </script>
 
  <!-- JavaScript Libraries -->
  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

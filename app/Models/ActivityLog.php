@@ -8,7 +8,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class ActivityLog extends Model
 {
     use LogsActivity;
-
+    protected $casts = [
+        'causer_id' => 'string',
+    ];
     protected $table = 'activity_log';
     public  function getActivitylogOptions(): array
     {
