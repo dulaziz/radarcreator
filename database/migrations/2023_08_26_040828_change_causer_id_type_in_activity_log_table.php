@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class ChangeCauserIdTypeInActivityLogTable extends Migration{
     public function up()
     {
-        Schema::table('activity_log', function (Blueprint $table) {
+        Schema::connection(config('activitylog.database_connection'))->table(config('activitylog.table_name'), function (Blueprint $table) {
             $table->string('causer_id')->change();
             $table->string('subject_id')->change();
         });
@@ -15,7 +15,7 @@ class ChangeCauserIdTypeInActivityLogTable extends Migration{
 
     public function down()
     {
-        Schema::table('activity_log', function (Blueprint $table) {
+        Schema::connection(config('activitylog.database_connection'))->table(config('activitylog.table_name'), function (Blueprint $table) {
             $table->integer('causer_id')->change();
             $table->unsignedBigInteger('subject_id')->change();
         });
