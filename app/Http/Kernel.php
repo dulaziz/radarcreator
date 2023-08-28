@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'RedirectIfNotAuthenticated' => \App\Http\Middleware\RedirectIfNotAuthenticated::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
         'check-status' => \App\Http\Middleware\CheckStatus::class,
+        'total.revenue.check' => \App\Http\Middleware\TotalRevenueCheck::class,
 
 
     ];

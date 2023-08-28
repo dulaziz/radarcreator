@@ -119,10 +119,10 @@ Route::get('/Total', [SessionController::class, 'tambahTotal'])->middleware('aut
 
 
 Route::get('/addRevenue', [SessionController::class, 'halaman_revenue'])->middleware('auth');
-Route::get('/detailRevenue/{id}', [SessionController::class, 'detail_revenue'])->middleware('auth');
+Route::get('/detailRevenue/{id}', [SessionController::class, 'detail_revenue'])->middleware('auth', 'total.revenue.check');
 Route::get('/export-excel', [SessionController::class, 'exportExcel']);
            
-Route::get('/detailRevenue/{id}/getMonthlyRevenue', [SessionController::class, 'getMonthlyRevenue']);
+Route::get('/detailRevenue/{id}/getMonthlyRevenue', [SessionController::class, 'getMonthlyRevenue'])->middleware('total.revenue.check');
 
 Route::get('logout', [SessionController::class, 'logout'])->name('logout');
 
