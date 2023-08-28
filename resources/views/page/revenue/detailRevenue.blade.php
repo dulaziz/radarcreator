@@ -2,7 +2,8 @@
 
 @section('content')
 
-@include('page.revenue.components.formDetailRevenue')
+@include('page.revenue.components.formdetailRevenue')
+
 @include('page.revenue.components.revenueListMonth')
 
 
