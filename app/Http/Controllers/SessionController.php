@@ -1317,16 +1317,16 @@ $namaDicari = $request->names;
     function login(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ], [
-            'name.required' => 'nama wajib diisi !',
+            'username.required' => 'username wajib diisi !',
             'password.required' => 'Password wajib diisi !',
 
         ]);
 
 
-        if (Auth::attempt(['name' => $request->name, 'password' => $request->password ])) {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password ])) {
             $request->session()->regenerate();
             return redirect()->intended('/');
         } else {

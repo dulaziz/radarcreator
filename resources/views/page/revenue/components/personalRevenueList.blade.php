@@ -106,7 +106,7 @@
                 <tfoot>
                     <tr class="text-white">
                         <th colspan="5">
-                            <h6 class="mb-0"><span class="text-muted">Total Revenue: {{Auth::user()->name}}</span> </h6>
+                            <h6 class="mb-0"><span class="text-muted">Total Revenue: {{Auth::user()->username}}</span> </h6>
                         </th>
                         <th colspan="3" class="text-warning">${{number_format(floatval($totalss), 2)}}</th>
                     </tr>

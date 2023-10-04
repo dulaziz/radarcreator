@@ -23,7 +23,7 @@
                     <form action="signIn/login" method="post">
                         @csrf
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="username" name="name" placeholder="name">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="name">
                         <label for="username">Username</label>
                     </div>
                     <div class="form-floating mb-4">

@@ -17,7 +17,7 @@
             </div>
             <div class="ms-3">
                 {{-- <h6 class="mb-0">NAMA</h6> --}}
-                <h6 class="mb-0">{{Auth::user()->name}}</h6>
+                <h6 class="mb-0">{{Auth::user()->username}}</h6>
                 <span>{{Auth::user()->group}}</span>
             </div>
         </div>

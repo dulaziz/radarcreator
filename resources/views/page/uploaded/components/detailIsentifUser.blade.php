@@ -25,7 +25,7 @@
 <div class="container-fluid pt-4 px-4">
 <div class="bg-secondary rounded p-4">
     <div class="d-flex align-items-center justify-content-between">
-        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>{{Auth::user()->name}}</h6>
+        <h6 class="mb-0 text-start"><span class="text-muted">Revenue: </span>{{Auth::user()->username}}</h6>
         <a href="/uploaded">Back</a>
     </div>
     <hr>

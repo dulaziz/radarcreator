@@ -9,7 +9,7 @@
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <i class="fas fa-user"></i>
-                {{-- <span class="d-none d-lg-inline-flex text-uppercase fw-bold">{{Auth::user()->name}}</span> --}}
+                {{-- <span class="d-none d-lg-inline-flex text-uppercase fw-bold">{{Auth::user()->username}}</span> --}}
                 {{-- <span class="d-none d-lg-inline-flex">NAMA</span> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary rounded-0 rounded-bottom m-0 shadow-sm p-3" style="width: 18rem;">
@@ -21,7 +21,7 @@
                 height="60" 
                 width="60"
                 src="{{ asset('/storage/public/posts/'.Auth::user()->gambar) }}">
-                        <h1 class="mb-1 fs-5 text-uppercase">{{Auth::user()->name}}</h1>
+                        <h1 class="mb-1 fs-5 text-uppercase">{{Auth::user()->username}}</h1>
                         <div class="mb-3">
                             <span>{{Auth::user()->jabatan}}</span> | <span>{{Auth::user()->group}}</span>
                         </div>
