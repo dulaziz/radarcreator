@@ -17,18 +17,18 @@
                     <div class="text-center">
                     <img 
                 alt="user-avatar"
-                class="rounded-circle"
+                class="rounded-circle mb-2"
                 height="60" 
                 width="60"
                 src="{{ asset('/storage/public/posts/'.Auth::user()->gambar) }}">
-                        <h1 class="mb-1 fs-5 text-uppercase">{{Auth::user()->username}}</h1>
+                        <h1 class="mb-1 fs-5 text-capitalize">{{Auth::user()->name}}</h1>
                         <div class="mb-3">
                             <span>{{Auth::user()->jabatan}}</span> | <span>{{Auth::user()->group}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="d-grid">
-                    <a href="{{ route('logout') }}" class="btn btn-primary"><i class="fas fa-power-off"></i> Log Out</a>
+                    <a href="{{ route('logout') }}" class="btn btn-danger"><i class="fas fa-power-off"></i> Log Out</a>
                 </div>
             </div>
         </div>

@@ -113,7 +113,7 @@
             </div>
             <hr>
             <div class="d-grid justify-content-md-end">
-                <button type="submit" class="btn btn-primary px-5"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Submit</button>
+                <button type="submit" class="btn btn-primary px-5"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Upload</button>
             </div>
         </form>
 

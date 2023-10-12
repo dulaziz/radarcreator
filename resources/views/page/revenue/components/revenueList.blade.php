@@ -240,8 +240,7 @@
                         <th colspan="4" href="" class="text-warning">{{'$' .number_format($total)}}</th>
                          
                         <th colspan="4" href="" class="text-warning"><a class="btn btn-sm btn-success" href="/Total"><i class="bi bi-plus"></i></a></th>
-
-
+                        <th colspan="1"></th>
                     </tr>
                 </tfoot>
             </table>

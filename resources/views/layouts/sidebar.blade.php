@@ -17,7 +17,7 @@
             </div>
             <div class="ms-3">
                 {{-- <h6 class="mb-0">NAMA</h6> --}}
-                <h6 class="mb-0">{{Auth::user()->username}}</h6>
+                <h6 class="mb-0 text-capitalize">{{Auth::user()->name}}</h6>
                 <span>{{Auth::user()->group}}</span>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <a href="/" class="nav-item nav-link {{ ($title === "dashboard") ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <a href="/upload" class="nav-item nav-link {{ ($title === "upload") ? 'active' : '' }}"><i class="fas fa-upload me-2"></i>Upload</a>
             <a href="/uploaded" class="nav-item nav-link {{ ($title === "uploaded") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Uploaded</a>
-            <a href="/videoUpdated" class="nav-item nav-link {{ ($title === "video updated") ? 'active' : '' }}"><i class="fas fa-video me-2"></i>Video Updated</a>
+            <a href="/videoUpdated" class="nav-item nav-link {{ ($title === "video updated") ? 'active' : '' }}"><i class="fas fa-list me-2"></i>Video Updated</a>
             <a href="/revenue" class="nav-item nav-link {{ ($title === "revenue") ? 'active' : '' }}"><i class="fas fa-dollar-sign me-2"></i>Revenue</a>
           
             <?php endif;?>

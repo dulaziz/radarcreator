@@ -3,7 +3,7 @@
     <div class="bg-secondary rounded-top p-4">
         <div class="row">
             <div class="col-12 col-sm-6 text-center text-sm-start">
-                &copy; <a href="#">Radar Creator</a>, All Right Reserved. 
+                &copy; {{(date('Y'))}} <span>Radar Creator</span>
             </div>
             <div class="col-12 col-sm-6 text-center text-sm-end">
                 Created By <span>Radar Bogor</span>

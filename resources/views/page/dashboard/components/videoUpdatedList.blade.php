@@ -3,7 +3,77 @@
 
         <h6 class="mb-0">Video Updated</h6>
         <hr>
-        <div class="row mb-5">
+
+        <div class="d-md-flex justify-content-md-between">
+            
+            <form action="/videoUpdated" method="GET">
+                @csrf
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                    <span class="me-2">Show</span>
+                    <select class="form-select" aria-label=".form-select-sm example" name="perPage"
+                        id="perPage" onchange="this.form.submit()">
+                        <option value="10" {{ $user->perPage() == 10 ? 'selected' : '' }}>10</option>
+                        <option value="25" {{ $user->perPage() == 25 ? 'selected' : '' }}>25</option>
+                        <option value="50" {{ $user->perPage() == 50 ? 'selected' : '' }}>50</option>
+                        <option value="100" {{ $user->perPage() == 100 ? 'selected' : '' }}>100</option>
+                    </select>
+                </div>
+            </form>
+
+            <form action="/videoUpdated" method="GET">
+                @csrf
+                <div class="input-group">
+                    <label class="input-group-text bg-dark" for="inputGroupSelect02"><i
+                            class="fas fa-building"></i></label>
+                    <select class="form-select" name="select" aria-label=".form-select-sm example">
+                        <option selected value="">Filter Group</option>
+                        @foreach ($users as $data)
+
+                        <option value="{{$data->id_group}}">{{$data->group}}</option>
+                        @endforeach
+
+                    </select>
+                    <button class="btn btn-dark" type="submit" id="find"> <span>Find</span></i></button>
+                </div>
+            </form>
+
+            <form action="/videoUpdated" method="GET">
+                @csrf
+                <div class="input-group">
+                    <label class="input-group-text bg-dark" for="inputGroupSelect02"><i
+                            class="far fa-calendar-alt"></i></label>
+                    <select nam class="form-select" name="roles" type="search" wire:model="search"
+                        aria-label=".form-select-sm example">
+                        <option value="">Default</option>
+                        <option value="Januari">January</option>
+                        <option value="Febuari">February</option>
+                        <option value="Maret">Maret</option>
+                        <option value="April">April</option>
+                        <option value="Mei">May</option>
+                        <option value="Juni">June</option>
+                        <option value="Juli">July</option>
+                        <option value="Agustus">August</option>
+                        <option value="September">September</option>
+                        <option value="Oktober">October</option>
+                        <option value="November">November</option>
+                        <option value="Desember">Desember</option>
+                    </select>
+                    <button class="btn btn-dark" type="submit" id="find"> <span>Find</span></i></button>
+                </div>
+            </form>
+            <form action="/videoUpdated" method="GET">
+                @csrf
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" placeholder="Search"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-dark" type="submit" id="button-addon2"><i
+                            class="fas fa-search text-muted"></i></button>
+                </div>
+            </form>
+
+        </div>
+
+        {{-- <div class="row mb-5">
             <div class="col-md-8 d-md-flex mb-2 mb-md-0">
                 <div class="d-flex align-items-center mb-2 mb-md-0">
                 </div>
@@ -74,7 +144,6 @@
             </form>
 
             <div class="col-md-4">
-                {{-- <input class="form-control" type="text" placeholder="Search" aria-label="default input example"> --}}
                 <form action="/videoUpdated" method="GET">
                     @csrf
                     <div class="input-group">
@@ -87,7 +156,7 @@
 
             </div>
 
-        </div>
+        </div> --}}
 
         @foreach ($user as $users)
         <div class="d-md-flex align-items-center gap-4">
